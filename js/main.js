@@ -30,6 +30,10 @@
   if (mnav) mnav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setNav(false); }); });
 
   /* Reveal on scroll */
+  document.querySelectorAll(".sec-head, .policy-card, .cert-box, .stat-cell, .split > div, .contact-card, .client-sector, .ind-card, .chips, .form, .prose").forEach(function (el, i) {
+    el.classList.add("reveal");
+    if (!el.style.getPropertyValue("--d")) el.style.setProperty("--d", ((i % 3) * 80) + "ms");
+  });
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && reveals.length) {
     var io = new IntersectionObserver(function (entries) {

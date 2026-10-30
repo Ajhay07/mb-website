@@ -57,15 +57,16 @@ def head(title, desc, page):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="theme-color" content="#10141B">
+<meta name="theme-color" content="#161C25">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body data-page="{page}">
 """
@@ -83,7 +84,7 @@ def header(active):
         nav += f'<a href="{href}"{cls}>{label}</a>'
     mnav = ""
     for i,(label,href) in enumerate(NAV_ITEMS):
-        mnav += f'<a href="{href}"><span>{label}</span><span class="num">0{i+1}</span></a>'
+        mnav += f'<a href="{href}">{label}</a>'
     return f"""
 <div class="utility">
   <div class="wrap">
@@ -160,10 +161,11 @@ FOOTER = f"""
       </ul>
     </div>
   </div>
-  <div class="wrap footer-bottom">
+  <div class="wrap footer-wordmark" aria-hidden="true">MB Metallic Bellows</div>
+  <div class="footer-bottom"><div class="footer-bottom-in">
     <span>© <span data-year>2026</span> MB Metallic Bellows Private Limited. All rights reserved.</span>
     <span>An ISO 9001:2015 · ASME U-Stamp · PED certified manufacturer</span>
-  </div>
+  </div></div>
 </footer>
 <script src="js/main.js"></script>
 </body>
@@ -210,8 +212,9 @@ def prod_card(p, lazy=True):
     name, img, tag, desc = p
     lz = ' loading="lazy"' if lazy else ""
     return f"""<article class="prod-card reveal">
-  <div class="prod-figure"><span class="tag">{tag}</span><img src="{IMG}{img}" alt="{name}"{lz}></div>
+  <div class="prod-figure"><img src="{IMG}{img}" alt="{name}" width="640" height="480"{lz}></div>
   <div class="prod-body">
+    <span class="tag">{tag}</span>
     <h3>{name}</h3>
     <p>{desc}</p>
     <a class="textlink pl" href="contact.html">Enquire {ARROW}</a>
@@ -261,36 +264,39 @@ def _mq_items():
             on = f"if(!this.dataset.f){{this.dataset.f=1;this.src='{esc}'}}else{{this.remove()}}"
         else:
             on = "this.remove()"
-        out += ('<div class="mq">'
+        out += ('<div class="mq reveal">'
                 f'<img class="mq-logo" src="images/logos/{slug}.png" alt="{name}" loading="lazy" onerror="{on}">'
                 f'<span>{name}</span></div>')
     return out
-MARQUEE_BLOCK = ('<div class="marquee" aria-label="Selected clients">'
-                 '<div class="marquee-track">' + _mq_items() + _mq_items() + '</div></div>')
+MARQUEE_BLOCK = ('<section class="section clients"><div class="wrap">'
+                 '<div class="sec-head reveal"><h2>Selected clients</h2></div>'
+                 '<div class="logo-wall">' + _mq_items() + '</div></div></section>')
 
 print("Generator ready.")
 
 # ================================================================ HOME
 home = f"""
 <section class="hero">
-  <div class="hero-media"><img src="{IMG}02.jpg" alt="Large-diameter metallic bellow fabricated at MB Metallic Bellows" fetchpriority="high"></div>
-  <div class="hero-grid-overlay"></div>
-  <div class="wrap hero-inner">
-    <span class="kicker">Precision Expansion Joints · Chennai, India</span>
-    <h1 style="margin-top:16px">Flexibility engineered for the harshest pipelines on earth.</h1>
+  <div class="hero-media"><img src="{IMG}02.jpg" alt="Large-diameter metallic bellow fabricated at MB Metallic Bellows" width="1600" height="1000" fetchpriority="high"></div>
+  <div class="hero-panel">
+    <span class="kicker kicker--hero">Precision Expansion Joints · Chennai, India</span>
+    <h1>Flexibility engineered for the harshest pipelines on earth.</h1>
     <p class="lede">Three decades engineering metallic bellows, expansion joints and compensators — 20&nbsp;mm to 9&nbsp;metres — to EJMA, ASME and PED standards for India's heavy industry.</p>
     <div class="hero-cta">
       <a class="btn btn--lg" href="products.html">Explore Products {ARROW}</a>
       <a class="btn btn--lg btn--outline-light" href="contact.html">Request a Quote</a>
     </div>
   </div>
-  <div class="hero-stats">
-    <div class="wrap-stats">
-      <div class="hs"><div class="num"><span data-count="30" data-suffix="+">30+</span></div><div class="lbl">Years Active</div></div>
-      <div class="hs"><div class="num"><span data-count="9000">9000</span><span class="unit">mm</span></div><div class="lbl">Max Diameter</div></div>
-      <div class="hs"><div class="num"><span data-count="11">11</span><span>+</span></div><div class="lbl">Approvals</div></div>
-      <div class="hs"><div class="num">Pan&nbsp;<span>·</span>&nbsp;India</div><div class="lbl">Client Base</div></div>
-    </div>
+  <span class="hero-hex hero-hex--sm" aria-hidden="true"></span>
+  <span class="hero-hex" aria-hidden="true"></span>
+</section>
+
+<section class="stats" aria-label="MB Metallic Bellows in numbers">
+  <div class="wrap">
+    <div class="reveal"><div class="num"><span data-count="30" data-suffix="+">30+</span></div><div class="lbl">Years Active</div></div>
+    <div class="reveal" style="--d:80ms"><div class="num"><span data-count="9000">9000</span><span class="unit">mm</span></div><div class="lbl">Max Diameter</div></div>
+    <div class="reveal" style="--d:160ms"><div class="num"><span data-count="11">11</span><span>+</span></div><div class="lbl">Approvals</div></div>
+    <div class="reveal" style="--d:240ms"><div class="num">Pan&nbsp;<span>·</span>&nbsp;India</div><div class="lbl">Client Base</div></div>
   </div>
 </section>
 
@@ -298,96 +304,94 @@ home = f"""
   <div class="wrap">
     <span class="trust-label">Certified &amp; Approved</span>
     <div class="trust-items">
-      <span class="cert">{I['shield']} ISO 9001:2015 (DNV)</span>
-      <span class="cert">{I['award']} ASME U-Stamp</span>
-      <span class="cert">{I['gauge']} PED 2014/68/EU</span>
-      <span class="cert">{I['check']} IBR Approved</span>
-      <span class="cert">{I['globe']} EJMA (USA) Standards</span>
+      <span class="cert">ISO 9001:2015 (DNV)</span>
+      <span class="cert">ASME U-Stamp</span>
+      <span class="cert">PED 2014/68/EU</span>
+      <span class="cert">IBR Approved</span>
+      <span class="cert">EJMA (USA) Standards</span>
     </div>
   </div>
 </section>
 
-<section class="section panel">
-  <div class="wrap split">
-    <div class="split-media">
-      <div class="ph"><img src="{IMG}05.jpg" alt="Tied lateral expansion joint in the MB fabrication shop" loading="lazy"></div>
-      <div class="split-badge"><div class="n">30<span>+</span></div><div class="t">years designing flexible elements for critical service</div></div>
-    </div>
-    <div>
-      <span class="kicker">Who We Are</span>
-      <div class="sec-head"><h2>A specialist manufacturer, not a general fabricator.</h2></div>
-      <p class="lede" style="margin-top:16px">A complete range of bellows, expansion joints, compensators, metal hoses and fabric bellows — built at a dedicated facility in the SIPCOT corridor at Oragadam, Chennai.</p>
-      <ul class="feature-list">
-        <li><span class="fi">{I['ruler']}</span><div><h4>20 mm to 9000 mm</h4><p>Stainless steel, high-nickel alloy and carbon steel bellows across the full diameter range, including instrument bellows and assemblies.</p></div></li>
-        <li><span class="fi">{I['cog']}</span><div><h4>Designed to your parameters</h4><p>Every unit is engineered to nominal bore, design pressure and temperature, flow media and axial, lateral and angular deflection.</p></div></li>
-        <li><span class="fi">{I['shield']}</span><div><h4>Proven under inspection</h4><p>ASME U-Stamp and PED certified, approved by boiler boards in India and overseas, and witnessed by the world's leading agencies.</p></div></li>
-      </ul>
-      <a class="textlink" href="about.html" style="margin-top:34px">More about the company {ARROW}</a>
-    </div>
+<section class="about">
+  <div class="about-media reveal">
+    <img src="{IMG}05.jpg" alt="Tied lateral expansion joint in the MB fabrication shop" width="1200" height="900" loading="lazy">
+    <div class="split-badge"><div class="n">30<span>+</span></div><div class="t">years designing flexible elements for critical service</div></div>
+  </div>
+  <div class="about-body">
+    <span class="kicker reveal">Who We Are</span>
+    <h2 class="reveal" style="--d:80ms">A specialist manufacturer, not a general fabricator.</h2>
+    <p class="lede reveal" style="--d:160ms">A complete range of bellows, expansion joints, compensators, metal hoses and fabric bellows — built at a dedicated facility in the SIPCOT corridor at Oragadam, Chennai.</p>
+    <ul class="feature-list">
+      <li class="reveal"><h4>20 mm to 9000 mm</h4><p>Stainless steel, high-nickel alloy and carbon steel bellows across the full diameter range, including instrument bellows and assemblies.</p></li>
+      <li class="reveal"><h4>Designed to your parameters</h4><p>Every unit is engineered to nominal bore, design pressure and temperature, flow media and axial, lateral and angular deflection.</p></li>
+      <li class="reveal"><h4>Proven under inspection</h4><p>ASME U-Stamp and PED certified, approved by boiler boards in India and overseas, and witnessed by the world's leading agencies.</p></li>
+    </ul>
+    <a class="textlink reveal" href="about.html">More about the company {ARROW}</a>
   </div>
 </section>
 
-<section class="section panel" style="background:var(--paper-2);border-block:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec-head center">
-      <span class="kicker kicker--center">Product Range</span>
-      <h2>Expansion joints for every movement and medium.</h2>
-      <p class="lede">Circular and rectangular, restrained and unrestrained — each type is matched to the movements, thrust and service conditions of your line.</p>
-    </div>
-    <div class="prod-grid" style="margin-top:24px">
-      {''.join(prod_card(p) for p in PRODUCTS[:6])}
-    </div>
-    <div class="center" style="margin-top:34px"><a class="btn btn--ghost" href="products.html">View the full range {ARROW}</a></div>
-  </div>
-</section>
-
-<section class="section on-dark panel" style="background:var(--ink);color:var(--on-ink)">
+<section class="section band-light">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">Where Our Joints Run</span>
-      <h2 style="color:#fff">Installed in the systems where failure is not an option.</h2>
-      <p class="lede" style="color:var(--on-ink-mut)">From blast-furnace gas mains to turbine exhausts, our bellows absorb the thermal growth, vibration and pressure cycling that rigid pipe cannot.</p>
+      <span class="kicker reveal">Product Range</span>
+      <h2 class="reveal" style="--d:80ms">Expansion joints for every movement and medium.</h2>
+      <p class="lede reveal" style="--d:160ms">Circular and rectangular, restrained and unrestrained — each type is matched to the movements, thrust and service conditions of your line.</p>
     </div>
-    <ul class="applications" style="margin-top:34px;color:var(--on-ink)">
-      <li style="border-color:var(--line-ink)">Blast furnace &amp; hot-blast systems</li>
-      <li style="border-color:var(--line-ink)">Turbines &amp; compressors</li>
-      <li style="border-color:var(--line-ink)">Heat exchangers</li>
-      <li style="border-color:var(--line-ink)">Boilers &amp; steam-extraction lines</li>
-      <li style="border-color:var(--line-ink)">Exhaust &amp; flue-gas pipe lines</li>
-      <li style="border-color:var(--line-ink)">DG sets</li>
-      <li style="border-color:var(--line-ink)">Heat-recovery systems</li>
-      <li style="border-color:var(--line-ink)">Pre-heater cyclones</li>
-      <li style="border-color:var(--line-ink)">De-waxing filters</li>
-      <li style="border-color:var(--line-ink)">Process-fluid &amp; suction lines</li>
-      <li style="border-color:var(--line-ink)">Condensate suction piping</li>
-      <li style="border-color:var(--line-ink)">Cold-blast BF gas mains</li>
-      <li style="border-color:var(--line-ink)">Flash-box vent to condenser</li>
-      <li style="border-color:var(--line-ink)">Scupper &amp; discharge systems</li>
-      <li style="border-color:var(--line-ink)">External fire-fighting systems</li>
-      <li style="border-color:var(--line-ink)">Compressed &amp; hot-air systems</li>
-      <li style="border-color:var(--line-ink)">Hydro-pore systems</li>
-      <li style="border-color:var(--line-ink)">Power-turbine exhaust pumps</li>
+    <div class="prod-grid" style="margin-top:clamp(48px,6vw,88px)">
+      {''.join(prod_card(p) for p in PRODUCTS[:6])}
+    </div>
+    <div style="margin-top:clamp(40px,5vw,72px)"><a class="btn btn--ghost" href="products.html">View the full range {ARROW}</a></div>
+  </div>
+</section>
+
+<section class="section band-dark on-dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker reveal">Where Our Joints Run</span>
+      <h2 class="reveal" style="--d:80ms">Installed in the systems where failure is not an option.</h2>
+      <p class="lede reveal" style="--d:160ms">From blast-furnace gas mains to turbine exhausts, our bellows absorb the thermal growth, vibration and pressure cycling that rigid pipe cannot.</p>
+    </div>
+    <ul class="applications reveal">
+      <li>Blast furnace &amp; hot-blast systems</li>
+      <li>Turbines &amp; compressors</li>
+      <li>Heat exchangers</li>
+      <li>Boilers &amp; steam-extraction lines</li>
+      <li>Exhaust &amp; flue-gas pipe lines</li>
+      <li>DG sets</li>
+      <li>Heat-recovery systems</li>
+      <li>Pre-heater cyclones</li>
+      <li>De-waxing filters</li>
+      <li>Process-fluid &amp; suction lines</li>
+      <li>Condensate suction piping</li>
+      <li>Cold-blast BF gas mains</li>
+      <li>Flash-box vent to condenser</li>
+      <li>Scupper &amp; discharge systems</li>
+      <li>External fire-fighting systems</li>
+      <li>Compressed &amp; hot-air systems</li>
+      <li>Hydro-pore systems</li>
+      <li>Power-turbine exhaust pumps</li>
     </ul>
   </div>
 </section>
 
-<section class="section panel">
+<section class="section">
   <div class="wrap">
-    <div class="sec-head center">
-      <span class="kicker kicker--center">Industries Served</span>
-      <h2>Trusted by the sectors that build the country.</h2>
+    <div class="sec-head">
+      <span class="kicker reveal">Industries Served</span>
+      <h2 class="reveal" style="--d:80ms">Trusted by the sectors that build the country.</h2>
     </div>
-    <div class="ind-grid" style="margin-top:40px">
-      <article class="ind-card reveal"><div class="ind-icon">{I['bolt']}</div><h3>Power</h3><p>Thermal &amp; nuclear generation, turbines, boilers and heat-recovery.</p></article>
-      <article class="ind-card reveal"><div class="ind-icon">{I['factory']}</div><h3>Steel &amp; Metals</h3><p>Blast furnaces, gas mains and ducting for integrated steel plants.</p></article>
-      <article class="ind-card reveal"><div class="ind-icon">{I['flame']}</div><h3>Refineries &amp; Hydrocarbons</h3><p>Process piping, carbon-black and petrochemical units.</p></article>
-      <article class="ind-card reveal"><div class="ind-icon">{I['beaker']}</div><h3>Fertilizers &amp; Chemicals</h3><p>Corrosive-service joints in high-nickel and special alloys.</p></article>
-      <article class="ind-card reveal"><div class="ind-icon">{I['cube']}</div><h3>Cement</h3><p>Pre-heater, kiln and pollution-control duct expansion joints.</p></article>
-      <article class="ind-card reveal"><div class="ind-icon">{I['flow']}</div><h3>Sugar &amp; Process</h3><p>Evaporator, vapour and process-line compensators.</p></article>
-      <article class="ind-card reveal"><div class="ind-icon">{I['ship']}</div><h3>Shipping &amp; Defence</h3><p>Dockyard and naval exhaust, scupper and discharge systems.</p></article>
-      <article class="ind-card reveal"><div class="ind-icon">{I['gauge']}</div><h3>Boilers &amp; HRSG</h3><p>Steam, extraction and flue-gas expansion elements.</p></article>
+    <div class="ind-list">
+      <article class="reveal" style="--d:0ms"><h3>Power</h3><p>Thermal &amp; nuclear generation, turbines, boilers and heat-recovery.</p></article>
+      <article class="reveal" style="--d:80ms"><h3>Steel &amp; Metals</h3><p>Blast furnaces, gas mains and ducting for integrated steel plants.</p></article>
+      <article class="reveal" style="--d:0ms"><h3>Refineries &amp; Hydrocarbons</h3><p>Process piping, carbon-black and petrochemical units.</p></article>
+      <article class="reveal" style="--d:80ms"><h3>Fertilizers &amp; Chemicals</h3><p>Corrosive-service joints in high-nickel and special alloys.</p></article>
+      <article class="reveal" style="--d:0ms"><h3>Cement</h3><p>Pre-heater, kiln and pollution-control duct expansion joints.</p></article>
+      <article class="reveal" style="--d:80ms"><h3>Sugar &amp; Process</h3><p>Evaporator, vapour and process-line compensators.</p></article>
+      <article class="reveal" style="--d:0ms"><h3>Shipping &amp; Defence</h3><p>Dockyard and naval exhaust, scupper and discharge systems.</p></article>
+      <article class="reveal" style="--d:80ms"><h3>Boilers &amp; HRSG</h3><p>Steam, extraction and flue-gas expansion elements.</p></article>
     </div>
-    <div class="center" style="margin-top:34px"><a class="btn btn--ghost" href="industries.html">See our client list {ARROW}</a></div>
+    <div style="margin-top:clamp(56px,7vw,104px)"><a class="btn btn--ghost" href="industries.html">See our client list {ARROW}</a></div>
   </div>
 </section>
 
@@ -395,7 +399,7 @@ home = f"""
 
 <section class="cta-band">
   <div class="wrap">
-    <div>
+    <div class="reveal">
       <h2>Have a specification? Get a custom-engineered expansion joint.</h2>
       <p>Send us your nominal bore, pressure, temperature, media and movements — our design team will respond with a solution built to EJMA and ASME.</p>
     </div>
@@ -472,7 +476,7 @@ about = pagehero("About", "Company Profile",
   </div>
 </section>
 
-<section class="section" style="background:var(--paper-2);border-top:1px solid var(--line)">
+<section class="section" style="background:var(--paper-2)">
   <div class="wrap">
     <div class="sec-head center">
       <span class="kicker kicker--center">Our Commitments</span>
@@ -485,6 +489,8 @@ about = pagehero("About", "Company Profile",
     </div>
   </div>
 </section>
+
+<section class="photo-band" aria-label="Fabrication photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}03.JPG" alt="Universal expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}04.JPG" alt="Gimbal expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}07.jpg" alt="Pressure balanced joint" width="800" height="600" loading="lazy"></figure></section>
 
 <section class="cta-band">
   <div class="wrap">
@@ -524,7 +530,7 @@ products = pagehero("Products", "Product Range",
   </div>
 </section>
 
-<section class="section" style="background:var(--paper-2);border-block:1px solid var(--line)">
+<section class="section band-light" style="background:var(--paper-2)">
   <div class="wrap">
     <div class="sec-head center">
       <span class="kicker kicker--center">Complete Range</span>
@@ -604,6 +610,8 @@ industries = pagehero("Industries", "Industries &amp; Clients",
 
 {MARQUEE_BLOCK}
 
+<section class="photo-band" aria-label="Fabrication photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}02.jpg" alt="Large-diameter metallic bellow" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}05.jpg" alt="Tied lateral expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}08.jpg" alt="Rectangular expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:240ms"><img src="{IMG}09_new.jpg" alt="Tuyere stock bellow" width="800" height="600" loading="lazy"></figure></section>
+
 <section class="cta-band">
   <div class="wrap">
     <div><h2>Join the companies that rely on MB Metallic Bellows.</h2><p>Tell us about your project and service conditions.</p></div>
@@ -634,7 +642,7 @@ quality = pagehero("Quality", "Quality &amp; Approvals",
   </div>
 </section>
 
-<section class="section" style="background:var(--paper-2);border-block:1px solid var(--line)">
+<section class="section band-light" style="background:var(--paper-2)">
   <div class="wrap">
     <div class="sec-head center">
       <span class="kicker kicker--center">Independently Witnessed</span>
@@ -681,6 +689,8 @@ quality = pagehero("Quality", "Quality &amp; Approvals",
     </div>
   </div>
 </section>
+
+<section class="photo-band" aria-label="Fabrication photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}04.JPG" alt="Gimbal expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}05.jpg" alt="Tied lateral expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}03.JPG" alt="Universal expansion joint" width="800" height="600" loading="lazy"></figure></section>
 
 <section class="cta-band">
   <div class="wrap">
