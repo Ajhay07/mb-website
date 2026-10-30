@@ -293,8 +293,6 @@ home = f"""
       <a class="btn btn--lg btn--outline-light" href="contact.html">Request a Quote</a>
     </div>
   </div>
-  <span class="hero-hex hero-hex--sm" aria-hidden="true"></span>
-  <span class="hero-hex" aria-hidden="true"></span>
 </section>
 
 <section class="stats" aria-label="MB Metallic Bellows in numbers">
