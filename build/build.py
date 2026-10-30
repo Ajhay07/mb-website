@@ -57,14 +57,14 @@ def head(title, desc, page):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="theme-color" content="#0A1E33">
+<meta name="theme-color" content="#1C1B17">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="{page}">
@@ -277,7 +277,7 @@ home = f"""
   <div class="hero-grid-overlay"></div>
   <div class="wrap hero-inner">
     <span class="kicker">Precision Expansion Joints · Chennai, India</span>
-    <h1 style="margin-top:16px">Flexibility engineered for the <em>harshest</em> pipelines on earth.</h1>
+    <h1 style="margin-top:16px">Flexibility engineered for the harshest pipelines on earth.</h1>
     <p class="lede">Three decades engineering metallic bellows, expansion joints and compensators — 20&nbsp;mm to 9&nbsp;metres — to EJMA, ASME and PED standards for India's heavy industry.</p>
     <div class="hero-cta">
       <a class="btn btn--lg" href="products.html">Explore Products {ARROW}</a>
