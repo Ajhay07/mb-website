@@ -283,7 +283,7 @@ print("Generator ready.")
 # ================================================================ HOME
 home = f"""
 <section class="hero">
-  <div class="hero-media"><img src="{IMG}hero-factory.jpg" alt="Large flanged metallic expansion joint on a factory floor" width="1600" height="1000" fetchpriority="high"></div>
+  <div class="hero-media"><img src="{IMG}hero-factory.jpg" alt="Large flanged expansion joint in front of a refinery" width="1600" height="1000" fetchpriority="high"></div>
   <div class="hero-panel">
     <span class="kicker kicker--hero">Expansion joint manufacturer, Chennai</span>
     <h1>Bellows and expansion joints, made in Chennai.</h1>
