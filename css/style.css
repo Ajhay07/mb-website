@@ -434,6 +434,59 @@ ul.ticks li::before { content: ""; position: absolute; left: 0; top: .42em; widt
   .prod-figure img, .btn, .btn svg, .textlink, .textlink svg { transition: none; }
 }
 
+/* ---------- One screen per section (desktop) ---------- */
+@media (min-width: 1001px) {
+  :root { --screen: calc(100svh - 84px); --gap-section: clamp(32px, 5svh, 56px); }
+  .section, .about { min-height: var(--screen); }
+  .section { display: flex; flex-direction: column; justify-content: center; }
+  .section > .wrap { width: 100%; }
+  .section .sec-head h2 { font-size: clamp(1.6rem, min(3.4vw, 6svh), 3rem); margin-top: 10px; }
+  .sec-head p { margin-top: 14px; }
+  .lede { font-size: clamp(1rem, 1.3vw, 1.15rem); }
+  .about { height: var(--screen); min-height: 0; }
+  .about-body { padding-block: 4svh; display: flex; flex-direction: column; justify-content: center; }
+  .about-body h2 { font-size: clamp(1.6rem, min(2.9vw, 5.4svh), 2.5rem); margin-top: 10px; }
+  .about-body .lede { margin-top: 14px; }
+  .feature-list { gap: 2.2svh; margin-top: 3svh; }
+  .feature-list h4 { font-size: 1.3rem; margin-bottom: 2px; }
+  .feature-list p { font-size: .98rem; line-height: 1.45; }
+  .about-body .textlink { margin-top: 3svh; }
+  .about-media { min-height: 0; }
+  .sec-head--split { max-width: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(40px, 6vw, 96px); align-items: end; }
+  .sec-head--split .aside { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+  .section:has(.prod-grid--4) { padding-block: clamp(20px, 3svh, 32px); }
+  .prod-body p { line-height: 1.3; }
+  .band-light, .client-wall { padding-block: clamp(12px, 1.8svh, 18px); }
+  .prod-grid { margin-top: 1.8svh !important; }
+  .prod-grid--4 { grid-template-columns: repeat(4, 1fr); }
+  .client-sectors { grid-template-columns: repeat(4, 1fr); margin-top: 2.4svh; }
+  .client-wall .sec-head h2 { font-size: clamp(1.5rem, min(2.6vw, 5svh), 2.4rem); }
+  .client-sector { padding: 16px 16px 18px; }
+  .client-sector h3 { font-size: 1.2rem; gap: 10px; }
+  .client-sector ul { margin-top: 12px; gap: 6px; }
+  .client-sector li { font-size: .82rem; padding: 4px 8px; }
+  .map-embed { margin-top: 3svh; }
+  .map-embed iframe { height: 34svh; }
+  .prod-figure { aspect-ratio: auto; height: clamp(90px, 13svh, 150px); }
+  .prod-body { padding: 10px 16px 12px; }
+  .sec-head--split h2 { font-size: clamp(1.5rem, min(2.6vw, 5svh), 2.4rem); }
+  .prod-body h3 { font-size: 1.25rem; margin-top: 2px; }
+  .prod-body .tag { font-size: .88rem; }
+  .prod-body p { font-size: .95rem; margin-top: 4px; line-height: 1.35; }
+  .prod-body .pl { margin-top: 8px; font-size: .95rem; }
+  .band-light .wrap > div:last-child:not(.prod-grid):not(.sec-head) { margin-top: 3svh !important; }
+  .applications { margin-top: 4svh; }
+  .applications li { font-size: 1.25rem; padding-block: 9px; }
+  .applications li::before { top: 14px; }
+  .ind-list { margin-top: 4svh; gap: 3.5svh clamp(40px, 7vw, 120px); }
+  .ind-list h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); }
+  .ind-list p { font-size: 1rem; margin-top: 6px; }
+  .section .wrap > div[style*="margin-top:clamp(56px"] { margin-top: 4svh !important; }
+  .logo-wall { margin-top: 4svh; }
+  .mq { min-height: clamp(70px, 11svh, 112px); }
+  .cta-band .wrap { padding-block: clamp(40px, 8svh, 88px); }
+}
+
 /* ---------- Responsive ---------- */
 @media (min-width: 1001px) { .mobile-nav, .scrim { display: none; } }
 @media (max-width: 1180px) {

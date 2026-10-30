@@ -333,15 +333,19 @@ home = f"""
 
 <section class="section band-light">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker reveal">Product Range</span>
-      <h2 class="reveal" style="--d:80ms">Expansion joints for every movement and medium.</h2>
-      <p class="lede reveal" style="--d:160ms">Circular and rectangular, restrained and unrestrained — each type is matched to the movements, thrust and service conditions of your line.</p>
+    <div class="sec-head sec-head--split">
+      <div>
+        <span class="kicker reveal">Product Range</span>
+        <h2 class="reveal" style="--d:80ms">Expansion joints for every movement and medium.</h2>
+      </div>
+      <div class="aside">
+        <p class="lede reveal" style="--d:160ms">Circular and rectangular, restrained and unrestrained — each type is matched to the movements, thrust and service conditions of your line.</p>
+        <a class="btn btn--ghost reveal" href="products.html">View the full range {ARROW}</a>
+      </div>
     </div>
-    <div class="prod-grid" style="margin-top:clamp(48px,6vw,88px)">
+    <div class="prod-grid">
       {''.join(prod_card(p) for p in PRODUCTS[:6])}
     </div>
-    <div style="margin-top:clamp(40px,5vw,72px)"><a class="btn btn--ghost" href="products.html">View the full range {ARROW}</a></div>
   </div>
 </section>
 
@@ -519,12 +523,16 @@ products = pagehero("Products", "Product Range",
     "Circular and rectangular expansion joints, metal hoses and a complete flexible-element range — from 20 mm instrument bellows to 9 metre large-bore joints in stainless steel, high-nickel alloy and carbon steel.") + f"""
 <section class="section">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">Expansion Joints</span>
-      <h2>Matched to your movements, thrust and medium.</h2>
-      <p class="lede">Each type restrains or accommodates a different combination of axial, lateral and angular movement — our team specifies the right configuration for your line.</p>
+    <div class="sec-head sec-head--split">
+      <div>
+        <span class="kicker">Expansion Joints</span>
+        <h2>Matched to your movements, thrust and medium.</h2>
+      </div>
+      <div class="aside">
+        <p class="lede">Each type restrains or accommodates a different combination of axial, lateral and angular movement — our team specifies the right configuration for your line.</p>
+      </div>
     </div>
-    <div class="prod-grid" style="margin-top:40px">
+    <div class="prod-grid prod-grid--4">
       {''.join(prod_card(p) for p in PRODUCTS)}
     </div>
   </div>
