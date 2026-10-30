@@ -4,7 +4,7 @@ Writes consistent HTML pages sharing header/footer partials."""
 import os
 
 OUT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-IMG = "https://mbmetallicbellows.com/images/"  # client's own product photography
+IMG = "images/site/"
 
 # ---------------------------------------------------------------- icons
 I = {
@@ -72,7 +72,7 @@ def head(title, desc, page):
 """
 
 def logo(footer=False):
-    return f"""<a class="logo" href="index.html" aria-label="MB Metallic Bellows — home">
+    return f"""<a class="logo" href="index.html" aria-label="MB Metallic Bellows home">
   <span class="logo-mark"><span>MB</span><i></i></span>
   <span class="logo-text"><b>Metallic Bellows</b><small>Expansion&nbsp;Joint Specialists</small></span>
 </a>"""
@@ -94,7 +94,7 @@ def header(active):
       <span class="utility-item utility-item--addr">{I['pin']}<span>SIPCOT Industrial Growth Centre, Oragadam, Chennai</span></span>
     </div>
     <div class="utility-right">
-      <span class="utility-tag">ISO 9001:2015 &nbsp;·&nbsp; ASME <b>U</b>-Stamp &nbsp;·&nbsp; PED</span>
+      <span class="utility-tag">ISO 9001:2015, ASME <b>U</b>-Stamp, PED</span>
     </div>
   </div>
 </div>
@@ -126,7 +126,7 @@ FOOTER = f"""
   <div class="wrap footer-main">
     <div class="footer-brand">
       {logo(True)}
-      <p>Precision metallic bellows and expansion joints engineered to EJMA standards for India's power, steel, refining, chemical and process industries — from 20&nbsp;mm instrument bellows to 9&nbsp;metre large-bore joints.</p>
+      <p>Metallic bellows and expansion joints built to EJMA standards for India's power, steel, refining, chemical and process plants. We make everything from 20&nbsp;mm instrument bellows to 9&nbsp;metre large-bore joints.</p>
       <div class="footer-social">
         <a href="#" aria-label="LinkedIn">{I['lin']}</a>
         <a href="#" aria-label="Facebook">{I['fb']}</a>
@@ -164,7 +164,7 @@ FOOTER = f"""
   <div class="wrap footer-wordmark" aria-hidden="true">MB Metallic Bellows</div>
   <div class="footer-bottom"><div class="footer-bottom-in">
     <span>© <span data-year>2026</span> MB Metallic Bellows Private Limited. All rights reserved.</span>
-    <span>An ISO 9001:2015 · ASME U-Stamp · PED certified manufacturer</span>
+    <span>ISO 9001:2015, ASME U-Stamp and PED certified</span>
   </div></div>
 </footer>
 <script src="js/main.js"></script>
@@ -177,9 +177,15 @@ def page(filename, title, desc, active, body):
         f.write(html)
     print("wrote", filename, len(html), "bytes")
 
+HERO_IMG = {"About":("bellows-set.jpg","Assorted flanged and braided bellows"),"Products":("range-set.jpg","Range of bellows and flexible hoses"),
+    "Industries":("refinery-pipe.jpg","Bellows installed in refinery piping"),"Quality":("custom-bellows.jpg","Custom-built bellows next to a standard unit"),
+    "Contact":("formed-bellows.jpg","Formed bellows and rings")}
+
 def pagehero(crumb, kicker, h1, sub):
+    hi, ha = HERO_IMG[crumb]
     return f"""
 <section class="page-hero">
+  <img class="page-hero-img" src="{IMG}{hi}" alt="{ha}" width="640" height="554">
   <div class="wrap">
     <nav class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><span>{crumb}</span></nav>
     <span class="kicker" style="margin-top:22px">{kicker}</span>
@@ -190,22 +196,22 @@ def pagehero(crumb, kicker, h1, sub):
 
 # ================================================================ products data
 PRODUCTS = [
-    ("Universal Expansion Joint", "03.JPG", "Lateral / Axial",
-     "Two bellows connected by a centre spool to absorb large lateral movement alongside axial and angular deflection — the workhorse for long pipe runs between anchors."),
-    ("Gimbal Expansion Joint", "04.JPG", "Angular · Multi-plane",
-     "A gimbal ring assembly permits angular rotation in any plane while fully restraining pressure thrust, used in sets to route piping around equipment."),
-    ("Pressure Balanced Joint", "07.jpg", "Thrust Balanced",
-     "Absorbs axial and lateral movement while balancing pressure thrust across the bellows — protecting pumps, turbines and nozzles at pipe elbows and tees."),
-    ("Tied Lateral Expansion Joint", "05.jpg", "Tie-Rod Restrained",
-     "Tie rods contain the full pressure thrust so the joint handles pure lateral deflection — proven between turbine and condenser on large power trains."),
-    ("Reinforced Bellow", "06.jpg", "High Pressure",
-     "Equalising and reinforcing rings raise the pressure rating of the convolutions, engineered for demanding high-pressure service conditions."),
-    ("Rectangular Expansion Joint", "08.jpg", "Ducting · Low Pressure",
-     "Metallic and fabric rectangular joints for flue-gas ducting, fans and low-pressure gas systems where large thermal growth must be accommodated."),
-    ("Large-Bore Bellow", "02.jpg", "Up to 9000 mm",
-     "Single-piece and segmented bellows up to 9&nbsp;metres in diameter for blast-furnace gas mains, ducts and heavy process lines — fabricated and tested in-house."),
-    ("Tuyere Stock Bellow", "09_new.jpg", "Blast Furnace",
-     "Purpose-built expansion bellows for tuyere stock on the blast furnace hot-blast system, standing up to extreme temperature cycling and abrasion."),
+    ("Universal Expansion Joint", "universal-joint.jpg", "Lateral and axial",
+     "Two bellows joined by a centre spool. It takes large lateral movement along with axial and angular movement, which makes it the usual choice for long pipe runs between anchors."),
+    ("Gimbal Expansion Joint", "tied-joint.jpg", "Angular, multi-plane",
+     "A gimbal ring lets the pipe rotate in any plane while holding the full pressure thrust. Fitted in sets, it routes piping around equipment."),
+    ("Pressure Balanced Joint", "rod-restrained.jpg", "Thrust balanced",
+     "Takes axial and lateral movement and balances the pressure thrust across the bellows, so pumps, turbines and nozzles at elbows and tees are not loaded."),
+    ("Tied Lateral Expansion Joint", "flanged-bellows.jpg", "Tie-rod restrained",
+     "Tie rods carry the full pressure thrust, so the joint only has to take lateral movement. We have supplied these between turbines and condensers on large power trains."),
+    ("Reinforced Bellow", "metal-bellows.jpg", "High pressure",
+     "Equalising and reinforcing rings raise the pressure rating of the convolutions for high-pressure service."),
+    ("Rectangular Expansion Joint", "rectangular-joint.jpg", "Ducting, low pressure",
+     "Metallic and fabric rectangular joints for flue gas ducts, fans and low-pressure gas systems where the duct grows a lot with heat."),
+    ("Large-Bore Bellow", "large-bore.jpg", "Up to 9000 mm",
+     "Single-piece and segmented bellows up to 9&nbsp;metres across for blast furnace gas mains, ducts and heavy process lines. We fabricate and test them in our own shop."),
+    ("Tuyere Stock Bellow", "steel-mill.jpg", "Blast furnace",
+     "Expansion bellows made for the tuyere stock on a blast furnace hot-blast system, where they see extreme temperature swings and abrasion."),
 ]
 
 def prod_card(p, lazy=True):
@@ -230,7 +236,7 @@ SECTORS = [
     ("Sugar &amp; Process", ["Balrampur Chini Mills","EID Parry / GMR","Nirma","Hindustan Unilever","Bannari Amman Sugars"]),
     ("Cement", ["ACC &amp; Ambuja (Holcim)","JK Lakshmi Cement","Jaypee Cement","Shree Cement","India Cements","Dalmia Bharat Cement"]),
     ("Shipping &amp; Defence", ["Mazagon Dock, Mumbai","Hindustan Shipyard, Vizag","Naval Dockyard, Vizag"]),
-    ("Inspection &amp; EPC", ["Lloyd's Register","Bureau Veritas","SGS","DNV","TÜV","MECON / M.N. Dastur","TATA Projects","RINA · Intertek"]),
+    ("Inspection &amp; EPC", ["Lloyd's Register","Bureau Veritas","SGS","DNV","TÜV","MECON / M.N. Dastur","TATA Projects","RINA, Intertek"]),
 ]
 
 # (display name, logo-file slug, real logo URL or None)
@@ -277,11 +283,11 @@ print("Generator ready.")
 # ================================================================ HOME
 home = f"""
 <section class="hero">
-  <div class="hero-media"><img src="{IMG}02.jpg" alt="Large-diameter metallic bellow fabricated at MB Metallic Bellows" width="1600" height="1000" fetchpriority="high"></div>
+  <div class="hero-media"><img src="{IMG}hero-factory.jpg" alt="Large flanged metallic expansion joint on a factory floor" width="1600" height="1000" fetchpriority="high"></div>
   <div class="hero-panel">
-    <span class="kicker kicker--hero">Precision Expansion Joints · Chennai, India</span>
-    <h1>Flexibility engineered for the harshest pipelines on earth.</h1>
-    <p class="lede">Three decades engineering metallic bellows, expansion joints and compensators — 20&nbsp;mm to 9&nbsp;metres — to EJMA, ASME and PED standards for India's heavy industry.</p>
+    <span class="kicker kicker--hero">Expansion joint manufacturer, Chennai</span>
+    <h1>Bellows and expansion joints, made in Chennai.</h1>
+    <p class="lede">We have made metallic bellows, expansion joints and compensators for over thirty years, from 20&nbsp;mm to 9&nbsp;metres across, to EJMA, ASME and PED standards.</p>
     <div class="hero-cta">
       <a class="btn btn--lg" href="products.html">Explore Products {ARROW}</a>
       <a class="btn btn--lg btn--outline-light" href="contact.html">Request a Quote</a>
@@ -296,7 +302,7 @@ home = f"""
     <div class="reveal"><div class="num"><span data-count="30" data-suffix="+">30+</span></div><div class="lbl">Years Active</div></div>
     <div class="reveal" style="--d:80ms"><div class="num"><span data-count="9000">9000</span><span class="unit">mm</span></div><div class="lbl">Max Diameter</div></div>
     <div class="reveal" style="--d:160ms"><div class="num"><span data-count="11">11</span><span>+</span></div><div class="lbl">Approvals</div></div>
-    <div class="reveal" style="--d:240ms"><div class="num">Pan&nbsp;<span>·</span>&nbsp;India</div><div class="lbl">Client Base</div></div>
+    <div class="reveal" style="--d:240ms"><div class="num">Pan-India</div><div class="lbl">Client Base</div></div>
   </div>
 </section>
 
@@ -315,17 +321,17 @@ home = f"""
 
 <section class="about">
   <div class="about-media reveal">
-    <img src="{IMG}05.jpg" alt="Tied lateral expansion joint in the MB fabrication shop" width="1200" height="900" loading="lazy">
+    <img src="{IMG}facility.jpg" alt="Production hall with CNC machines" width="1200" height="900" loading="lazy">
     <div class="split-badge"><div class="n">30<span>+</span></div><div class="t">years designing flexible elements for critical service</div></div>
   </div>
   <div class="about-body">
     <span class="kicker reveal">Who We Are</span>
-    <h2 class="reveal" style="--d:80ms">A specialist manufacturer, not a general fabricator.</h2>
-    <p class="lede reveal" style="--d:160ms">A complete range of bellows, expansion joints, compensators, metal hoses and fabric bellows — built at a dedicated facility in the SIPCOT corridor at Oragadam, Chennai.</p>
+    <h2 class="reveal" style="--d:80ms">We only make bellows and expansion joints.</h2>
+    <p class="lede reveal" style="--d:160ms">Bellows, expansion joints, compensators, metal hoses and fabric bellows, all made at our own plant in the SIPCOT industrial area at Oragadam, Chennai.</p>
     <ul class="feature-list">
-      <li class="reveal"><h4>20 mm to 9000 mm</h4><p>Stainless steel, high-nickel alloy and carbon steel bellows across the full diameter range, including instrument bellows and assemblies.</p></li>
-      <li class="reveal"><h4>Designed to your parameters</h4><p>Every unit is engineered to nominal bore, design pressure and temperature, flow media and axial, lateral and angular deflection.</p></li>
-      <li class="reveal"><h4>Proven under inspection</h4><p>ASME U-Stamp and PED certified, approved by boiler boards in India and overseas, and witnessed by the world's leading agencies.</p></li>
+      <li class="reveal"><h4>20 mm to 9000 mm</h4><p>Stainless steel, high-nickel alloy and carbon steel bellows in every diameter from 20&nbsp;mm up, plus instrument bellows and assemblies.</p></li>
+      <li class="reveal"><h4>Made to your duty</h4><p>We size each unit from your nominal bore, design pressure and temperature, the medium, and the axial, lateral and angular movement it has to take.</p></li>
+      <li class="reveal"><h4>Inspected by third parties</h4><p>We hold ASME U-Stamp and PED certification and approvals from boiler boards in India and abroad. Independent agencies witness our tests.</p></li>
     </ul>
     <a class="textlink reveal" href="about.html">More about the company {ARROW}</a>
   </div>
@@ -336,10 +342,10 @@ home = f"""
     <div class="sec-head sec-head--split">
       <div>
         <span class="kicker reveal">Product Range</span>
-        <h2 class="reveal" style="--d:80ms">Expansion joints for every movement and medium.</h2>
+        <h2 class="reveal" style="--d:80ms">Expansion joints for your line.</h2>
       </div>
       <div class="aside">
-        <p class="lede reveal" style="--d:160ms">Circular and rectangular, restrained and unrestrained — each type is matched to the movements, thrust and service conditions of your line.</p>
+        <p class="lede reveal" style="--d:160ms">Round or rectangular, restrained or free. We match the joint to the movement, thrust and operating conditions of your pipeline.</p>
         <a class="btn btn--ghost reveal" href="products.html">View the full range {ARROW}</a>
       </div>
     </div>
@@ -353,8 +359,8 @@ home = f"""
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker reveal">Where Our Joints Run</span>
-      <h2 class="reveal" style="--d:80ms">Installed in the systems where failure is not an option.</h2>
-      <p class="lede reveal" style="--d:160ms">From blast-furnace gas mains to turbine exhausts, our bellows absorb the thermal growth, vibration and pressure cycling that rigid pipe cannot.</p>
+      <h2 class="reveal" style="--d:80ms">Where our joints are installed.</h2>
+      <p class="lede reveal" style="--d:160ms">From blast furnace gas mains to turbine exhausts, our bellows take up the heat growth, vibration and pressure cycling that rigid pipe cannot.</p>
     </div>
     <ul class="applications reveal">
       <li>Blast furnace &amp; hot-blast systems</li>
@@ -383,7 +389,7 @@ home = f"""
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker reveal">Industries Served</span>
-      <h2 class="reveal" style="--d:80ms">Trusted by the sectors that build the country.</h2>
+      <h2 class="reveal" style="--d:80ms">Industries we supply.</h2>
     </div>
     <div class="ind-list">
       <article class="reveal" style="--d:0ms"><h3>Power</h3><p>Thermal &amp; nuclear generation, turbines, boilers and heat-recovery.</p></article>
@@ -404,33 +410,33 @@ home = f"""
 <section class="cta-band">
   <div class="wrap">
     <div class="reveal">
-      <h2>Have a specification? Get a custom-engineered expansion joint.</h2>
-      <p>Send us your nominal bore, pressure, temperature, media and movements — our design team will respond with a solution built to EJMA and ASME.</p>
+      <h2>Got a specification? We'll engineer the joint.</h2>
+      <p>Send us the nominal bore, pressure, temperature, medium and movements. Our design team will come back with a joint built to EJMA and ASME.</p>
     </div>
     <a class="btn btn--light btn--lg" href="contact.html">Request a Quote {ARROW}</a>
   </div>
 </section>
 """
-page("index.html", "MB Metallic Bellows — Expansion Joints & Metallic Bellows Manufacturer, Chennai",
+page("index.html", "MB Metallic Bellows | Expansion Joints and Metallic Bellows Manufacturer, Chennai",
      "MB Metallic Bellows Pvt Ltd manufactures metallic bellows, expansion joints, compensators and metal hoses (20–9000 mm) to EJMA, ASME U-Stamp and PED standards for power, steel, refinery and process industries across India.",
      "index.html", home)
 
 # ================================================================ ABOUT
 about = pagehero("About", "Company Profile",
-    "Three decades of flexible-element engineering.",
-    "MB Metallic Bellows Private Limited is a specialist manufacturer of bellows, expansion joints and compensators, serving India's heavy industry from Chennai with ASME, PED and ISO-certified fabrication.") + f"""
+    "Thirty years of making flexible elements.",
+    "MB Metallic Bellows Private Limited makes bellows, expansion joints and compensators for Indian heavy industry. Our shop in Chennai is ASME, PED and ISO certified.") + f"""
 <section class="section">
   <div class="wrap split split--reverse">
     <div class="split-media">
-      <div class="ph"><img src="{IMG}09_new.jpg" alt="Expansion bellow assembly for tuyere stock" loading="lazy"></div>
+      <div class="ph"><img src="{IMG}precision-manufacturing.jpg" alt="Welder fabricating a bellows assembly" loading="lazy"></div>
       <div class="split-badge"><div class="n">10k<span>+</span></div><div class="t">sq ft of built-up fabrication space in Oragadam, Chennai</div></div>
     </div>
     <div>
       <span class="kicker">Overview</span>
-      <div class="sec-head"><h2>Built on engineering depth, proven in the field.</h2></div>
+      <div class="sec-head"><h2>Engineering first, then fabrication.</h2></div>
       <div class="prose" style="margin-top:24px">
-        <p>MB Metallic Bellows Private Limited (MBMBPL) is a leading manufacturer of bellows, expansion joints, compensators, metal hoses, rubber bellows, non-metallic fabric bellows, dampers, strainers, couplings and sleeve couplings — in a strategically located industrial zone at Chennai, India, with close proximity to air, sea, rail and road services.</p>
-        <p>Our bellows expansion joints absorb the movements that arise in multiple planes in pipelines due to variation in temperature and pressure. We follow the standards laid down by the Expansion Joint Manufacturers' Association, USA (EJMA), and for special applications our units are designed and manufactured to the customer's specification — supported by appropriate correlation, destructive and type tests.</p>
+        <p>MB Metallic Bellows Private Limited (MBMBPL) manufactures bellows, expansion joints, compensators, metal hoses, rubber bellows, non-metallic fabric bellows, dampers, strainers, couplings and sleeve couplings from an industrial zone in Chennai that is close to air, sea, rail and road links.</p>
+        <p>Pipelines move in several directions as temperature and pressure change, and our bellows expansion joints absorb that movement. We follow the standards of the Expansion Joint Manufacturers' Association, USA (EJMA). For special applications we design and build to the customer's specification, backed by correlation, destructive and type tests.</p>
       </div>
     </div>
   </div>
@@ -451,11 +457,11 @@ about = pagehero("About", "Company Profile",
   <div class="wrap split">
     <div>
       <span class="kicker">What We Make</span>
-      <div class="sec-head"><h2>A complete flexible-element range.</h2></div>
+      <div class="sec-head"><h2>Everything flexible, under one roof.</h2></div>
       <div class="prose" style="margin-top:22px">
         <p>Today MBMBPL manufactures a complete range of products engineered for movement, pressure and temperature across the most demanding services.</p>
         <ul class="ticks">
-          <li>Metallic Expansion Joints — circular and rectangular: Universal, Hinged, Gimbal, Pressure Balanced and Reinforced</li>
+          <li>Metallic expansion joints, circular and rectangular: universal, hinged, gimbal, pressure balanced and reinforced</li>
           <li>Metal Hoses for high-pressure application</li>
           <li>Stainless steel bellows from 20&nbsp;mm to 9000&nbsp;mm</li>
           <li>Instrument bellows, bellows assemblies, bellows-related duct, couplings and gaskets</li>
@@ -484,26 +490,26 @@ about = pagehero("About", "Company Profile",
   <div class="wrap">
     <div class="sec-head center">
       <span class="kicker kicker--center">Our Commitments</span>
-      <h2>Quality, safety and the environment — in that order of care.</h2>
+      <h2>Quality, safety and the environment.</h2>
     </div>
     <div class="policy-grid" style="margin-top:38px">
       <div class="policy-card reveal"><div class="pc-ico">{I['shield']}</div><h3>Quality Policy</h3><p>We are committed to achieving high customer satisfaction by designing, manufacturing and supplying metallic bellows and expansion joints that meet international quality standards, delivered to agreed schedules through continual technology upgrades and an improving work culture.</p></div>
       <div class="policy-card reveal"><div class="pc-ico">{I['users']}</div><h3>Safety Policy</h3><p>We provide a safe and healthy workplace for all stakeholders through safe handling of equipment, practical safety measures and frequent monitoring to minimise the risk of accidents.</p></div>
-      <div class="policy-card reveal"><div class="pc-ico">{I['leaf']}</div><h3>Environmental Policy</h3><p>"Go green is our motto." We prioritise the efficient use of natural resources, compliance with regulations and the proper disposal or reuse of waste — favouring solutions that use less water and less paper.</p></div>
+      <div class="policy-card reveal"><div class="pc-ico">{I['leaf']}</div><h3>Environmental Policy</h3><p>"Go green is our motto." We use natural resources carefully, follow the regulations, dispose of or reuse waste properly, and prefer methods that use less water and less paper.</p></div>
     </div>
   </div>
 </section>
 
-<section class="photo-band" aria-label="Fabrication photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}03.JPG" alt="Universal expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}04.JPG" alt="Gimbal expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}07.jpg" alt="Pressure balanced joint" width="800" height="600" loading="lazy"></figure></section>
+<section class="photo-band" aria-label="Photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}machining.jpg" alt="Bellows being machined" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}bellows-interior.jpg" alt="Inside a large bellows" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}blueprint.jpg" alt="Joint beside engineering drawings" width="800" height="600" loading="lazy"></figure></section>
 
 <section class="cta-band">
   <div class="wrap">
-    <div><h2>Let's engineer the right joint for your line.</h2><p>Talk to our design team about your service conditions and movements.</p></div>
+    <div><h2>Tell us about your line.</h2><p>Talk to our design team about your operating conditions and movements.</p></div>
     <a class="btn btn--light btn--lg" href="contact.html">Contact Us {ARROW}</a>
   </div>
 </section>
 """
-page("about.html", "About Us — MB Metallic Bellows Pvt Ltd | Chennai",
+page("about.html", "About Us | MB Metallic Bellows Pvt Ltd | Chennai",
      "MB Metallic Bellows Pvt Ltd: 30+ years manufacturing bellows, expansion joints and compensators in Chennai to EJMA standards, with ASME U-Stamp, PED and ISO 9001:2015 certification.",
      "about.html", about)
 
@@ -519,17 +525,17 @@ SECONDARY = [
     ("Instrument Bellows &amp; Assemblies", I['ruler'], "Precision small-bore bellows, assemblies, bellows-related ducts and gaskets."),
 ]
 products = pagehero("Products", "Product Range",
-    "Metallic bellows &amp; expansion joints, engineered to EJMA.",
-    "Circular and rectangular expansion joints, metal hoses and a complete flexible-element range — from 20 mm instrument bellows to 9 metre large-bore joints in stainless steel, high-nickel alloy and carbon steel.") + f"""
+    "Bellows and expansion joints to EJMA standards.",
+    "Circular and rectangular expansion joints, metal hoses and related flexible products. Sizes run from 20 mm instrument bellows to 9 metre large-bore joints, in stainless steel, high-nickel alloy and carbon steel.") + f"""
 <section class="section">
   <div class="wrap">
     <div class="sec-head sec-head--split">
       <div>
         <span class="kicker">Expansion Joints</span>
-        <h2>Matched to your movements, thrust and medium.</h2>
+        <h2>Joints matched to your pipeline.</h2>
       </div>
       <div class="aside">
-        <p class="lede">Each type restrains or accommodates a different combination of axial, lateral and angular movement — our team specifies the right configuration for your line.</p>
+        <p class="lede">Each type deals with a different mix of axial, lateral and angular movement. Our team will pick the right one for your line.</p>
       </div>
     </div>
     <div class="prod-grid prod-grid--4">
@@ -551,35 +557,35 @@ products = pagehero("Products", "Product Range",
   </div>
 </section>
 
-<section class="section on-dark" style="background:var(--ink);color:var(--on-ink)">
+<section class="section band-light">
   <div class="wrap split">
     <div>
       <span class="kicker">Materials &amp; Range</span>
-      <div class="sec-head"><h2 style="color:#fff">From 20&nbsp;mm to 9&nbsp;metres.</h2></div>
-      <p class="lede" style="color:var(--on-ink-mut);margin-top:20px">Bellows are formed in stainless steel, high-nickel alloys and carbon steel to suit temperature, corrosion and pressure. Both circular and rectangular geometries are fabricated and tested in-house.</p>
+      <div class="sec-head"><h2>From 20&nbsp;mm to 9&nbsp;metres.</h2></div>
+      <p class="lede" style="margin-top:20px">Bellows are formed in stainless steel, high-nickel alloys and carbon steel to suit temperature, corrosion and pressure. Both circular and rectangular geometries are fabricated and tested in-house.</p>
       <ul class="ticks" style="margin-top:24px">
-        <li style="color:var(--on-ink)">Stainless steel, Inconel / Incoloy and carbon-steel convolutions</li>
-        <li style="color:var(--on-ink)">Single-ply and multi-ply constructions</li>
-        <li style="color:var(--on-ink)">Reinforced and equalising-ring designs for high pressure</li>
-        <li style="color:var(--on-ink)">Large-bore and segmented fabrication up to 9000&nbsp;mm</li>
+        <li>Stainless steel, Inconel / Incoloy and carbon-steel convolutions</li>
+        <li>Single-ply and multi-ply constructions</li>
+        <li>Reinforced and equalising-ring designs for high pressure</li>
+        <li>Large-bore and segmented fabrication up to 9000&nbsp;mm</li>
       </ul>
     </div>
     <div>
       <span class="kicker">Custom Design</span>
-      <div class="sec-head"><h2 style="color:#fff">Tell us the service, we'll engineer the element.</h2></div>
-      <p class="lede" style="color:var(--on-ink-mut);margin-top:20px">Share your parameters and our design team returns a solution verified against EJMA and ASME, supported by correlation, destructive and type tests.</p>
+      <div class="sec-head"><h2>Tell us the duty and we'll design the joint.</h2></div>
+      <p class="lede" style="margin-top:20px">Share your parameters and our design team will send back a design checked against EJMA and ASME and backed by correlation, destructive and type tests.</p>
       <div class="hero-cta" style="margin-top:30px"><a class="btn" href="contact.html">Request a Quote {ARROW}</a></div>
     </div>
   </div>
 </section>
 """
-page("products.html", "Products — Expansion Joints, Bellows & Metal Hoses | MB Metallic Bellows",
-     "Universal, gimbal, hinged, pressure-balanced, tied-lateral, reinforced and rectangular expansion joints, metal hoses and compensators — 20 mm to 9000 mm, engineered to EJMA by MB Metallic Bellows, Chennai.",
+page("products.html", "Products | Expansion Joints, Bellows & Metal Hoses | MB Metallic Bellows",
+     "Universal, gimbal, hinged, pressure-balanced, tied-lateral, reinforced and rectangular expansion joints, metal hoses and compensators, 20 mm to 9000 mm, engineered to EJMA by MB Metallic Bellows, Chennai.",
      "products.html", products)
 
 # ================================================================ INDUSTRIES
 IND_CARDS = [
-    ("Power", I['bolt'], "Thermal &amp; nuclear generation — turbine exhaust, boiler, extraction and heat-recovery joints."),
+    ("Power", I['bolt'], "Thermal and nuclear generation: turbine exhaust, boiler, extraction and heat-recovery joints."),
     ("Steel &amp; Metals", I['factory'], "Blast-furnace hot-blast, BF-gas mains and ducting for integrated steel plants."),
     ("Refineries &amp; Hydrocarbons", I['flame'], "Process piping, crude and carbon-black units in corrosion-resistant alloys."),
     ("Fertilizers &amp; Chemicals", I['beaker'], "Aggressive-media expansion joints in high-nickel and special stainless grades."),
@@ -589,8 +595,8 @@ IND_CARDS = [
     ("Boilers &amp; HRSG", I['gauge'], "Steam, extraction and flue-gas flexible elements for heat-recovery."),
 ]
 industries = pagehero("Industries", "Industries &amp; Clients",
-    "Specified by the companies that power India.",
-    "From national power utilities and integrated steel plants to refineries, fertilizer majors and naval dockyards, our expansion joints are installed where reliability is non-negotiable.") + f"""
+    "Used by the companies that run India's plants.",
+    "Our expansion joints are installed at national power utilities, integrated steel plants, refineries, fertilizer producers and naval dockyards.") + f"""
 <section class="section">
   <div class="wrap">
     <div class="sec-head center">
@@ -607,8 +613,8 @@ industries = pagehero("Industries", "Industries &amp; Clients",
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker">Prestigious Clientele</span>
-      <h2 style="color:#fff">A client list built over three decades.</h2>
-      <p class="lede" style="color:var(--on-ink-mut)">Some of the organisations we have supplied and continue to supply across India's core sectors.</p>
+      <h2>Our clients over thirty years.</h2>
+      <p class="lede">Some of the organisations we have supplied, and still supply, across India.</p>
     </div>
     <div class="client-sectors">
       {''.join('<div class="client-sector"><h3><span class="dot"></span>'+name+'</h3><ul>'+''.join('<li>'+c+'</li>' for c in items)+'</ul></div>' for name,items in SECTORS)}
@@ -618,28 +624,28 @@ industries = pagehero("Industries", "Industries &amp; Clients",
 
 {MARQUEE_BLOCK}
 
-<section class="photo-band" aria-label="Fabrication photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}02.jpg" alt="Large-diameter metallic bellow" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}05.jpg" alt="Tied lateral expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}08.jpg" alt="Rectangular expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:240ms"><img src="{IMG}09_new.jpg" alt="Tuyere stock bellow" width="800" height="600" loading="lazy"></figure></section>
+<section class="photo-band" aria-label="Photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}oil-gas.jpg" alt="Oil and gas plant at dusk" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}power-plant.jpg" alt="Power station cooling towers" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}chemical-plant.jpg" alt="Chemical plant" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:240ms"><img src="{IMG}applications.jpg" alt="Piping at a refinery" width="800" height="600" loading="lazy"></figure></section>
 
 <section class="cta-band">
   <div class="wrap">
-    <div><h2>Join the companies that rely on MB Metallic Bellows.</h2><p>Tell us about your project and service conditions.</p></div>
+    <div><h2>Work with us on your next project.</h2><p>Tell us about the project and the operating conditions.</p></div>
     <a class="btn btn--light btn--lg" href="contact.html">Start a Conversation {ARROW}</a>
   </div>
 </section>
 """
-page("industries.html", "Industries & Clients — MB Metallic Bellows | Power, Steel, Refineries",
+page("industries.html", "Industries & Clients | MB Metallic Bellows | Power, Steel, Refineries",
      "MB Metallic Bellows supplies expansion joints to BHEL, NTPC, NPCIL, L&T, SAIL steel plants, IOCL, HPCL, BPCL, Reliance, FACT, GNFC, ACC-Ambuja, Dalmia, Mazagon Dock and more across India.",
      "industries.html", industries)
 
 # ================================================================ QUALITY
 quality = pagehero("Quality", "Quality &amp; Approvals",
-    "Certified, approved and independently witnessed.",
-    "An ISO 9001:2015 organisation with an ASME U-Stamp production shop, PED-certified bellows and approvals from boiler regulatory boards in India and overseas.") + f"""
+    "Certified and independently witnessed.",
+    "We are ISO 9001:2015 certified, run an ASME U-Stamp production shop, make PED-certified bellows and hold approvals from boiler boards in India and overseas.") + f"""
 <section class="section">
   <div class="wrap">
     <div class="sec-head center">
       <span class="kicker kicker--center">Certifications</span>
-      <h2>Credentials that travel with every joint.</h2>
+      <h2>Certificates that ship with every joint.</h2>
     </div>
     <div class="cert-grid" style="margin-top:38px">
       <div class="cert-box reveal"><div class="cb-ico">{I['shield']}</div><h3>ISO 9001:2015</h3><p>Quality management system certified through DNV.</p></div>
@@ -654,11 +660,11 @@ quality = pagehero("Quality", "Quality &amp; Approvals",
   <div class="wrap">
     <div class="sec-head center">
       <span class="kicker kicker--center">Independently Witnessed</span>
-      <h2>Certified by the agencies your project trusts.</h2>
-      <p class="lede">Our bellows are certified by leading third-party inspection agencies, to name a few:</p>
+      <h2>Witnessed by independent agencies.</h2>
+      <p class="lede">Our bellows are certified by third-party inspection agencies, including:</p>
     </div>
     <div class="chips" style="justify-content:center;max-width:900px;margin:34px auto 0">
-      {''.join(f'<span class="chip">{a}</span>' for a in ["Lloyd's Register","Bureau Veritas","SGS","DNV","TÜV","MECON","M.N. Dastur","TATA Projects","Intertek","RINA","QC — BHEL"])}
+      {''.join(f'<span class="chip">{a}</span>' for a in ["Lloyd's Register","Bureau Veritas","SGS","DNV","TÜV","MECON","M.N. Dastur","TATA Projects","Intertek","RINA","QC, BHEL"])}
     </div>
   </div>
 </section>
@@ -680,34 +686,34 @@ quality = pagehero("Quality", "Quality &amp; Approvals",
   </div>
 </section>
 
-<section class="section on-dark" style="background:var(--ink);color:var(--on-ink)">
+<section class="section band-light">
   <div class="wrap split split--reverse">
     <div class="split-media">
-      <div class="ph"><img src="{IMG}06.jpg" alt="Reinforced bellow undergoing fabrication" loading="lazy"></div>
+      <div class="ph"><img src="{IMG}quality-check.jpg" alt="Inspector measuring bellows convolutions" loading="lazy"></div>
     </div>
     <div>
       <span class="kicker">Validated By Test</span>
-      <div class="sec-head"><h2 style="color:#fff">Designs proven, not just calculated.</h2></div>
-      <p class="lede" style="color:var(--on-ink-mut);margin-top:20px">Our design is supported by appropriate correlation, destructive and type tests, so that every flexible element performs to its rated movement, pressure and fatigue life in service.</p>
+      <div class="sec-head"><h2>Tested, not just calculated.</h2></div>
+      <p class="lede" style="margin-top:20px">We back our designs with correlation, destructive and type tests, so each joint performs to its rated movement, pressure and fatigue life in service.</p>
       <ul class="ticks" style="margin-top:22px">
-        <li style="color:var(--on-ink)">Correlation of design calculation with measured performance</li>
-        <li style="color:var(--on-ink)">Destructive testing to validate pressure and fatigue limits</li>
-        <li style="color:var(--on-ink)">Type testing for qualified, repeatable designs</li>
+        <li>Correlation of design calculation with measured performance</li>
+        <li>Destructive testing to validate pressure and fatigue limits</li>
+        <li>Type testing for qualified, repeatable designs</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="photo-band" aria-label="Fabrication photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}04.JPG" alt="Gimbal expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}05.jpg" alt="Tied lateral expansion joint" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}03.JPG" alt="Universal expansion joint" width="800" height="600" loading="lazy"></figure></section>
+<section class="photo-band" aria-label="Photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}welding.jpg" alt="Welding a bellows" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}pressure-test.jpg" alt="Bellows under pressure test" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}bellows-stack.jpg" alt="Finished bellows stacked for dispatch" width="800" height="600" loading="lazy"></figure></section>
 
 <section class="cta-band">
   <div class="wrap">
-    <div><h2>Need documentation for your QA package?</h2><p>We supply the certification and test records your project requires.</p></div>
+    <div><h2>Need paperwork for your QA package?</h2><p>We supply the certificates and test records your project asks for.</p></div>
     <a class="btn btn--light btn--lg" href="contact.html">Talk to Us {ARROW}</a>
   </div>
 </section>
 """
-page("quality.html", "Quality & Approvals — ISO 9001, ASME U-Stamp, PED | MB Metallic Bellows",
+page("quality.html", "Quality & Approvals | ISO 9001, ASME U-Stamp, PED | MB Metallic Bellows",
      "MB Metallic Bellows is ISO 9001:2015 certified (DNV) with an ASME U-Stamp shop and PED-certified bellows, witnessed by Lloyd's, Bureau Veritas, SGS, DNV, TÜV, MECON, TATA Projects and more.",
      "quality.html", quality)
 
@@ -759,7 +765,7 @@ contact = pagehero("Contact", "Get in Touch",
   <div class="wrap"><div class="map-embed"><iframe title="MB Metallic Bellows location" src="https://www.google.com/maps?q=SIPCOT+Industrial+Growth+Centre+Oragadam+Chennai&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
 </section>
 """
-page("contact.html", "Contact — MB Metallic Bellows Pvt Ltd | Oragadam, Chennai",
+page("contact.html", "Contact | MB Metallic Bellows Pvt Ltd | Oragadam, Chennai",
      "Contact MB Metallic Bellows Pvt Ltd, Oragadam, Chennai – 602105. Phone +91 44 2959 0111/12, email info@mbmetallicbellows.com. Request a quote for metallic bellows and expansion joints.",
      "contact.html", contact)
 
