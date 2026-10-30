@@ -57,14 +57,14 @@ def head(title, desc, page):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="theme-color" content="#1C1B17">
+<meta name="theme-color" content="#10141B">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="{page}">
@@ -335,7 +335,7 @@ home = f"""
       <p class="lede">Circular and rectangular, restrained and unrestrained — each type is matched to the movements, thrust and service conditions of your line.</p>
     </div>
     <div class="prod-grid" style="margin-top:24px">
-      {''.join(prod_card(p) for p in PRODUCTS[:3])}
+      {''.join(prod_card(p) for p in PRODUCTS[:6])}
     </div>
     <div class="center" style="margin-top:34px"><a class="btn btn--ghost" href="products.html">View the full range {ARROW}</a></div>
   </div>
