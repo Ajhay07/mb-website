@@ -405,6 +405,23 @@ ul.ticks li::before, .prose ul.ticks li::before { content: ""; position: absolut
   .cta-band .wrap { padding-block: clamp(40px, 8svh, 88px); }
 }
 
+
+/* ---------- Home: photo runs under a transparent header and stats row ---------- */
+@media (min-width: 1001px) {
+  body[data-page="index"] .site-header { position: fixed; top: 40px; left: 0; right: 0; background: transparent; transition: background-color .25s var(--ease), top .25s var(--ease); }
+  body[data-page="index"] .site-header.scrolled { top: 0; background: var(--white); }
+  body[data-page="index"] .site-header:not(.scrolled) .nav a,
+  body[data-page="index"] .site-header:not(.scrolled) .logo-text b { color: #fff; }
+  body[data-page="index"] .site-header:not(.scrolled) .nav a:hover { color: var(--gold); }
+  body[data-page="index"] .site-header:not(.scrolled) .logo-text small { color: rgba(255,255,255,.85); }
+  body[data-page="index"] .site-header:not(.scrolled) .logo-img { background: #fff; padding: 3px; }
+  body[data-page="index"] .hero { height: calc(100svh - 40px); min-height: 560px; padding-top: 64px; padding-bottom: 104px; }
+  body[data-page="index"] .stats { position: relative; z-index: 3; height: 104px; margin-top: -104px; padding-block: 0; background: transparent; display: flex; align-items: center; }
+  body[data-page="index"] .stats .num { color: #fff; }
+  body[data-page="index"] .stats .unit { color: rgba(255,255,255,.8); }
+  body[data-page="index"] .stats .lbl { color: rgba(255,255,255,.9); }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1180px) {
   .logo-wall { grid-template-columns: repeat(4, 1fr); }
