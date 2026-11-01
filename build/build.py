@@ -185,10 +185,10 @@ def pagehero(crumb, kicker, h1, sub):
     hi, ha = HERO_IMG[crumb]
     return f"""
 <section class="page-hero">
-  <img class="page-hero-img" src="{IMG}{hi}" alt="{ha}" width="640" height="554">
+  <div class="page-hero-media"><img src="{IMG}{hi}" alt="{ha}" width="1600" height="760" fetchpriority="high"></div>
   <div class="wrap">
     <nav class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><span>{crumb}</span></nav>
-    <span class="kicker" style="margin-top:22px">{kicker}</span>
+    <span class="kicker kicker--hero" style="margin-top:22px">{kicker}</span>
     <h1>{h1}</h1>
     <p>{sub}</p>
   </div>
