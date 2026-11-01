@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "shadcn": {
+      "command": "node",
+      "args": ["react-bits/mcp.mjs"]
+    }
+  }
+}
