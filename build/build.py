@@ -283,14 +283,13 @@ print("Generator ready.")
 # ================================================================ HOME
 home = f"""
 <section class="hero">
-  <div class="hero-media"><img src="{IMG}hero-factory.jpg" alt="Large flanged expansion joint in front of a refinery" width="1600" height="1000" fetchpriority="high"></div>
+  <div class="hero-media"><img src="{IMG}facility.jpg" alt="Technicians running CNC machines on the production floor" width="1600" height="1000" fetchpriority="high"></div>
   <div class="hero-panel">
     <span class="kicker kicker--hero">Expansion joint manufacturer, Chennai</span>
-    <h1>Bellows and expansion joints, made in Chennai.</h1>
-    <p class="lede">We have made metallic bellows, expansion joints and compensators for over thirty years, from 20&nbsp;mm to 9&nbsp;metres across, to EJMA, ASME and PED standards.</p>
+    <h1>Flexible by design.<br>Built to last.</h1>
+    <p class="lede">Metallic bellows and expansion joints engineered for India's power, steel and process plants &mdash; 20&nbsp;mm to 9&nbsp;metres, to EJMA, ASME and PED standards.</p>
     <div class="hero-cta">
       <a class="btn btn--lg" href="products.html">Explore Products {ARROW}</a>
-      <a class="btn btn--lg btn--outline-light" href="contact.html">Request a Quote</a>
     </div>
   </div>
 </section>
