@@ -318,7 +318,7 @@ home = f"""
 
 <section class="about">
   <div class="about-media reveal">
-    <img src="{IMG}facility.jpg" alt="Production hall with CNC machines" width="1200" height="900" loading="lazy">
+    <img src="{IMG}precision-manufacturing.jpg" alt="Welder fabricating a bellows assembly" width="1200" height="900" loading="lazy">
     <div class="split-badge"><div class="n">30<span>+</span></div><div class="t">years designing flexible elements for critical service</div></div>
   </div>
   <div class="about-body">
