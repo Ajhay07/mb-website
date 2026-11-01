@@ -281,16 +281,53 @@ MARQUEE_BLOCK = ('<section class="section clients"><div class="wrap">'
 print("Generator ready.")
 
 # ================================================================ HOME
+# Hero is a slideshow: full-bleed photo crossfades, a tab strip with an
+# autoplay progress bar sits at the base (the pattern on 3ds.com), kept in
+# MB's own flat gold/ink system — no gradients, no soft shadows.
+HERO_SLIDES = [
+    ("facility.jpg", "Technicians running CNC machines on the production floor",
+     "Expansion joint manufacturer, Chennai", "Flexible by design.<br>Built to last.",
+     "Metallic bellows and expansion joints engineered for India's power, steel and process plants &mdash; 20&nbsp;mm to 9&nbsp;metres, to EJMA, ASME and PED standards.",
+     "Explore Products", "products.html", "Made in Chennai"),
+    ("large-bore.jpg", "Large-bore bellows fabricated for a blast furnace gas main",
+     "Up to 9 metres across", "Built for scale.<br>Engineered for extremes.",
+     "Single-piece and segmented bellows up to 9&nbsp;metres in diameter, fabricated and tested in our own shop for blast furnace and heavy process lines.",
+     "See Large-Bore Bellows", "products.html", "Large-Bore Capability"),
+    ("quality-check.jpg", "Inspector measuring bellows convolutions",
+     "ISO 9001, ASME U-Stamp, PED", "Tested before<br>it ships.",
+     "Every joint is backed by correlation, destructive and type testing, witnessed by independent agencies including Lloyd&rsquo;s Register, DNV and Bureau Veritas.",
+     "Our Quality Standards", "quality.html", "Independently Tested"),
+]
+def _hero_slide(i, s):
+    img, alt, kicker, h1, lede, cta_label, cta_href, _ = s
+    active = " is-active" if i == 0 else ""
+    return f"""<div class="hero-slide{active}" data-slide="{i}" id="hero-slide-{i}" role="tabpanel" aria-labelledby="hero-tab-{i}"{'' if i==0 else ' aria-hidden="true"'}>
+      <div class="hero-media"><img src="{IMG}{img}" alt="{alt}" width="1600" height="1000"{' fetchpriority="high"' if i==0 else ' loading="lazy"'}></div>
+      <div class="hero-panel">
+        <span class="kicker kicker--hero">{kicker}</span>
+        <h1>{h1}</h1>
+        <p class="lede">{lede}</p>
+        <div class="hero-cta">
+          <a class="btn btn--lg" href="{cta_href}">{cta_label} {ARROW}</a>
+        </div>
+      </div>
+    </div>"""
+def _hero_tab(i, s):
+    return (f'<button class="hero-tab" data-goto="{i}" role="tab" aria-selected="{"true" if i==0 else "false"}" '
+            f'aria-controls="hero-slide-{i}" id="hero-tab-{i}"><span class="hero-tab-label">{s[7]}</span>'
+            f'<span class="hero-tab-bar"><span class="hero-tab-fill"></span></span></button>')
+
 home = f"""
-<section class="hero">
-  <div class="hero-media"><img src="{IMG}facility.jpg" alt="Technicians running CNC machines on the production floor" width="1600" height="1000" fetchpriority="high"></div>
-  <div class="hero-panel">
-    <span class="kicker kicker--hero">Expansion joint manufacturer, Chennai</span>
-    <h1>Flexible by design.<br>Built to last.</h1>
-    <p class="lede">Metallic bellows and expansion joints engineered for India's power, steel and process plants &mdash; 20&nbsp;mm to 9&nbsp;metres, to EJMA, ASME and PED standards.</p>
-    <div class="hero-cta">
-      <a class="btn btn--lg" href="products.html">Explore Products {ARROW}</a>
+<section class="hero" data-hero>
+  {''.join(_hero_slide(i, s) for i, s in enumerate(HERO_SLIDES))}
+  <div class="hero-controls">
+    <div class="hero-tabs" role="tablist" aria-label="Featured highlights">
+      {''.join(_hero_tab(i, s) for i, s in enumerate(HERO_SLIDES))}
     </div>
+    <button class="hero-pause" type="button" aria-label="Pause slideshow" aria-pressed="false">
+      <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+      <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5-13-7.5Z"/></svg>
+    </button>
   </div>
 </section>
 

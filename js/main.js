@@ -12,6 +12,76 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  /* Hero slideshow: crossfading slides, tab strip with autoplay progress, pause control */
+  var hero = document.querySelector("[data-hero]");
+  if (hero) {
+    var slides = Array.prototype.slice.call(hero.querySelectorAll(".hero-slide"));
+    var tabs = Array.prototype.slice.call(hero.querySelectorAll(".hero-tab"));
+    var pauseBtn = hero.querySelector(".hero-pause");
+    var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var current = 0, timer = null, playing = !reduced, userPaused = reduced, DURATION = 6500;
+
+    function show(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function (s, i) {
+        var active = i === current;
+        s.classList.toggle("is-active", active);
+        if (active) s.removeAttribute("aria-hidden"); else s.setAttribute("aria-hidden", "true");
+      });
+      tabs.forEach(function (t, i) {
+        var active = i === current;
+        t.setAttribute("aria-selected", active ? "true" : "false");
+        t.classList.toggle("is-playing", active && playing);
+      });
+    }
+    function restartFill() {
+      // Re-trigger the CSS fill animation on the active tab by toggling its class.
+      var activeTab = tabs[current];
+      if (!activeTab) return;
+      activeTab.classList.remove("is-playing");
+      void activeTab.offsetWidth;
+      activeTab.classList.toggle("is-playing", playing);
+    }
+    function stop() { if (timer) { clearTimeout(timer); timer = null; } }
+    function schedule() {
+      stop();
+      if (!playing) return;
+      timer = setTimeout(function () { show(current + 1); restartFill(); schedule(); }, DURATION);
+    }
+    function setPlaying(next) {
+      playing = next;
+      if (pauseBtn) {
+        pauseBtn.setAttribute("aria-pressed", playing ? "false" : "true");
+        pauseBtn.setAttribute("aria-label", playing ? "Pause slideshow" : "Play slideshow");
+      }
+      tabs.forEach(function (t, i) { t.classList.toggle("is-playing", i === current && playing); });
+      if (playing) { restartFill(); schedule(); } else { stop(); }
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () {
+        if (i === current) return;
+        show(i);
+        if (playing) { restartFill(); schedule(); }
+      });
+    });
+    if (pauseBtn) {
+      pauseBtn.addEventListener("click", function () {
+        userPaused = playing; // becomes true once we pause
+        setPlaying(!playing);
+      });
+    }
+    // Pause while the pointer or keyboard focus is on the hero; resume on leave
+    // unless the visitor paused it themselves.
+    hero.addEventListener("mouseenter", function () { if (playing) stop(); });
+    hero.addEventListener("mouseleave", function () { if (playing && !userPaused) schedule(); });
+    hero.addEventListener("focusin", function () { if (playing) stop(); });
+    hero.addEventListener("focusout", function () { if (playing && !userPaused) schedule(); });
+
+    show(0);
+    setPlaying(playing);
+  }
+
   /* Mobile nav */
   var burger = document.querySelector(".burger");
   var mnav = document.querySelector(".mobile-nav");
