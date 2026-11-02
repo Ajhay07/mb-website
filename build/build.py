@@ -168,6 +168,7 @@ FOOTER = f"""
   </div></div>
 </footer>
 <script src="js/main.js"></script>
+<script src="js/floating-lines.js" defer></script>
 </body>
 </html>"""
 
@@ -442,7 +443,7 @@ home = f"""
 
 {MARQUEE_BLOCK}
 
-<section class="cta-band">
+<section class="cta-band"><div class="cta-glow" aria-hidden="true"><canvas></canvas></div>
   <div class="wrap">
     <div class="reveal">
       <h2>Got a specification? We'll engineer the joint.</h2>
@@ -537,7 +538,7 @@ about = pagehero("About", "Company Profile",
 
 <section class="photo-band" aria-label="Photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}machining.jpg" alt="Bellows being machined" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}bellows-interior.jpg" alt="Inside a large bellows" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}blueprint.jpg" alt="Joint beside engineering drawings" width="800" height="600" loading="lazy"></figure></section>
 
-<section class="cta-band">
+<section class="cta-band"><div class="cta-glow" aria-hidden="true"><canvas></canvas></div>
   <div class="wrap">
     <div><h2>Tell us about your line.</h2><p>Talk to our design team about your operating conditions and movements.</p></div>
     <a class="btn btn--light btn--lg" href="contact.html">Contact Us {ARROW}</a>
@@ -661,7 +662,7 @@ industries = pagehero("Industries", "Industries &amp; Clients",
 
 <section class="photo-band" aria-label="Photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}oil-gas.jpg" alt="Oil and gas plant at dusk" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}power-plant.jpg" alt="Power station cooling towers" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}chemical-plant.jpg" alt="Chemical plant" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:240ms"><img src="{IMG}applications.jpg" alt="Piping at a refinery" width="800" height="600" loading="lazy"></figure></section>
 
-<section class="cta-band">
+<section class="cta-band"><div class="cta-glow" aria-hidden="true"><canvas></canvas></div>
   <div class="wrap">
     <div><h2>Work with us on your next project.</h2><p>Tell us about the project and the operating conditions.</p></div>
     <a class="btn btn--light btn--lg" href="contact.html">Start a Conversation {ARROW}</a>
@@ -741,7 +742,7 @@ quality = pagehero("Quality", "Quality &amp; Approvals",
 
 <section class="photo-band" aria-label="Photographs"><figure class="reveal" style="--d:0ms"><img src="{IMG}welding.jpg" alt="Welding a bellows" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:80ms"><img src="{IMG}pressure-test.jpg" alt="Bellows under pressure test" width="800" height="600" loading="lazy"></figure><figure class="reveal" style="--d:160ms"><img src="{IMG}bellows-stack.jpg" alt="Finished bellows stacked for dispatch" width="800" height="600" loading="lazy"></figure></section>
 
-<section class="cta-band">
+<section class="cta-band"><div class="cta-glow" aria-hidden="true"><canvas></canvas></div>
   <div class="wrap">
     <div><h2>Need paperwork for your QA package?</h2><p>We supply the certificates and test records your project asks for.</p></div>
     <a class="btn btn--light btn--lg" href="contact.html">Talk to Us {ARROW}</a>
