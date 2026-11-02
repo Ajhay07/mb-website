@@ -272,13 +272,25 @@ def _mq_items():
             on = f"if(!this.dataset.f){{this.dataset.f=1;this.src='{esc}'}}else{{this.remove()}}"
         else:
             on = "this.remove()"
-        out += ('<div class="mq reveal">'
+        out += ('<div class="mq">'
                 f'<img class="mq-logo" src="images/logos/{slug}.png" alt="{name}" loading="lazy" onerror="{on}">'
                 f'<span>{name}</span></div>')
     return out
-MARQUEE_BLOCK = ('<section class="section clients"><div class="wrap">'
-                 '<div class="sec-head reveal"><h2>Selected clients</h2></div>'
-                 '<div class="logo-wall">' + _mq_items() + '</div></div></section>')
+CLIENT_TAGS = ["Power", "Steel &amp; Metals", "Refineries", "Fertilizers &amp; Chemicals", "Cement", "Shipping &amp; Defence"]
+MARQUEE_BLOCK = (
+    '<section class="section clients"><div class="wrap">'
+    '<div class="sec-head center reveal">'
+    '<span class="kicker kicker--center">Trusted By</span>'
+    '<h2>Backed by India&rsquo;s biggest names.</h2>'
+    '<p class="lede">From national power utilities to integrated steel plants, our joints run in plants across every heavy industry sector.</p>'
+    '</div>'
+    '<div class="client-tags reveal">' + ''.join(f'<span class="chip">{t}</span>' for t in CLIENT_TAGS) + '</div>'
+    '</div>'
+    '<div class="logo-marquee reveal" role="region" aria-label="Selected clients, scrolling">'
+    '<div class="lm-track"><div class="lm-list">' + _mq_items() + '</div>'
+    '<div class="lm-list" aria-hidden="true">' + _mq_items() + '</div></div></div>'
+    '</section>'
+)
 
 print("Generator ready.")
 
