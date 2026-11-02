@@ -320,7 +320,7 @@ def _hero_tab(i, s):
 home = f"""
 <section class="hero" data-hero>
   {''.join(_hero_slide(i, s) for i, s in enumerate(HERO_SLIDES))}
-  <div class="hero-controls">
+  <div class="hero-controls"><div class="wrap hero-controls-in">
     <div class="hero-tabs" role="tablist" aria-label="Featured highlights">
       {''.join(_hero_tab(i, s) for i, s in enumerate(HERO_SLIDES))}
     </div>
@@ -328,6 +328,7 @@ home = f"""
       <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
       <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5-13-7.5Z"/></svg>
     </button>
+  </div>
   </div>
 </section>
 
