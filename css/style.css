@@ -258,9 +258,11 @@ strong { font-weight: 600; }
 
 /* ---------- Industry tiles (inner pages) ---------- */
 .ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.ind-card { background: var(--white); padding: 34px 30px 38px; border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: box-shadow .25s var(--ease), transform .25s var(--ease); }
+.ind-card { background: var(--white); padding: 34px 30px 38px; border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: box-shadow .25s var(--ease), transform .25s var(--ease), background-color .25s var(--ease); }
 .ind-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-.ind-icon { display: none; }
+.ind-icon { display: flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; background: var(--paper); color: var(--gold); margin-bottom: 20px; transition: background-color .25s var(--ease), color .25s var(--ease); }
+.ind-icon svg { width: 26px; height: 26px; }
+.ind-card:hover .ind-icon { background: var(--gold); color: #fff; }
 .ind-card h3 { font-size: 1.5rem; }
 .ind-card p { color: var(--ink-soft); font-size: 1.02rem; margin-top: 12px; line-height: 1.5; }
 
