@@ -392,6 +392,9 @@ ul.ticks li::before, .prose ul.ticks li::before { content: ""; position: absolut
 .footer-wordmark { font-family: var(--f-display); font-weight: 700; font-size: clamp(2.6rem, 9.4vw, 9rem); line-height: .9; letter-spacing: -.03em; color: #77828F; padding-top: 24px; padding-bottom: clamp(32px, 4vw, 56px); white-space: nowrap; overflow: hidden; }
 .footer-bottom { background: var(--paper-3); }
 .footer-bottom-in { max-width: var(--wrap); margin-inline: auto; padding: 26px var(--gutter); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: .98rem; color: var(--ink); }
+.footer-bottom-in .credit { color: var(--ink-soft); }
+.footer-bottom-in .credit a { color: var(--gold-deep); font-weight: 600; transition: color .2s; }
+.footer-bottom-in .credit a:hover { color: var(--gold-600); text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Motion ---------- */
 @keyframes rise-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
