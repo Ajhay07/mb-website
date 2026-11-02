@@ -258,8 +258,8 @@ CLIENTS_MQ = [
     ("ACC","acc", _C+"ACC%20Limited%20logo.svg?width=240"),
     ("Ambuja","ambuja", _E+"Ambuja%20Cements.svg?width=240"),
     ("Dalmia Bharat","dalmia", None),
-    ("GNFC","gnfc", None),
-    ("FACT","fact", None),
+    ("GNFC","gnfc", "https://www.gnfc.in/wp-content/uploads/2018/02/logo.png"),
+    ("FACT","fact", "https://fact.co.in/images/logo.png"),
     ("Mazagon Dock","mazagon", _E+"Mazagon%20Dock%20Shipbuilders.svg?width=240"),
     ("Shree Cement","shree", _E+"Shree%20cement%20logo.svg?width=240"),
 ]
