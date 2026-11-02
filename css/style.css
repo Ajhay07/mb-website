@@ -302,7 +302,7 @@ strong { font-weight: 600; }
 @media (max-width: 640px) { .photo-band { flex-direction: column; } }
 
 /* ---------- CTA band: blue field, soft circle accent ---------- */
-.cta-band { background: var(--gold); color: #fff; position: relative; overflow: hidden; }
+.cta-band { background: linear-gradient(135deg, #050c1e 0%, #0a1f4d 42%, var(--gold-600) 75%, var(--gold) 100%); color: #fff; position: relative; overflow: hidden; }
 .cta-band::before {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background-image:
