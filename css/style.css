@@ -297,13 +297,13 @@ strong { font-weight: 600; }
 .logo-marquee:hover .lm-track, .logo-marquee:focus-within .lm-track { animation-play-state: paused; }
 .lm-list { display: flex; flex: none; gap: 16px; }
 @keyframes lm-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-100% - 16px)); } }
-.mq { display: flex; align-items: center; justify-content: center; flex: none; width: 210px; min-height: 112px; padding: 20px; background: var(--white); text-align: center; position: relative; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); transition: box-shadow .25s var(--ease), transform .25s var(--ease); }
+.mq { display: flex; align-items: center; justify-content: center; flex: none; width: 280px; min-height: 160px; padding: 28px; background: var(--white); text-align: center; position: relative; border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: box-shadow .25s var(--ease), transform .25s var(--ease); }
 .mq:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.mq-logo { height: 46px; width: auto; max-width: 150px; object-fit: contain; transition: transform .25s var(--ease); }
+.mq-logo { height: 64px; width: auto; max-width: 220px; object-fit: contain; transition: transform .25s var(--ease); }
 .mq:hover .mq-logo { transform: scale(1.06); }
-.mq span { font-family: var(--f-display); font-weight: 600; font-size: 1.3rem; line-height: 1.1; }
+.mq span { font-family: var(--f-display); font-weight: 600; font-size: 1.5rem; line-height: 1.15; }
 .mq:has(.mq-logo) span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-@media (max-width: 640px) { .mq { width: 168px; } }
+@media (max-width: 640px) { .mq { width: 220px; min-height: 130px; padding: 20px; } .mq-logo { height: 52px; max-width: 170px; } }
 
 /* Client list (industries page) */
 .client-wall { background: var(--paper); }
@@ -484,7 +484,7 @@ ul.ticks li::before, .prose ul.ticks li::before { content: ""; position: absolut
   .ind-list p { font-size: 1rem; margin-top: 6px; }
   .section .wrap > div[style*="margin-top:clamp(56px"] { margin-top: 4svh !important; }
   .logo-marquee { margin-top: 4svh; }
-  .mq { min-height: clamp(70px, 11svh, 112px); }
+  .mq { min-height: clamp(130px, 18svh, 160px); }
   .cta-band .wrap { padding-block: clamp(40px, 8svh, 88px); }
 }
 
