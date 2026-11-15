@@ -162,4 +162,19 @@
       }, 900);
     });
   }
+
+  /* Spotlight on card grids: a soft light follows the cursor (vanilla
+     port of React Bits' SpotlightCard). Cosmetic hover-only effect. */
+  var spotCards = document.querySelectorAll(
+    ".ind-card, .prod-card, .policy-card, .cert-box, .contact-card, .client-sector, .stat-cell"
+  );
+  spotCards.forEach(function (card) {
+    card.addEventListener("pointermove", function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty("--spot-x", ((e.clientX - r.left) / r.width * 100) + "%");
+      card.style.setProperty("--spot-y", ((e.clientY - r.top) / r.height * 100) + "%");
+    });
+    card.addEventListener("pointerenter", function () { card.style.setProperty("--spot-o", "1"); });
+    card.addEventListener("pointerleave", function () { card.style.setProperty("--spot-o", "0"); });
+  });
 })();
