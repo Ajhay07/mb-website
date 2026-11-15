@@ -1,0 +1,357 @@
+{
+  "package": "Nivara Architecture Boilerplate",
+  "source_archives": [
+    "nivara-architecture-template.vercel.app-1794567809830.zip",
+    "nivara_architecture_template.vercel.app.zip",
+    "Nivara_Arkitekter___Architects_in_Copenhagen_resources.zip"
+  ],
+  "merge_strategy": "Second archive used as canonical Next.js capture; first archive contributed additional image/font/script assets; third archive supplied any missing chunks/media/icon.",
+  "merge_report": {
+    "added": [
+      "kyst-dusk.14or_k0hs7nen.webp",
+      "life-balcony.2jtplgiuynbw.webp",
+      "life-courtyard.3si4058tl8iua.webp",
+      "life-entrance.2znw0jhsphwl.webp",
+      "life-gallery.0dgnasky7u1uj.webp",
+      "life-window.1-w3x-o5wxg.webp",
+      "saltvaerket-commons.41ldz9cezbjjn.webp",
+      "school-corridor.3_hf9zhlf1-6z.webp",
+      "_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+      "_next/static/immutable/chunks/2k7nn5nmaiqi.js",
+      "icon.png_icon.1dux7tmb1r7j8.png"
+    ],
+    "already_present": [
+      "chapel-cover.2fdv0oqokk71y.webp",
+      "fjordhus-waterfront.0e9237rwm_-ni.webp",
+      "hero-facade.1r4wqzgf7ylo5.webp",
+      "kyst-cover.080lbi_ny0dch.webp",
+      "library-brick-detail.0u4fqruhtyo5j.webp",
+      "library-cover.3gaa3hyg9nfqb.webp",
+      "material-brick.1ujaaaocc75x0.webp",
+      "saltvaerket-cover.2t587pmmaloe2.webp",
+      "studio-drafting.319dm00xsef3y.webp",
+      "studio-model-white.0xoha0kv3nasp.webp",
+      "06abpcs6t6a0y.js",
+      "0vba6ez8r3kmj.js",
+      "1-vr2-xde44b7.js",
+      "19tm-lfmsxywl.js",
+      "1dlb2-e8ckolm.js",
+      "1h15uthgew15x.js",
+      "1jx0q3jgocnjm.js",
+      "1kakyev9m-h3b.js",
+      "2m5_6bx0joou9.js",
+      "2nc-kcza8s1ux.js",
+      "3douyljdx_-l2.js",
+      "3hz6itf85fuff.js",
+      "3kdgvqbuoek9b.js",
+      "3yqow-jxgusru.js",
+      "turbopack-1byz1flvc-bu1.js"
+    ],
+    "renamed_fonts": [
+      "_next_static_immutable_media_0ee4b8f05dcd9fee-s.27tgfqm6_tedn.woff2",
+      "_next_static_immutable_media_13ae3e01af63c0ce-s.3-5_uhe2g8vfj.woff2",
+      "_next_static_immutable_media_9eba4caf7edd2921-s.2r0cv3f07u_0l.woff2",
+      "_next_static_immutable_media_ab57efd000576a30-s.p.2q0khlq77_eaw.woff2",
+      "_next_static_immutable_media_b8d1f0a88dfecec3-s.0yot_wy8hf-md.woff2",
+      "_next_static_immutable_media_f285987c35230861-s.318-mahh4esyg.woff2",
+      "_next_static_immutable_media_f6752bd2263820da-s.12_ze2_d4hpxy.woff2"
+    ],
+    "ignored": []
+  },
+  "file_count": 72,
+  "files": [
+    {
+      "path": "ASSET-MANIFEST.json",
+      "bytes": 9457
+    },
+    {
+      "path": "README.md",
+      "bytes": 2057
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.04ebafc8f3c458.txt",
+      "bytes": 853
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.0ad9e80e9e65d.txt",
+      "bytes": 845
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.572620bf083f6.txt",
+      "bytes": 869
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.6f462b394556b8.txt",
+      "bytes": 837
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.8c65b649c68608.txt",
+      "bytes": 857
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.b149c5c6101778.txt",
+      "bytes": 817
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.b2816465a1eee.txt",
+      "bytes": 837
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.da5a92b73db618.txt",
+      "bytes": 837
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.e19e0e3a1bc2c8.txt",
+      "bytes": 829
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.fb87b37d8a9bf8.txt",
+      "bytes": 837
+    },
+    {
+      "path": "_DataURI/data.image.svg.xml.fc3f3e7108b648.txt",
+      "bytes": 857
+    },
+    {
+      "path": "_next/static/immutable/chunks/06abpcs6t6a0y.js",
+      "bytes": 40670
+    },
+    {
+      "path": "_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+      "bytes": 112594
+    },
+    {
+      "path": "_next/static/immutable/chunks/0vba6ez8r3kmj.js",
+      "bytes": 875
+    },
+    {
+      "path": "_next/static/immutable/chunks/1-vr2-xde44b7.js",
+      "bytes": 186887
+    },
+    {
+      "path": "_next/static/immutable/chunks/19tm-lfmsxywl.js",
+      "bytes": 163334
+    },
+    {
+      "path": "_next/static/immutable/chunks/1dlb2-e8ckolm.js",
+      "bytes": 9102
+    },
+    {
+      "path": "_next/static/immutable/chunks/1h15uthgew15x.js",
+      "bytes": 7635
+    },
+    {
+      "path": "_next/static/immutable/chunks/1jx0q3jgocnjm.js",
+      "bytes": 33757
+    },
+    {
+      "path": "_next/static/immutable/chunks/1kakyev9m-h3b.js",
+      "bytes": 13822
+    },
+    {
+      "path": "_next/static/immutable/chunks/2k7nn5nmaiqi-.js",
+      "bytes": 12696
+    },
+    {
+      "path": "_next/static/immutable/chunks/2k7nn5nmaiqi.js",
+      "bytes": 12696
+    },
+    {
+      "path": "_next/static/immutable/chunks/2m5_6bx0joou9.js",
+      "bytes": 230089
+    },
+    {
+      "path": "_next/static/immutable/chunks/2nc-kcza8s1ux.js",
+      "bytes": 42547
+    },
+    {
+      "path": "_next/static/immutable/chunks/3douyljdx_-l2.js",
+      "bytes": 5584
+    },
+    {
+      "path": "_next/static/immutable/chunks/3hz6itf85fuff.js",
+      "bytes": 22402
+    },
+    {
+      "path": "_next/static/immutable/chunks/3kdgvqbuoek9b.js",
+      "bytes": 6661
+    },
+    {
+      "path": "_next/static/immutable/chunks/3yqow-jxgusru.js",
+      "bytes": 12682
+    },
+    {
+      "path": "_next/static/immutable/chunks/turbopack-1byz1flvc-bu1.js",
+      "bytes": 11255
+    },
+    {
+      "path": "_next/static/immutable/media/_next_static_immutable_media_0ee4b8f05dcd9fee-s.27tgfqm6_tedn.woff2",
+      "bytes": 17052
+    },
+    {
+      "path": "_next/static/immutable/media/_next_static_immutable_media_13ae3e01af63c0ce-s.3-5_uhe2g8vfj.woff2",
+      "bytes": 26644
+    },
+    {
+      "path": "_next/static/immutable/media/_next_static_immutable_media_9eba4caf7edd2921-s.2r0cv3f07u_0l.woff2",
+      "bytes": 11736
+    },
+    {
+      "path": "_next/static/immutable/media/_next_static_immutable_media_ab57efd000576a30-s.p.2q0khlq77_eaw.woff2",
+      "bytes": 44916
+    },
+    {
+      "path": "_next/static/immutable/media/_next_static_immutable_media_b8d1f0a88dfecec3-s.0yot_wy8hf-md.woff2",
+      "bytes": 89820
+    },
+    {
+      "path": "_next/static/immutable/media/_next_static_immutable_media_f285987c35230861-s.318-mahh4esyg.woff2",
+      "bytes": 10508
+    },
+    {
+      "path": "_next/static/immutable/media/_next_static_immutable_media_f6752bd2263820da-s.12_ze2_d4hpxy.woff2",
+      "bytes": 22212
+    },
+    {
+      "path": "_next/static/immutable/media/ab57efd000576a30-s.p.2q0khlq77_eaw.woff2",
+      "bytes": 44916
+    },
+    {
+      "path": "_next/static/immutable/media/chapel-cover.2fdv0oqokk71y.webp",
+      "bytes": 360166
+    },
+    {
+      "path": "_next/static/immutable/media/fjordhus-cover.01yfvy61dgzrn.webp",
+      "bytes": 437096
+    },
+    {
+      "path": "_next/static/immutable/media/fjordhus-waterfront.0e9237rwm_-ni.webp",
+      "bytes": 627474
+    },
+    {
+      "path": "_next/static/immutable/media/hero-facade.1r4wqzgf7ylo5.webp",
+      "bytes": 829122
+    },
+    {
+      "path": "_next/static/immutable/media/kyst-cover.080lbi_ny0dch.webp",
+      "bytes": 503052
+    },
+    {
+      "path": "_next/static/immutable/media/kyst-dusk.14or_k0hs7nen.webp",
+      "bytes": 155754
+    },
+    {
+      "path": "_next/static/immutable/media/library-brick-detail.0u4fqruhtyo5j.webp",
+      "bytes": 742016
+    },
+    {
+      "path": "_next/static/immutable/media/library-cover.3gaa3hyg9nfqb.webp",
+      "bytes": 517294
+    },
+    {
+      "path": "_next/static/immutable/media/life-balcony.2jtplgiuynbw-.webp",
+      "bytes": 206938
+    },
+    {
+      "path": "_next/static/immutable/media/life-balcony.2jtplgiuynbw.webp",
+      "bytes": 206938
+    },
+    {
+      "path": "_next/static/immutable/media/life-courtyard.3si4058tl8iua.webp",
+      "bytes": 577444
+    },
+    {
+      "path": "_next/static/immutable/media/life-entrance.2znw0jhsphwl-.webp",
+      "bytes": 418996
+    },
+    {
+      "path": "_next/static/immutable/media/life-entrance.2znw0jhsphwl.webp",
+      "bytes": 418996
+    },
+    {
+      "path": "_next/static/immutable/media/life-gallery.0dgnasky7u1uj.webp",
+      "bytes": 292558
+    },
+    {
+      "path": "_next/static/immutable/media/life-window.1-w3x---o5wxg.webp",
+      "bytes": 202828
+    },
+    {
+      "path": "_next/static/immutable/media/life-window.1-w3x-o5wxg.webp",
+      "bytes": 202828
+    },
+    {
+      "path": "_next/static/immutable/media/material-brick.1ujaaaocc75x0.webp",
+      "bytes": 282880
+    },
+    {
+      "path": "_next/static/immutable/media/saltvaerket-commons.41ldz9cezbjjn.webp",
+      "bytes": 568548
+    },
+    {
+      "path": "_next/static/immutable/media/saltvaerket-cover.2t587pmmaloe2.webp",
+      "bytes": 259740
+    },
+    {
+      "path": "_next/static/immutable/media/school-corridor.3_hf9zhlf1-6z.webp",
+      "bytes": 160038
+    },
+    {
+      "path": "_next/static/immutable/media/school-cover.3r_ihrnzi185o.webp",
+      "bytes": 375170
+    },
+    {
+      "path": "_next/static/immutable/media/studio-drafting.319dm00xsef3y.webp",
+      "bytes": 288808
+    },
+    {
+      "path": "_next/static/immutable/media/studio-model-white.0xoha0kv3nasp.webp",
+      "bytes": 66346
+    },
+    {
+      "path": "apple-icon.png",
+      "bytes": 2532
+    },
+    {
+      "path": "fonts.gstatic.com/s/googlesans/v29/4UaGrENHsxJlGDuGo1OIlL3Owp4.woff2",
+      "bytes": 39516
+    },
+    {
+      "path": "icon.png",
+      "bytes": 2532
+    },
+    {
+      "path": "icon.png_icon.1dux7tmb1r7j8.png",
+      "bytes": 2532
+    },
+    {
+      "path": "index.html",
+      "bytes": 208989
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 366
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 23
+    },
+    {
+      "path": "site-overrides.css",
+      "bytes": 2491
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 136
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 142
+    }
+  ],
+  "validation": {
+    "zip_integrity": "PASS",
+    "local_html_asset_references": "PASS",
+    "unresolved_local_references": []
+  }
+}

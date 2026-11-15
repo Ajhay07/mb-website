@@ -1,0 +1,16 @@
+{
+  "name": "MB Metallic Bellows",
+  "short_name": "MB Metallics",
+  "description": "MB Metallic Bellows Pvt Ltd manufactures metallic bellows, expansion joints, compensators and metal hoses (20\u20139000 mm) to EJMA, ASME U-Stamp and PED standards.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

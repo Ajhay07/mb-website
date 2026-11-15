@@ -1,5 +1,8 @@
-__pycache__/
-*.pyc
+.vercel
+*.zip
 .DS_Store
-node_modules/
-dist/
+Thumbs.db
+
+# React Bits sidecar
+react-bits/node_modules
+react-bits/dist

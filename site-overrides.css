@@ -1,0 +1,24 @@
+
+/* Nivara Architecture template - reconstructed fallback styles.
+   The original captured CSS file was not present in the supplied archives. */
+@font-face{font-family:NivaraDisplay;src:url('/_next/static/immutable/media/ab57efd000576a30-s.p.2q0khlq77_eaw.woff2') format('woff2');font-display:swap}
+@font-face{font-family:NivaraSans;src:url('/_next/static/immutable/media/0ee4b8f05dcd9fee-s.27tgfqm6_tedn.woff2') format('woff2');font-display:swap}
+:root{color-scheme:light;--ink:#20211f;--paper:#f5f4f0;--muted:#777870;--line:rgba(32,33,31,.16);--accent:#8c927d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:NivaraSans,Arial,sans-serif;line-height:1.55}
+img{max-width:100%;height:auto}
+a{color:inherit}
+button,input,textarea,select{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+::selection{background:#d9dfce;color:#20211f}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Additional bundled font files recovered from the primary capture. */
+@font-face{font-family:'NivaraRecovered0';src:url('/_next/static/immutable/media/_next_static_immutable_media_0ee4b8f05dcd9fee-s.27tgfqm6_tedn.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'NivaraRecovered1';src:url('/_next/static/immutable/media/_next_static_immutable_media_13ae3e01af63c0ce-s.3-5_uhe2g8vfj.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'NivaraRecovered2';src:url('/_next/static/immutable/media/_next_static_immutable_media_9eba4caf7edd2921-s.2r0cv3f07u_0l.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'NivaraRecovered3';src:url('/_next/static/immutable/media/_next_static_immutable_media_ab57efd000576a30-s.p.2q0khlq77_eaw.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'NivaraRecovered4';src:url('/_next/static/immutable/media/_next_static_immutable_media_b8d1f0a88dfecec3-s.0yot_wy8hf-md.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'NivaraRecovered5';src:url('/_next/static/immutable/media/_next_static_immutable_media_f285987c35230861-s.318-mahh4esyg.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'NivaraRecovered6';src:url('/_next/static/immutable/media/_next_static_immutable_media_f6752bd2263820da-s.12_ze2_d4hpxy.woff2') format('woff2');font-display:swap}
