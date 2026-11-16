@@ -6,3 +6,5 @@ Thumbs.db
 # React Bits sidecar
 react-bits/node_modules
 react-bits/dist
+
+.vercel
