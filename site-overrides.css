@@ -163,3 +163,15 @@ section[aria-labelledby="life-title"] .grid.grid-cols-2 img {
   display: block !important;
   border-radius: 0.5rem !important;
 }
+
+/* Home gallery: larger images that fill the section around the centred text */
+@media(min-width:1024px){
+section[aria-labelledby="life-title"] .mbs{position:absolute}
+section[aria-labelledby="life-title"] .mbs1{left:1%;top:1%;width:28%}
+section[aria-labelledby="life-title"] .mbs2{left:31%;top:0;width:23%}
+section[aria-labelledby="life-title"] .mbs3{right:1%;top:2%;width:29%}
+section[aria-labelledby="life-title"] .mbs4{right:1%;top:41%;width:25%}
+section[aria-labelledby="life-title"] .mbs5{left:1%;top:39%;width:24%}
+section[aria-labelledby="life-title"] .mbs6{left:3%;top:70%;width:30%}
+section[aria-labelledby="life-title"] .mbs7{right:3%;top:70%;width:30%}
+}
