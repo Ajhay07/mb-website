@@ -25,7 +25,7 @@
   }
   function start(){
     var n=0,iv=setInterval(function(){ensure(); if(++n>40)clearInterval(iv);},500);
-    new MutationObserver(function(){ if(!document.getElementById('clients-section'))ensure(); }).observe(document.body,{childList:true,subtree:true});
+    var m=document.querySelector('main'); if(m&&m.parentNode)new MutationObserver(function(){ if(!document.getElementById('clients-section'))ensure(); }).observe(m.parentNode,{childList:true});
   }
   if(document.readyState==='complete')setTimeout(start,1200);else window.addEventListener('load',function(){setTimeout(start,1200);});
 })();
