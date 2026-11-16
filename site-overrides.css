@@ -22,3 +22,90 @@ button,a{-webkit-tap-highlight-color:transparent}
 @font-face{font-family:'NivaraRecovered4';src:url('/_next/static/immutable/media/_next_static_immutable_media_b8d1f0a88dfecec3-s.0yot_wy8hf-md.woff2') format('woff2');font-display:swap}
 @font-face{font-family:'NivaraRecovered5';src:url('/_next/static/immutable/media/_next_static_immutable_media_f285987c35230861-s.318-mahh4esyg.woff2') format('woff2');font-display:swap}
 @font-face{font-family:'NivaraRecovered6';src:url('/_next/static/immutable/media/_next_static_immutable_media_f6752bd2263820da-s.12_ze2_d4hpxy.woff2') format('woff2');font-display:swap}
+
+/* ==========================================================================
+   FIX: Fixed Navigation Header Backdrop & Collision Prevention
+   ========================================================================== */
+header.fixed {
+  mix-blend-mode: normal !important;
+  background: rgba(22, 24, 23, 0.82) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+  transition: background 0.3s ease, border-color 0.3s ease !important;
+  color: #ffffff !important;
+}
+
+header.fixed a,
+header.fixed p {
+  color: #ffffff !important;
+}
+
+header.fixed a:hover {
+  color: #d9dfce !important;
+}
+
+/* ==========================================================================
+   FIX: Mobile Responsiveness & Layout Glitches
+   ========================================================================== */
+@media (max-width: 768px) {
+  header.fixed .grid {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0.85rem 1rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  header.fixed p.hidden {
+    display: none !important;
+  }
+
+  header.fixed nav {
+    gap: 0.85rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Prevent hero image shrinking to narrow sliver on mobile */
+  .animate-frame-grow {
+    clip-path: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Prevent display font overflow on small viewports */
+  .text-hero {
+    font-size: clamp(2rem, 7.5vw, 3.5rem) !important;
+    line-height: 1.05 !important;
+  }
+  
+  .text-statement {
+    font-size: clamp(1.25rem, 5vw, 2rem) !important;
+    line-height: 1.25 !important;
+  }
+}
+
+/* Ensure initial load does not trap hero in collapsed clip-path */
+@media (min-width: 769px) {
+  .animate-frame-grow {
+    animation-duration: 1.2s !important;
+  }
+}
+
+/* ==========================================================================
+   Client List & Products Data Enhancement Styles
+   ========================================================================== */
+.client-sector-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(32, 33, 31, 0.07);
+  color: #383a34;
+  font-weight: 500;
+  margin-right: 0.4rem;
+  margin-bottom: 0.4rem;
+}
