@@ -8,7 +8,6 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:NivaraSans,Arial,sans-serif;line-height:1.55}
 img{max-width:100%;height:auto}
-a{color:inherit}
 button,input,textarea,select{font:inherit}
 button,a{-webkit-tap-highlight-color:transparent}
 ::selection{background:#d9dfce;color:#20211f}
