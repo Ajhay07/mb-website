@@ -186,3 +186,7 @@ div[class*="l:grid-cols-4"][class*="gap-y-14"] [class*="aspect-[4/5]"]{aspect-ra
 
 /* Footer wordmark: scale so the full "MB Metallics" fits the width */
 p[class*="text-[37vw]"]{font-size:20vw!important}
+
+/* Products page: show product names only (no place / year line under each card) */
+div[class*="l:grid-cols-4"][class*="gap-y-14"] a p.text-graphite,
+div[class*="l:grid-cols-4"][class*="gap-y-14"] a [class*="text-graphite"]{display:none!important}
