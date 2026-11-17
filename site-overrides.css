@@ -175,3 +175,14 @@ section[aria-labelledby="life-title"] .mbs5{left:1%;top:39%;width:24%}
 section[aria-labelledby="life-title"] .mbs6{left:3%;top:70%;width:30%}
 section[aria-labelledby="life-title"] .mbs7{right:3%;top:70%;width:30%}
 }
+
+/* Products page: clean "All Products" grid instead of the staggered template layout */
+div[class*="l:grid-cols-4"][class*="gap-y-14"]{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:3rem 1.5rem!important}
+div[class*="l:grid-cols-4"][class*="gap-y-14"]>h2{position:static!important;height:auto!important;grid-column:1/-1!important;margin:0 0 .5rem!important}
+div[class*="l:grid-cols-4"][class*="gap-y-14"]>div{grid-row-start:auto!important;grid-column-start:auto!important}
+div[class*="l:grid-cols-4"][class*="gap-y-14"] [class*="aspect-[4/5]"]{aspect-ratio:4/3!important}
+@media(max-width:1023px){div[class*="l:grid-cols-4"][class*="gap-y-14"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:639px){div[class*="l:grid-cols-4"][class*="gap-y-14"]{grid-template-columns:minmax(0,1fr)!important}}
+
+/* Footer wordmark: scale so the full "MB Metallics" fits the width */
+p[class*="text-[37vw]"]{font-size:20vw!important}
