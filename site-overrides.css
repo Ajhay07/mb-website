@@ -197,3 +197,20 @@ div[class*="l:grid-cols-4"][class*="gap-y-14"] a [class*="text-graphite"]{displa
 #product-spec-section ul{list-style:none;padding:0}
 #product-spec-section li{position:relative;padding-left:1.1rem}
 #product-spec-section li::before{content:"";position:absolute;left:0;top:.65em;width:.4rem;height:.4rem;background:#8c927d;border-radius:9999px}
+
+/* Smaller, less dominant images across the products listing and product pages;
+   more room is given to the expanded written content instead. */
+section[aria-roledescription="carousel"]{height:46svh!important;min-height:340px!important}
+div[class*="l:grid-cols-4"][class*="gap-y-14"]{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+div[class*="l:grid-cols-4"][class*="gap-y-14"] [class*="aspect-[4/5]"]{aspect-ratio:3/2!important}
+@media(max-width:1023px){div[class*="l:grid-cols-4"][class*="gap-y-14"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:639px){div[class*="l:grid-cols-4"][class*="gap-y-14"]{grid-template-columns:minmax(0,1fr)!important}}
+
+/* Product detail pages: smaller hero, one smaller gallery image instead of two or
+   three full-width ones, and a shorter "next project" panel. */
+section[aria-labelledby="project-title"]{height:42svh!important;min-height:320px!important}
+div[class*="mt-20"][class*="gap-16"][class*="gap-28"] figure.mbr-extra-figure{display:none!important}
+div[class*="mt-20"][class*="gap-16"][class*="gap-28"] figure{max-width:30rem;margin-inline:auto}
+div[class*="mt-20"][class*="gap-16"][class*="gap-28"] figure img{border-radius:.375rem}
+section[aria-labelledby="next-title"]{height:110svh!important}
+section[aria-labelledby="next-title"] [class*="min-h-[560px]"]{min-height:360px!important}
