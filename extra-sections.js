@@ -38,11 +38,12 @@
       if(fig && !fig.querySelector('.mbr-design-inputs')){
         var box=document.createElement('div');
         box.className='mbr-design-inputs mt-8';
-        var h=document.createElement('h3');
-        h.className='mbr-design-inputs-title';
+        var h=document.createElement('p');
+        h.className='text-small text-graphite uppercase tracking-wider';
         h.textContent='Design inputs we work from';
         box.appendChild(h);
         var ul=document.createElement('ul');
+        ul.className='mt-5 space-y-2 text-graphite';
         DESIGN_INPUTS.forEach(function(t){ var li=document.createElement('li'); li.textContent=t; ul.appendChild(li); });
         box.appendChild(ul);
         fig.appendChild(box);
