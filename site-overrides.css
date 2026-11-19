@@ -225,3 +225,9 @@ section[aria-labelledby="life-title"] .grid.grid-cols-2 > :nth-child(n+5){displa
 
 /* Home "Process" section: shorter images, more room for the added paragraph */
 div[class*="mt-28"][class*="m:grid-cols-2"] [class*="aspect-[4/5]"]{aspect-ratio:4/3!important}
+
+/* "Design inputs" list that fills the home Process section's left column */
+.mbr-design-inputs-title{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:#777;margin:0 0 .9rem}
+.mbr-design-inputs ul{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.mbr-design-inputs li{position:relative;padding-left:1.1rem;color:#333;font-size:.95rem}
+.mbr-design-inputs li::before{content:"";position:absolute;left:0;top:.55em;width:.4rem;height:.4rem;background:#8c927d;border-radius:9999px}

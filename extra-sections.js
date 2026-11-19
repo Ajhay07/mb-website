@@ -22,6 +22,8 @@
   var LIFE_NOTE="Every unit shown here is pressure tested, dimensionally checked and inspected before it leaves the works, with documentation to ASME, ASTM, DIN or IS supplied as required.";
   var PROCESS_NOTE="Each bellows element is roll-formed on hydraulic tooling to the exact convolution profile the design calls for, then welded by procedure-qualified welders following WPS/PQR records kept to ASME IX. Material certificates, forming and weld traceability are logged against the job number and supplied with the dispatch documentation.";
 
+  var DESIGN_INPUTS=["Nominal bore","Design pressure","Design temperature","Media & flow velocity","Axial, lateral & angular movement","Connecting pipe schedule & flange rating"];
+
   function addHomeExtras(){
     var procGrid=document.querySelector('div[class*="mt-28"][class*="m:grid-cols-2"]');
     if(procGrid && !procGrid.querySelector('.mbr-process-note')){
@@ -31,6 +33,19 @@
         pp.className='mbr-process-note mbr-home-intro mt-6';
         pp.textContent=PROCESS_NOTE;
         prose.parentNode.insertBefore(pp, prose.nextSibling);
+      }
+      var fig=procGrid.querySelector('figure');
+      if(fig && !fig.querySelector('.mbr-design-inputs')){
+        var box=document.createElement('div');
+        box.className='mbr-design-inputs mt-8';
+        var h=document.createElement('h3');
+        h.className='mbr-design-inputs-title';
+        h.textContent='Design inputs we work from';
+        box.appendChild(h);
+        var ul=document.createElement('ul');
+        DESIGN_INPUTS.forEach(function(t){ var li=document.createElement('li'); li.textContent=t; ul.appendChild(li); });
+        box.appendChild(ul);
+        fig.appendChild(box);
       }
     }
     var work=document.querySelector('section[aria-labelledby="work-title"]');
