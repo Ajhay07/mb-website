@@ -23,6 +23,23 @@
   var PROCESS_NOTE="Each bellows element is roll-formed on hydraulic tooling to the exact convolution profile the design calls for, then welded by procedure-qualified welders following WPS/PQR records kept to ASME IX. Material certificates, forming and weld traceability are logged against the job number and supplied with the dispatch documentation.";
 
   var DESIGN_INPUTS=["Nominal bore","Design pressure","Design temperature","Media & flow velocity","Axial, lateral & angular movement","Connecting pipe schedule & flange rating"];
+  var DESIGN_INPUTS_NOTE="We confirm these with you before any material is cut, so the design is fixed before fabrication starts.";
+  var QUALITY_CHECKS=["Visual and dimensional check against the approved drawing","Dye penetrant or radiography as specified","Hydrostatic pressure test to design pressure","Final convolution profile and wall thickness check"];
+
+  function addList(parent, title, items, className){
+    var box=document.createElement('div');
+    box.className=className+' mt-8';
+    var h=document.createElement('p');
+    h.className='text-small text-graphite uppercase tracking-wider';
+    h.textContent=title;
+    box.appendChild(h);
+    var ul=document.createElement('ul');
+    ul.className='mt-5 space-y-2 text-graphite';
+    items.forEach(function(t){ var li=document.createElement('li'); li.textContent=t; ul.appendChild(li); });
+    box.appendChild(ul);
+    parent.appendChild(box);
+    return box;
+  }
 
   function addHomeExtras(){
     var procGrid=document.querySelector('div[class*="mt-28"][class*="m:grid-cols-2"]');
@@ -33,20 +50,16 @@
         pp.className='mbr-process-note mbr-home-intro mt-6';
         pp.textContent=PROCESS_NOTE;
         prose.parentNode.insertBefore(pp, prose.nextSibling);
+        var qbox=addList(prose.parentNode, 'Quality checks at this stage', QUALITY_CHECKS, 'mbr-quality-checks');
+        prose.parentNode.insertBefore(qbox, pp.nextSibling);
       }
       var fig=procGrid.querySelector('figure');
       if(fig && !fig.querySelector('.mbr-design-inputs')){
-        var box=document.createElement('div');
-        box.className='mbr-design-inputs mt-8';
-        var h=document.createElement('p');
-        h.className='text-small text-graphite uppercase tracking-wider';
-        h.textContent='Design inputs we work from';
-        box.appendChild(h);
-        var ul=document.createElement('ul');
-        ul.className='mt-5 space-y-2 text-graphite';
-        DESIGN_INPUTS.forEach(function(t){ var li=document.createElement('li'); li.textContent=t; ul.appendChild(li); });
-        box.appendChild(ul);
-        fig.appendChild(box);
+        var box=addList(fig, 'Design inputs we work from', DESIGN_INPUTS, 'mbr-design-inputs');
+        var note=document.createElement('p');
+        note.className='mt-5 text-small text-graphite';
+        note.textContent=DESIGN_INPUTS_NOTE;
+        box.appendChild(note);
       }
     }
     var work=document.querySelector('section[aria-labelledby="work-title"]');

@@ -172,7 +172,7 @@ section[aria-labelledby="life-title"] .mbs2{left:31%;top:0;width:23%}
 section[aria-labelledby="life-title"] .mbs3{right:1%;top:2%;width:29%}
 section[aria-labelledby="life-title"] .mbs4{right:1%;top:41%;width:25%}
 section[aria-labelledby="life-title"] .mbs5{left:1%;top:39%;width:24%}
-section[aria-labelledby="life-title"] .mbs6{left:3%;top:70%;width:30%}
+section[aria-labelledby="life-title"] .mbs6{left:2%;top:58%;width:21%}
 section[aria-labelledby="life-title"] .mbs7{right:3%;top:70%;width:30%}
 }
 
@@ -228,6 +228,6 @@ div[class*="mt-28"][class*="m:grid-cols-2"] [class*="aspect-[4/5]"]{aspect-ratio
 /* "Design inputs" list that fills the home Process section's left column;
    uses the site's own text-small/text-graphite classes, same bullet style
    as #product-spec-section, so the type matches the rest of the page. */
-.mbr-design-inputs ul{list-style:none;padding:0}
-.mbr-design-inputs li{position:relative;padding-left:1.1rem}
-.mbr-design-inputs li::before{content:"";position:absolute;left:0;top:.65em;width:.4rem;height:.4rem;background:#8c927d;border-radius:9999px}
+.mbr-design-inputs ul,.mbr-quality-checks ul{list-style:none;padding:0}
+.mbr-design-inputs li,.mbr-quality-checks li{position:relative;padding-left:1.1rem}
+.mbr-design-inputs li::before,.mbr-quality-checks li::before{content:"";position:absolute;left:0;top:.65em;width:.4rem;height:.4rem;background:#8c927d;border-radius:9999px}
