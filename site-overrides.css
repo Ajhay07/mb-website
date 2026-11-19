@@ -190,3 +190,10 @@ p[class*="text-[37vw]"]{font-size:20vw!important}
 /* Products page: show product names only (no place / year line under each card) */
 div[class*="l:grid-cols-4"][class*="gap-y-14"] a p.text-graphite,
 div[class*="l:grid-cols-4"][class*="gap-y-14"] a [class*="text-graphite"]{display:none!important}
+
+/* Product listing card descriptions and product-page spec section (product-content.js) */
+.mbr-card-desc{margin-top:.5rem;font-size:.875rem;line-height:1.5;color:#555;max-width:32rem}
+#product-spec-section h2{font-size:clamp(1.25rem,1rem + 1vw,1.75rem);line-height:1.15}
+#product-spec-section ul{list-style:none;padding:0}
+#product-spec-section li{position:relative;padding-left:1.1rem}
+#product-spec-section li::before{content:"";position:absolute;left:0;top:.65em;width:.4rem;height:.4rem;background:#8c927d;border-radius:9999px}
