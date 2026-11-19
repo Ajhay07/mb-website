@@ -210,7 +210,6 @@ div[class*="l:grid-cols-4"][class*="gap-y-14"] [class*="aspect-[4/5]"]{aspect-ra
    three full-width ones, and a shorter "next project" panel. */
 section[aria-labelledby="project-title"]{height:42svh!important;min-height:320px!important}
 div[class*="mt-20"][class*="gap-16"][class*="gap-28"] figure.mbr-extra-figure{display:none!important}
-div[class*="mt-20"][class*="gap-16"][class*="gap-28"] figure{max-width:30rem;margin-inline:auto}
 div[class*="mt-20"][class*="gap-16"][class*="gap-28"] figure img{border-radius:.375rem}
 section[aria-labelledby="next-title"]{height:110svh!important}
 section[aria-labelledby="next-title"] [class*="min-h-[560px]"]{min-height:360px!important}
