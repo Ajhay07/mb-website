@@ -20,8 +20,19 @@
   function anchor(){return document.querySelector('section[aria-labelledby="closing-title"]');}
   var WORK_INTRO="A sample of recent production: six expansion joint types supplied to steel, power and process plants across India, each engineered and pressure tested to the customer's operating parameters before dispatch.";
   var LIFE_NOTE="Every unit shown here is pressure tested, dimensionally checked and inspected before it leaves the works, with documentation to ASME, ASTM, DIN or IS supplied as required.";
+  var PROCESS_NOTE="Each bellows element is roll-formed on hydraulic tooling to the exact convolution profile the design calls for, then welded by procedure-qualified welders following WPS/PQR records kept to ASME IX. Material certificates, forming and weld traceability are logged against the job number and supplied with the dispatch documentation.";
 
   function addHomeExtras(){
+    var procGrid=document.querySelector('div[class*="mt-28"][class*="m:grid-cols-2"]');
+    if(procGrid && !procGrid.querySelector('.mbr-process-note')){
+      var prose=procGrid.querySelector('.prose-long');
+      if(prose && prose.parentNode){
+        var pp=document.createElement('p');
+        pp.className='mbr-process-note mbr-home-intro mt-6';
+        pp.textContent=PROCESS_NOTE;
+        prose.parentNode.insertBefore(pp, prose.nextSibling);
+      }
+    }
     var work=document.querySelector('section[aria-labelledby="work-title"]');
     if(work && !work.querySelector('.mbr-home-intro')){
       var head=work.querySelector('div'); // the heading row ("Selected work" / "All N projects")
