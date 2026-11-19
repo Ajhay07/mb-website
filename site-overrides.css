@@ -213,3 +213,13 @@ div[class*="mt-20"][class*="gap-16"][class*="gap-28"] figure.mbr-extra-figure{di
 div[class*="mt-20"][class*="gap-16"][class*="gap-28"] figure img{border-radius:.375rem}
 section[aria-labelledby="next-title"]{height:110svh!important}
 section[aria-labelledby="next-title"] [class*="min-h-[560px]"]{min-height:360px!important}
+
+/* Home page: fewer, smaller images; more room for the added text below */
+section[aria-labelledby="work-title"] [class*="85svh"]{height:52svh!important;min-height:380px!important}
+section[aria-labelledby="life-title"] .mbs5,
+section[aria-labelledby="life-title"] .mbs6,
+section[aria-labelledby="life-title"] .mbs7{display:none!important}
+section[aria-labelledby="life-title"] .grid.grid-cols-2 > :nth-child(n+5){display:none!important}
+
+/* Text injected by extra-sections.js on the home page */
+.mbr-home-intro{max-width:60ch;color:#555}

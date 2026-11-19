@@ -136,6 +136,26 @@
     return true;
   }
 
+  var FAB_FLOOR_NOTE =
+    "Every design is backed by a model workshop: 3D CAD assemblies, finite element stress checks against EJMA allowables, and, for critical duties, a destructive or type test on a sample unit before the production run starts.";
+
+  function addFabFloorNote() {
+    if (!/^\/studio\/?$/.test(location.pathname)) return false;
+    if (document.getElementById("fab-floor-note")) return true;
+    var h2 = [].slice.call(document.querySelectorAll("h2")).filter(function (h) {
+      return /From the Fabrication Floor/.test(h.textContent);
+    })[0];
+    if (!h2) return false;
+    var p = h2.parentElement.querySelector("p.max-w-\\[52ch\\]") || h2.nextElementSibling;
+    if (!p || !p.parentNode) return false;
+    var note = document.createElement("p");
+    note.id = "fab-floor-note";
+    note.className = "mt-4 max-w-[52ch] text-graphite";
+    note.textContent = FAB_FLOOR_NOTE;
+    p.parentNode.insertBefore(note, p.nextSibling);
+    return true;
+  }
+
   var APPROVALS = [
     { standard: "ASME & EJMA design compliance", ref: "EJMA 10th Ed." },
     { standard: "ASME U-Stamp certified fabrication", ref: "ASME Sec. VIII, Div. 1" },
@@ -170,7 +190,7 @@
     addProductDetail();
     addListingIntro();
     shrinkGallery();
-    if (/^\/studio\/?$/.test(location.pathname)) fixApprovalsTable();
+    if (/^\/studio\/?$/.test(location.pathname)) { fixApprovalsTable(); addFabFloorNote(); }
   }
 
   function start() {

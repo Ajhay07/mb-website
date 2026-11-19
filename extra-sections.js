@@ -18,7 +18,37 @@
   var half=Math.ceil(CLIENTS.length/2);
   var HTML='<section id="clients-section"><div class="mbr-head"><div class="mbr-eyebrow">Prestigious Customers &amp; Regular Clients</div><h2>Trusted by India\u2019s Critical Infrastructure</h2><p>We furnish below some of our prestigious regular customers to whom we have supplied and continue supplying our high-performance metallic bellows and expansion joints across power, steel, refinery, fertilizer, cement, sugar and shipping sectors.</p></div><div class="mbr-ribbon" role="list" aria-label="Our clients">'+row(CLIENTS.slice(0,half),70)+row(CLIENTS.slice(half),85)+'</div></section>'+APPS;
   function anchor(){return document.querySelector('section[aria-labelledby="closing-title"]');}
+  var WORK_INTRO="A sample of recent production: six expansion joint types supplied to steel, power and process plants across India, each engineered and pressure tested to the customer's operating parameters before dispatch.";
+  var LIFE_NOTE="Every unit shown here is pressure tested, dimensionally checked and inspected before it leaves the works, with documentation to ASME, ASTM, DIN or IS supplied as required.";
+
+  function addHomeExtras(){
+    var work=document.querySelector('section[aria-labelledby="work-title"]');
+    if(work && !work.querySelector('.mbr-home-intro')){
+      var head=work.querySelector('div'); // the heading row ("Selected work" / "All N projects")
+      if(head && head.parentNode){
+        var p=document.createElement('p');
+        p.className='mbr-home-intro mt-3';
+        p.textContent=WORK_INTRO;
+        head.parentNode.insertBefore(p, head.nextSibling);
+      }
+    }
+    var life=document.getElementById('life-title');
+    if(life){
+      var block=life.closest('div');
+      if(block && !block.querySelector('.mbr-life-note')){
+        var link=block.querySelector('a[href="/studio"]');
+        if(link && link.parentNode){
+          var p2=document.createElement('p');
+          p2.className='mbr-life-note mbr-home-intro mt-4';
+          p2.textContent=LIFE_NOTE;
+          link.parentNode.insertBefore(p2, link);
+        }
+      }
+    }
+  }
+
   function ensure(){
+    addHomeExtras();
     if(document.getElementById('clients-section'))return;
     var a=anchor(); if(!a||!a.parentNode)return;
     var t=document.createElement('template'); t.innerHTML=HTML;
@@ -26,7 +56,16 @@
   }
   function start(){
     var n=0,iv=setInterval(function(){ensure(); if(++n>40)clearInterval(iv);},500);
-    var m=document.querySelector('main'); if(m&&m.parentNode)new MutationObserver(function(){ if(!document.getElementById('clients-section'))ensure(); }).observe(m.parentNode,{childList:true});
+    var m=document.querySelector('main');
+    if(m&&m.parentNode){
+      var pending=false;
+      var mo=new MutationObserver(function(){
+        if(pending)return; pending=true;
+        setTimeout(function(){ pending=false; ensure(); },300);
+      });
+      mo.observe(m.parentNode,{childList:true});
+      setTimeout(function(){ mo.disconnect(); },30000);
+    }
   }
   if(document.readyState==='complete')setTimeout(start,1200);else window.addEventListener('load',function(){setTimeout(start,1200);});
 })();
