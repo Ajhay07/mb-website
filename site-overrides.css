@@ -216,7 +216,6 @@ section[aria-labelledby="next-title"] [class*="min-h-[560px]"]{min-height:360px!
 
 /* Home page: fewer, smaller images; more room for the added text below */
 section[aria-labelledby="life-title"] .mbs5,
-section[aria-labelledby="life-title"] .mbs6,
 section[aria-labelledby="life-title"] .mbs7{display:none!important}
 section[aria-labelledby="life-title"] .grid.grid-cols-2 > :nth-child(n+5){display:none!important}
 
