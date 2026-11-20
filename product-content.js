@@ -144,7 +144,7 @@
   }
 
   var FAB_FLOOR_NOTE =
-    "Every design is backed up before it's cut: a 3D CAD assembly, a finite-element stress check against EJMA's allowables, and — for anything safety-critical — a destructive or type test on a sample unit before the production run starts.";
+    "Welding runs to procedures qualified under ASME IX, and every heat of material, weld and inspection record is logged against the job number as the unit moves through the shop — the certification pack that ships with it is built from that same paper trail, not assembled afterward.";
 
   function addFabFloorNote() {
     if (!/^\/studio\/?$/.test(location.pathname)) return false;
