@@ -24,6 +24,8 @@
 
   var DESIGN_INPUTS=["Nominal bore","Design pressure","Design temperature","Media & flow velocity","Axial, lateral & angular movement","Connecting pipe schedule & flange rating"];
   var DESIGN_INPUTS_NOTE="We confirm these with you before any material is cut, so the design is fixed before fabrication starts.";
+  var DESIGN_REVIEW_NOTE="A design review follows: geometry, bellows thickness and ply count are checked against EJMA fatigue-life limits, and the proposed materials and test plan are confirmed before the drawing is released to the shop floor.";
+  var DRAWING_PACK_NOTE="The released drawing pack carries the bellows profile, flange and end-connection details, the applicable code (ASME, EJMA, PED or IBR) and the inspection and test plan the unit will be built and checked against.";
   var QUALITY_CHECKS=["Visual and dimensional check against the approved drawing","Dye penetrant or radiography as specified","Hydrostatic pressure test to design pressure","Final convolution profile and wall thickness check"];
 
   function addList(parent, title, items, className){
@@ -57,9 +59,17 @@
       if(fig && !fig.querySelector('.mbr-design-inputs')){
         var box=addList(fig, 'Design inputs we work from', DESIGN_INPUTS, 'mbr-design-inputs');
         var note=document.createElement('p');
-        note.className='mt-5 text-small text-graphite';
+        note.className='mt-5 text-graphite';
         note.textContent=DESIGN_INPUTS_NOTE;
         box.appendChild(note);
+        var note2=document.createElement('p');
+        note2.className='mt-5 text-graphite';
+        note2.textContent=DESIGN_REVIEW_NOTE;
+        box.appendChild(note2);
+        var note3=document.createElement('p');
+        note3.className='mt-5 text-graphite';
+        note3.textContent=DRAWING_PACK_NOTE;
+        box.appendChild(note3);
       }
     }
     var work=document.querySelector('section[aria-labelledby="work-title"]');
