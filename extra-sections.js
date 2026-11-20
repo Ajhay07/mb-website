@@ -18,14 +18,14 @@
   var half=Math.ceil(CLIENTS.length/2);
   var HTML='<section id="clients-section"><div class="mbr-head"><div class="mbr-eyebrow">Prestigious Customers &amp; Regular Clients</div><h2>Trusted by India\u2019s Critical Infrastructure</h2><p>We furnish below some of our prestigious regular customers to whom we have supplied and continue supplying our high-performance metallic bellows and expansion joints across power, steel, refinery, fertilizer, cement, sugar and shipping sectors.</p></div><div class="mbr-ribbon" role="list" aria-label="Our clients">'+row(CLIENTS.slice(0,half),70)+row(CLIENTS.slice(half),85)+'</div></section>'+APPS;
   function anchor(){return document.querySelector('section[aria-labelledby="closing-title"]');}
-  var WORK_INTRO="A sample of recent production: six expansion joint types supplied to steel, power and process plants across India, each engineered and pressure tested to the customer's operating parameters before dispatch.";
-  var LIFE_NOTE="Every unit shown here is pressure tested, dimensionally checked and inspected before it leaves the works, with documentation to ASME, ASTM, DIN or IS supplied as required.";
-  var PROCESS_NOTE="Each bellows element is roll-formed on hydraulic tooling to the exact convolution profile the design calls for, then welded by procedure-qualified welders following WPS/PQR records kept to ASME IX. Material certificates, forming and weld traceability are logged against the job number and supplied with the dispatch documentation.";
+  var WORK_INTRO="Six joint types, six different jobs — pulled from recent orders to steel, power and process plants, each one built to the pressure, temperature and movement the line actually called for.";
+  var LIFE_NOTE="Nothing leaves the works untested. Every unit is pressure tested, measured against its drawing and inspected before dispatch, with certificates to ASME, ASTM, DIN or IS to match.";
+  var PROCESS_NOTE="The convolution profile is roll-formed on hydraulic tooling to the exact figures the design calls for — get that wrong and the fatigue-life calculation on the drawing means nothing. Welding follows procedures qualified to ASME IX, and every material certificate, forming record and weld traceability log is filed against the job number, ready to go out with the unit.";
 
   var DESIGN_INPUTS=["Nominal bore","Design pressure","Design temperature","Media & flow velocity","Axial, lateral & angular movement","Connecting pipe schedule & flange rating"];
-  var DESIGN_INPUTS_NOTE="We confirm these with you before any material is cut, so the design is fixed before fabrication starts.";
-  var DESIGN_REVIEW_NOTE="A design review follows: geometry, bellows thickness and ply count are checked against EJMA fatigue-life limits, and the proposed materials and test plan are confirmed before the drawing is released to the shop floor.";
-  var DRAWING_PACK_NOTE="The released drawing pack carries the bellows profile, flange and end-connection details, the applicable code (ASME, EJMA, PED or IBR) and the inspection and test plan the unit will be built and checked against.";
+  var DESIGN_INPUTS_NOTE="We go through these with you before anything is cut. Change the design after forming starts and you're paying for scrap.";
+  var DESIGN_REVIEW_NOTE="From there it goes to design review — geometry, wall thickness and ply count checked against EJMA's fatigue-life numbers, materials and test plan signed off, before the drawing is released to the floor.";
+  var DRAWING_PACK_NOTE="What goes to the shop is the full pack: bellows profile, flange and end-connection detail, the governing code, and the inspection and test plan the fabricator builds and the inspector checks against. Nothing gets made off a sketch.";
   var QUALITY_CHECKS=["Visual and dimensional check against the approved drawing","Dye penetrant or radiography as specified","Hydrostatic pressure test to design pressure","Final convolution profile and wall thickness check"];
 
   function addList(parent, title, items, className){
