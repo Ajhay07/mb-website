@@ -17,23 +17,23 @@
       design: "A universal joint puts two bellows either side of a floating centre spool, so the assembly takes up lateral offset in any direction while the spool itself carries axial and angular movement. Run two of these in a line and you can close out almost any misalignment between two anchors without loading either one.",
       applications: ["Steam and high-temperature process piping", "Turbine exhaust and condenser ducts", "Pump and compressor suction/discharge nozzles", "Tank farm and interconnecting pipeline runs"],
       materials: "We form the bellows in 304, 316 or 321 stainless, or in Inconel 625 and Incoloy 825 where the line runs hot or carries something the lighter grades won't take. An internal liner keeps flow-induced wear off the convolutions; external cover plates do the same job against knocks on site.",
-      sizes: "Nominal bore from 20 mm up. Length and convolution count are set by how much lateral movement the run calls for — give us the offset and we'll size the spool to suit.",
+      sizes: "Nominal bore from 20 mm up. Length and convolution count are set by how much lateral movement the run calls for, so give us the offset and we'll size the spool to suit.",
       standards: "Design follows EJMA's fatigue and stability rules for universal joints; fabrication runs to ASME Section VIII in our U-Stamped shop, with PED or IBR cover added where the job needs it.",
-      quality: "Every unit gets a hydrostatic test to design pressure, a dimensional check against the approved drawing, and a weld inspection — dye penetrant as standard, radiography where the specification calls for it. Certificates travel with the unit."
+      quality: "Every unit gets a hydrostatic test to design pressure, a dimensional check against the approved drawing, and a weld inspection: dye penetrant as standard, radiography where the specification calls for it. Certificates travel with the unit."
     },
     "norrebro-library-annex": {
-      design: "A hinged joint pins two plates either side of a single bellows, so the hinge — not the bellows — carries the pressure thrust and any side load from the duct. That leaves the bellows to do one thing: rotate, in the plane the hinge allows. On their own they only manage one movement, which is why you'll usually see two or three of them working together to close out an offset.",
+      design: "A hinged joint pins two plates either side of a single bellows, so the hinge, not the bellows, carries the pressure thrust and any side load from the duct. That leaves the bellows to do one thing: rotate, in the plane the hinge allows. On their own they only manage one movement, which is why you'll usually see two or three of them working together to close out an offset.",
       applications: ["Flue gas and ducting systems", "Boiler and furnace connections", "Large-diameter, low-pressure ducts requiring single-plane rotation", "Blast furnace gas main sections"],
-      materials: "Bellows elements are stainless; hinge plates and pins go in carbon or alloy steel, sized to the thrust the line will put through them — heavier wall, or a harder pin, where the pressure or the duct diameter calls for it.",
-      sizes: "These scale up well. Most of our large-diameter, low-pressure duct work — flue gas lines, blast furnace gas mains — runs on hinged joints rather than one oversized bellows.",
+      materials: "Bellows elements are stainless; hinge plates and pins go in carbon or alloy steel, sized to the thrust the line will put through them, with a heavier wall or a harder pin where the pressure or the duct diameter calls for it.",
+      sizes: "These scale up well. Most of our large-diameter, low-pressure duct work, flue gas lines and blast furnace gas mains among them, runs on hinged joints rather than one oversized bellows.",
       standards: "EJMA governs the bellows geometry; the hinge hardware is sized separately, by hand calculation against the line's maximum thrust rather than the EJMA pressure rating.",
       quality: "Hinge pins and plates are checked for dimension before assembly, the welded bellows is leak-tested, and the finished joint is cycled through its design rotation before it leaves the shop."
     },
     "fjordhus": {
-      design: "Two hinge pairs, set at right angles on a floating gimbal ring, give this joint rotation in any plane at once rather than just one — which is the whole reason to specify a gimbal over a pair of hinged joints. The ring carries the thrust; the bellows only flexes.",
+      design: "Two hinge pairs, set at right angles on a floating gimbal ring, give this joint rotation in any plane at once rather than just one, which is the whole reason to specify a gimbal over a pair of hinged joints. The ring carries the thrust; the bellows only flexes.",
       applications: ["Multi-directional piping runs in refineries and power plants", "Elbow-to-elbow connections absorbing angular movement in any plane", "Pipe racks and interconnecting lines with limited anchor points"],
       materials: "Bellows in stainless or high-nickel alloy; gimbal rings and trunnions forged in carbon steel and machined to take the thrust without deflecting under load.",
-      sizes: "Sized first to the line pressure, then checked against the angular rotation needed in each plane — the two don't always point to the same ring diameter, so we check both before we commit to a design.",
+      sizes: "Sized first to the line pressure, then checked against the angular rotation needed in each plane. The two don't always point to the same ring diameter, so we check both before we commit to a design.",
       standards: "EJMA's angular-rotation limits set the bellows geometry; ring and trunnion sizing is our own calculation, checked against the worst-case combined thrust from both planes.",
       quality: "Before dispatch we run the gimbal through its full rotation under no load, then hydrostatic test the bellows to design pressure with the ring locked square."
     },
@@ -41,20 +41,20 @@
       design: "Rectangular joints are built to the duct's own cross-section rather than forced into a round bellows, which is the only practical way to handle the large, low-pressure ducting that flue gas and air-handling work usually needs. Corner geometry and reinforcement are worked out case by case; a square corner behaves very differently from a radiused one under the same pressure.",
       applications: ["Flue gas ducts and boiler casings", "Air-handling and low-pressure ventilation systems", "Non-circular ducting in steel and cement plants"],
       materials: "Stainless or carbon steel plate, formed and welded panel by panel. PTFE, fabric or metallic liners go in where the gas stream carries abrasive dust or runs corrosive.",
-      sizes: "There's no fixed bore here — we work from your duct drawing, and convolution count and reinforcement follow from that.",
+      sizes: "There's no fixed bore here. We work from your duct drawing, and convolution count and reinforcement follow from that.",
       standards: "EJMA's rectangular-joint rules cover the convolution design; liner material is chosen against the gas analysis you give us, not a standard specification.",
       quality: "Panel welds are inspected before final assembly, corners are checked against the drawing for square, and the finished joint is pressure-tested to the design figure before it ships."
     },
     "saltvaerket-studios": {
       design: "Two bellows, not one: a flow bellows and a smaller balancing bellows, tied together through a central spool and a tie-rod frame. The balancing bellows takes the same pressure thrust in the opposite direction, so the two cancel out internally instead of loading whatever's bolted to either end. That's what lets you put a joint at a bend without anchoring the pump or turbine nozzle behind it.",
       applications: ["Pipeline direction changes where thrust cannot be anchored", "Turbine exhaust and compressor discharge lines", "Refinery and petrochemical process piping"],
-      materials: "Both bellows in the same material — stainless or high-nickel alloy — with the tie-rod frame sized in carbon steel to the net thrust once the balancing is accounted for.",
+      materials: "Both bellows in the same material, stainless or high-nickel alloy, with the tie-rod frame sized in carbon steel to the net thrust once the balancing is accounted for.",
       sizes: "The balancing bellows area is set as a ratio of the flow bellows area. Get that ratio right and the residual thrust on the anchors drops close to zero.",
       standards: "EJMA's pressure-balanced design procedure sets the area ratio and tie-rod sizing; fabrication is ASME Section VIII in our U-Stamped shop.",
-      quality: "We test the flow and balancing bellows separately before assembly, then hydrostatic test the finished joint as a unit — a mismatch between the two only shows up once it's fully assembled, so that final test is the one that matters."
+      quality: "We test the flow and balancing bellows separately before assembly, then hydrostatic test the finished joint as a unit. A mismatch between the two only shows up once it's fully assembled, so that final test is the one that matters."
     },
     "lysning-chapel": {
-      design: "Past about 1500 mm diameter, a bellows stops being something you form in one piece. It's built as ring sections, welded up in the shop or, beyond transport limits, on site. Getting the circumferential welds right is most of the job at this size — a few millimetres of mismatch between rings shows up as a stress riser once the line starts cycling.",
+      design: "Past about 1500 mm diameter, a bellows stops being something you form in one piece. It's built as ring sections, welded up in the shop or, beyond transport limits, on site. Getting the circumferential welds right is most of the job at this size: a few millimetres of mismatch between rings shows up as a stress riser once the line starts cycling.",
       applications: ["Blast furnace gas mains", "Large-diameter ducting in steel and cement plants", "Cooling water and FGD (flue gas desulphurisation) ducting"],
       materials: "Multi-ply stainless or carbon steel, with ply count set by the design pressure and the number of cycles the line will see over its life.",
       sizes: "Up to 9000 mm diameter, the top of our range, built up from ring sections for anything beyond a single forming pass or a standard trailer load.",
@@ -64,7 +64,7 @@
   };
 
   var LISTING_INTRO =
-    "Every joint below starts from the same brief: nominal bore, design pressure and temperature, flow media, and the movement — axial, lateral, angular — it has to absorb. From there it's formed, welded and tested at our Chennai works to EJMA, ASME and PED, in sizes from 20 mm nominal bore up to 9000 mm diameter, in stainless steel, high-nickel alloy or carbon steel.";
+    "Every joint below starts from the same brief: nominal bore, design pressure and temperature, flow media, and the movement (axial, lateral, angular) it has to absorb. From there it's formed, welded and tested at our Chennai works to EJMA, ASME and PED, in sizes from 20 mm nominal bore up to 9000 mm diameter, in stainless steel, high-nickel alloy or carbon steel.";
 
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
 
@@ -144,7 +144,7 @@
   }
 
   var FAB_FLOOR_NOTE =
-    "Welding runs to procedures qualified under ASME IX, and every heat of material, weld and inspection record is logged against the job number as the unit moves through the shop — the certification pack that ships with it is built from that same paper trail, not assembled afterward.";
+    "Welding runs to procedures qualified under ASME IX, and every heat of material, weld and inspection record is logged against the job number as the unit moves through the shop. The certification pack that ships with it is built from that same paper trail, not assembled afterward.";
 
   function addFabFloorNote() {
     if (!/^\/studio\/?$/.test(location.pathname)) return false;
