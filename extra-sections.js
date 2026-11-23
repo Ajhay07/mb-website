@@ -77,7 +77,7 @@
       var head=work.querySelector('div'); // the heading row ("Selected work" / "All N projects")
       if(head && head.parentNode){
         var p=document.createElement('p');
-        p.className='mbr-home-intro mt-3';
+        p.className='mbr-home-intro mt-3 px-4 m:px-8';
         p.textContent=WORK_INTRO;
         head.parentNode.insertBefore(p, head.nextSibling);
       }
