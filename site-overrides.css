@@ -233,14 +233,3 @@ div[class*="mt-28"][class*="m:grid-cols-2"]{align-items:start!important}
 .mbr-design-inputs ul,.mbr-quality-checks ul{list-style:none;padding:0}
 .mbr-design-inputs li,.mbr-quality-checks li{position:relative;padding-left:1.1rem}
 .mbr-design-inputs li::before,.mbr-quality-checks li::before{content:"";position:absolute;left:0;top:.65em;width:.4rem;height:.4rem;background:#8c927d;border-radius:9999px}
-
-/* Home "critical piping services" section: neat symmetric image border around the text */
-section[aria-labelledby="life-title"] .relative.hidden>div{width:15%!important}
-section[aria-labelledby="life-title"] .relative.hidden>div>img{aspect-ratio:3/2;object-fit:cover;height:auto!important}
-section[aria-labelledby="life-title"] .relative.hidden>div:nth-child(1){left:4%!important;right:auto!important;top:5%!important}
-section[aria-labelledby="life-title"] .relative.hidden>div:nth-child(2){left:42.5%!important;right:auto!important;top:5%!important}
-section[aria-labelledby="life-title"] .relative.hidden>div:nth-child(3){right:4%!important;left:auto!important;top:5%!important}
-section[aria-labelledby="life-title"] .relative.hidden>div:nth-child(5){left:4%!important;right:auto!important;top:43%!important}
-section[aria-labelledby="life-title"] .relative.hidden>div:nth-child(4){right:4%!important;left:auto!important;top:43%!important}
-section[aria-labelledby="life-title"] .relative.hidden>div:nth-child(6){left:4%!important;right:auto!important;top:80%!important}
-section[aria-labelledby="life-title"] .relative.hidden>div:nth-child(7){right:4%!important;left:auto!important;top:80%!important}
