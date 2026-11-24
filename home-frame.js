@@ -6,21 +6,28 @@
   if (!/^\/?$/.test(location.pathname)) return;
 
   var BASE = "https://res.cloudinary.com/kbig7iit/image/upload/f_auto,q_auto:best,c_limit,w_1600/mb-website/";
-  // Extra images appended if the section has fewer than the layout needs.
+  // Extra images appended if the section has fewer than the layout needs
+  // (all dark industrial shots so the frame stays cohesive on the dark section).
   var EXTRA = [
     { src: "hq/hq-tig-welding", alt: "TIG welding a bellows flange" },
     { src: "hq/hq-finished-bellows", alt: "Finished metallic bellows units" },
     { src: "hq/hq-pipe-installation", alt: "Expansion joint installed on process piping" },
-    { src: "products/universal-expansion-joint", alt: "Universal expansion joint" },
-    { src: "products/gimbal-expansion-joint", alt: "Gimbal expansion joint" }
+    { src: "hq/hq-pressure-testing", alt: "Hydrostatic pressure testing of an expansion joint" },
+    { src: "hq/hq-steel-coils", alt: "Stainless steel coil stock" }
   ];
 
-  // Two solid columns flanking the centred text, each filled top-to-bottom with
-  // images touching edge-to-edge (no gaps), so neither side can read as empty.
-  var L = 2, R = 76, W = 22, N = 4, RH = 100 / N; // 4 images per column, 25% tall each
-  var SLOTS = [];
-  for (var _i = 0; _i < N; _i++) SLOTS.push({ x: L, y: _i * RH, h: RH });
-  for (var _j = 0; _j < N; _j++) SLOTS.push({ x: R, y: _j * RH, h: RH });
+  // A full picture-frame border: a top row and a bottom row of images, plus
+  // images down each side, with the text boxed in the centre. Equal gaps all round.
+  var CX = [2, 27, 52, 77];   // column left edges (each W wide)
+  var RY = [2, 27, 52, 76];   // row top edges (each H tall)
+  var W = 21, H = 22;
+  var SLOTS = [
+    { x: CX[0], y: RY[0] }, { x: CX[1], y: RY[0] }, { x: CX[2], y: RY[0] }, { x: CX[3], y: RY[0] }, // top row
+    { x: CX[0], y: RY[1] }, { x: CX[3], y: RY[1] },                                                  // sides, upper middle
+    { x: CX[0], y: RY[2] }, { x: CX[3], y: RY[2] },                                                  // sides, lower middle
+    { x: CX[0], y: RY[3] }, { x: CX[1], y: RY[3] }, { x: CX[2], y: RY[3] }, { x: CX[3], y: RY[3] }   // bottom row
+  ];
+  for (var _s = 0; _s < SLOTS.length; _s++) SLOTS[_s].h = H;
 
   function frameEl() {
     var sec = document.querySelector('section[aria-labelledby="life-title"]');
@@ -70,8 +77,17 @@
       var im = el.querySelector("img");
       if (im) {
         im.loading = "eager";
-        im.style.width = "100%";
-        im.style.height = "100%";
+        // Absolutely fill the box so the native h-auto class can't shrink it,
+        // leaving no dark gap inside any tile.
+        im.removeAttribute("width");
+        im.removeAttribute("height");
+        im.style.position = "absolute";
+        im.style.top = "0";
+        im.style.left = "0";
+        im.style.right = "0";
+        im.style.bottom = "0";
+        im.style.setProperty("width", "100%", "important");
+        im.style.setProperty("height", "100%", "important");
         im.style.aspectRatio = "auto";
         im.style.objectFit = "cover";
         im.style.display = "block";
