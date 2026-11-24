@@ -5,8 +5,8 @@
   if (!/^\/contact\/?$/.test(location.pathname)) return;
 
   var LINKS = [
-    { label: "Buy from MB Metallic Bellows", href: "https://mbmetallicbellows.com/request.html", ext: true },
-    { label: "Sell to MB Metallic Bellows", href: "https://mbmetallicbellows.com/vendor.html", ext: true },
+    { label: "Buy from MB Metallic Bellows", href: "/request", ext: false },
+    { label: "Sell to MB Metallic Bellows", href: "/vendor", ext: false },
     { label: "Careers / Job Openings", href: "mailto:info@mbmetallicbellows.com", ext: false }
   ];
 
