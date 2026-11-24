@@ -15,16 +15,12 @@
     { src: "products/gimbal-expansion-joint", alt: "Gimbal expansion joint" }
   ];
 
-  // Even frame: 4 down the left edge, 4 down the right edge, 1 top-centre.
-  // Columns pulled in towards the text and images enlarged so the bands beside
-  // and above the heading read as full rather than empty.
-  var L = 3, R = 77, C = 40, W = 20;
-  var SLOTS = [
-    { x: L, y: 2 }, { x: C, y: 2 }, { x: R, y: 2 },
-    { x: L, y: 27 }, { x: R, y: 27 },
-    { x: L, y: 52 }, { x: R, y: 52 },
-    { x: L, y: 77 }, { x: R, y: 77 }
-  ];
+  // Two solid columns flanking the centred text, each filled top-to-bottom with
+  // images touching edge-to-edge (no gaps), so neither side can read as empty.
+  var L = 2, R = 76, W = 22, N = 4, RH = 100 / N; // 4 images per column, 25% tall each
+  var SLOTS = [];
+  for (var _i = 0; _i < N; _i++) SLOTS.push({ x: L, y: _i * RH, h: RH });
+  for (var _j = 0; _j < N; _j++) SLOTS.push({ x: R, y: _j * RH, h: RH });
 
   function frameEl() {
     var sec = document.querySelector('section[aria-labelledby="life-title"]');
@@ -57,21 +53,26 @@
       kids.push(d);
     }
 
-    // Position every slot; crop uniformly.
+    // Position every slot as a fixed box; images fill it (object-fit cover) so the
+    // two columns read as solid, gap-free bands.
     for (var s = 0; s < SLOTS.length && s < kids.length; s++) {
       var el = kids[s], p = SLOTS[s];
       el.style.position = "absolute";
       el.style.left = p.x + "%";
       el.style.right = "auto";
-      el.style.top = p.y + "%";
+      el.style.top = "calc(" + p.y + "% + 4px)";
       el.style.bottom = "auto";
       el.style.width = W + "%";
+      el.style.height = "calc(" + p.h + "% - 8px)";
+      el.style.overflow = "hidden";
+      el.style.borderRadius = "6px";
+      el.style.display = "block";
       var im = el.querySelector("img");
       if (im) {
         im.loading = "eager";
         im.style.width = "100%";
-        im.style.height = "auto";
-        im.style.aspectRatio = "4 / 3";
+        im.style.height = "100%";
+        im.style.aspectRatio = "auto";
         im.style.objectFit = "cover";
         im.style.display = "block";
       }
