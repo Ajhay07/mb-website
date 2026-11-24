@@ -1,110 +1,108 @@
-/* Home "critical piping services" section: arrange the photos into a full, even
-   picture-frame border around the centred text, adding a few more images so there
-   are no large empty gaps. Runs after hydration and re-applies via a guarded
-   MutationObserver, like extra-sections.js / product-content.js. */
+/* Home "critical piping services" section: a full picture-frame border of 12
+   photos (top row, bottom row, two down each side) around the centred text.
+   Previous version repositioned the section's own scattered <img> elements,
+   which React can add/remove later (hydration, animations), silently leaving
+   slots empty. This version instead builds one self-contained wrapper of 12
+   images that we fully own, inserts it once, and simply re-inserts the whole
+   wrapper if anything ever removes it — never depends on the native images. */
 (function () {
   if (!/^\/?$/.test(location.pathname)) return;
 
   var BASE = "https://res.cloudinary.com/kbig7iit/image/upload/f_auto,q_auto:best,c_limit,w_1600/mb-website/";
-  // Extra images appended if the section has fewer than the layout needs
-  // (all dark industrial shots so the frame stays cohesive on the dark section).
-  var EXTRA = [
+  var WRAP_ID = "mbr-home-frame";
+
+  // 12 distinct real photos, one per slot (no repeats).
+  var PHOTOS = [
+    { src: "hq/hq-bellows-forming", alt: "Bellows being roll-formed on precision tooling" },
+    { src: "hq/hq-dimensional-inspection", alt: "Dimensional inspection of a bellows convolution" },
     { src: "hq/hq-tig-welding", alt: "TIG welding a bellows flange" },
-    { src: "hq/hq-finished-bellows", alt: "Finished metallic bellows units" },
-    { src: "hq/hq-pipe-installation", alt: "Expansion joint installed on process piping" },
     { src: "hq/hq-pressure-testing", alt: "Hydrostatic pressure testing of an expansion joint" },
-    { src: "hq/hq-steel-coils", alt: "Stainless steel coil stock" }
+    { src: "hq/hq-pipe-installation", alt: "Expansion joint installed on process piping" },
+    { src: "hq/hq-finished-bellows", alt: "Finished metallic bellows units" },
+    { src: "hq/hq-product-range", alt: "Range of finished bellows and metal hose products" },
+    { src: "hq/hq-steel-coils", alt: "Stainless steel coil stock" },
+    { src: "products/universal-expansion-joint", alt: "Universal expansion joint" },
+    { src: "products/hinged-expansion-joint", alt: "Hinged expansion joint" },
+    { src: "products/gimbal-expansion-joint", alt: "Gimbal expansion joint" },
+    { src: "products/rectangular-expansion-joint", alt: "Rectangular expansion joint" }
   ];
 
-  // A full picture-frame border: a top row and a bottom row of images, plus
-  // images down each side, with the text boxed in the centre. Equal gaps all round.
-  var CX = [2, 27, 52, 77];   // column left edges (each W wide)
-  var RY = [2, 27, 52, 76];   // row top edges (each H tall)
-  var W = 21, H = 22;
+  // Frame geometry: top row (4), bottom row (4), two down each side.
+  // Bottom row pushed down to RY[3]=84 so it clears the "How we work" link
+  // instead of sitting flush under the text block.
+  var CX = [2, 27, 52, 77];
+  var W = 21;
+  var TOP_Y = 2, TOP_H = 17;
+  var SIDE_Y = [26, 54], SIDE_H = 22;
+  var BOT_Y = 84, BOT_H = 14;
+
   var SLOTS = [
-    { x: CX[0], y: RY[0] }, { x: CX[1], y: RY[0] }, { x: CX[2], y: RY[0] }, { x: CX[3], y: RY[0] }, // top row
-    { x: CX[0], y: RY[1] }, { x: CX[3], y: RY[1] },                                                  // sides, upper middle
-    { x: CX[0], y: RY[2] }, { x: CX[3], y: RY[2] },                                                  // sides, lower middle
-    { x: CX[0], y: RY[3] }, { x: CX[1], y: RY[3] }, { x: CX[2], y: RY[3] }, { x: CX[3], y: RY[3] }   // bottom row
+    { x: CX[0], y: TOP_Y, h: TOP_H }, { x: CX[1], y: TOP_Y, h: TOP_H }, { x: CX[2], y: TOP_Y, h: TOP_H }, { x: CX[3], y: TOP_Y, h: TOP_H },
+    { x: CX[0], y: SIDE_Y[0], h: SIDE_H }, { x: CX[3], y: SIDE_Y[0], h: SIDE_H },
+    { x: CX[0], y: SIDE_Y[1], h: SIDE_H }, { x: CX[3], y: SIDE_Y[1], h: SIDE_H },
+    { x: CX[0], y: BOT_Y, h: BOT_H }, { x: CX[1], y: BOT_Y, h: BOT_H }, { x: CX[2], y: BOT_Y, h: BOT_H }, { x: CX[3], y: BOT_Y, h: BOT_H }
   ];
-  for (var _s = 0; _s < SLOTS.length; _s++) SLOTS[_s].h = H;
 
   function frameEl() {
     var sec = document.querySelector('section[aria-labelledby="life-title"]');
     return sec ? sec.querySelector(".relative.hidden") : null;
   }
 
-  function makeImg(spec) {
-    var div = document.createElement("div");
-    div.className = "absolute";
-    div.setAttribute("data-mbr-frame-extra", "");
-    var img = document.createElement("img");
-    img.loading = "eager";
-    img.decoding = "async";
-    img.alt = spec.alt;
-    img.src = BASE + spec.src;
-    div.appendChild(img);
-    return div;
+  function buildWrap() {
+    var wrap = document.createElement("div");
+    wrap.id = WRAP_ID;
+    wrap.style.position = "absolute";
+    wrap.style.inset = "0";
+    wrap.style.pointerEvents = "none";
+    for (var i = 0; i < SLOTS.length; i++) {
+      var p = SLOTS[i], spec = PHOTOS[i % PHOTOS.length];
+      var tile = document.createElement("div");
+      tile.style.position = "absolute";
+      tile.style.left = p.x + "%";
+      tile.style.top = "calc(" + p.y + "% + 4px)";
+      tile.style.width = W + "%";
+      tile.style.height = "calc(" + p.h + "% - 8px)";
+      tile.style.overflow = "hidden";
+      tile.style.borderRadius = "6px";
+      var img = document.createElement("img");
+      img.loading = "eager";
+      img.decoding = "async";
+      img.alt = spec.alt;
+      img.src = BASE + spec.src;
+      img.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block";
+      tile.appendChild(img);
+      wrap.appendChild(tile);
+    }
+    return wrap;
   }
 
   function apply() {
     var frame = frameEl();
     if (!frame) return false;
-    var kids = [].slice.call(frame.children).filter(function (c) { return c.querySelector && c.querySelector("img"); });
 
-    // Append extra images until we have enough for the layout.
-    var need = SLOTS.length - kids.length;
-    for (var i = 0; i < need && i < EXTRA.length; i++) {
-      var d = makeImg(EXTRA[i]);
-      frame.appendChild(d);
-      kids.push(d);
+    // Hide the section's own native images (they're not part of our frame).
+    var kids = [].slice.call(frame.children);
+    for (var i = 0; i < kids.length; i++) {
+      if (kids[i].id !== WRAP_ID) kids[i].style.display = "none";
     }
 
-    // Position every slot as a fixed box; images fill it (object-fit cover) so the
-    // two columns read as solid, gap-free bands.
-    for (var s = 0; s < SLOTS.length && s < kids.length; s++) {
-      var el = kids[s], p = SLOTS[s];
-      el.style.position = "absolute";
-      el.style.left = p.x + "%";
-      el.style.right = "auto";
-      el.style.top = "calc(" + p.y + "% + 4px)";
-      el.style.bottom = "auto";
-      el.style.width = W + "%";
-      el.style.height = "calc(" + p.h + "% - 8px)";
-      el.style.overflow = "hidden";
-      el.style.borderRadius = "6px";
-      el.style.display = "block";
-      var im = el.querySelector("img");
-      if (im) {
-        im.loading = "eager";
-        // Absolutely fill the box so the native h-auto class can't shrink it,
-        // leaving no dark gap inside any tile.
-        im.removeAttribute("width");
-        im.removeAttribute("height");
-        im.style.position = "absolute";
-        im.style.top = "0";
-        im.style.left = "0";
-        im.style.right = "0";
-        im.style.bottom = "0";
-        im.style.setProperty("width", "100%", "important");
-        im.style.setProperty("height", "100%", "important");
-        im.style.aspectRatio = "auto";
-        im.style.objectFit = "cover";
-        im.style.display = "block";
-      }
+    // Insert our own 12-photo wrapper if it isn't already there.
+    if (!document.getElementById(WRAP_ID)) {
+      frame.appendChild(buildWrap());
     }
-    // Hide any leftover images beyond the layout so nothing floats loose.
-    for (var k = SLOTS.length; k < kids.length; k++) kids[k].style.display = "none";
     return true;
   }
 
   function start() {
-    var n = 0,
-      iv = setInterval(function () { if (apply() || ++n > 40) clearInterval(iv); }, 500);
+    apply();
     var sec = document.querySelector('section[aria-labelledby="life-title"]') || document.body;
     var pending = false;
-    var mo = new MutationObserver(function () {
-      if (pending) return;
+    var mo = new MutationObserver(function (records) {
+      // Ignore mutations that are only inside our own wrapper (nothing to react to).
+      var relevant = records.some(function (r) {
+        return !(r.target && r.target.closest && r.target.closest("#" + WRAP_ID));
+      });
+      if (!relevant || pending) return;
       pending = true;
       setTimeout(function () { pending = false; apply(); }, 300);
     });
