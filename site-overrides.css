@@ -253,3 +253,20 @@ div[class*="mt-28"][class*="m:grid-cols-2"]{align-items:start!important}
 .mbr-design-inputs li,.mbr-quality-checks li{position:relative;padding-left:1.1rem}
 .mbr-design-inputs li::before,.mbr-quality-checks li::before{content:"";position:absolute;left:0;top:.65em;width:.4rem;height:.4rem;background:#8c927d;border-radius:9999px}
 
+/* Scroll-reveal used by leadership.js and the new static Engineering & QHSE
+   pages. Gated behind .mbr-reveal-on (set in <head> unless reduced motion is
+   requested) so content stays visible with JS disabled. */
+html.mbr-reveal-on [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+html.mbr-reveal-on [data-reveal].mbr-in{opacity:1;transform:none}
+
+/* "Engineering & QHSE" nav dropdown (nav-dropdown.js), loaded on every page */
+.mbr-nav-dropdown{position:relative}
+.mbr-nav-dropdown-btn{display:inline-flex;align-items:center;gap:.4rem;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer}
+.mbr-nav-caret{width:.6rem;height:.6rem;flex:none;transition:transform .2s ease}
+.mbr-nav-open .mbr-nav-caret{transform:rotate(180deg)}
+.mbr-nav-panel{display:none;position:absolute;top:calc(100% + 14px);right:0;min-width:260px;background:#eceae4;color:#20211f;padding:.5rem 0;box-shadow:0 16px 40px rgba(0,0,0,.18)}
+.mbr-nav-open .mbr-nav-panel{display:block}
+.mbr-nav-panel a{display:block;padding:.65rem 1.25rem;font-size:.9rem;color:#4a4b45;text-decoration:none;white-space:normal}
+.mbr-nav-panel a:hover{color:#20211f;background:#e2dfd6}
+@media(max-width:639px){.mbr-nav-panel{right:auto;left:0;min-width:220px}}
+
