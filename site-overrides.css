@@ -206,13 +206,12 @@ div[class*="l:grid-cols-4"][class*="gap-y-14"] [class*="aspect-[4/5]"]{aspect-ra
 @media(max-width:1023px){div[class*="l:grid-cols-4"][class*="gap-y-14"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:639px){div[class*="l:grid-cols-4"][class*="gap-y-14"]{grid-template-columns:minmax(0,1fr)!important}}
 
-/* Product detail pages: smaller hero, one smaller gallery image instead of two or
-   three full-width ones, and a shorter "next project" panel. */
-section[aria-labelledby="project-title"]{height:42svh!important;min-height:320px!important}
+/* Product detail pages: one smaller gallery image instead of two or three
+   full-width ones. The hero itself keeps its natural full-height size
+   (h-svh/min-h-[560px]) so the product photo isn't cropped down to a sliver -
+   it used to be forced to 42svh here, which cut most of the photo off. */
 div[class*="mt-20"][class*="gap-16"][class*="gap-28"] figure.mbr-extra-figure{display:none!important}
 div[class*="mt-20"][class*="gap-16"][class*="gap-28"] figure img{border-radius:.375rem}
-section[aria-labelledby="next-title"]{height:110svh!important}
-section[aria-labelledby="next-title"] [class*="min-h-[560px]"]{min-height:360px!important}
 
 /* Home page: fewer, smaller images; more room for the added text below */
 section[aria-labelledby="life-title"] .mbs5,
