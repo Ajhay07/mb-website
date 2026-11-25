@@ -302,10 +302,9 @@ footer p[aria-hidden="true"]{font-size:8.5vw!important}
 /* Footer wordmark: give each word-separating space real width (structural
    nth-child selector so it survives React re-rendering the wordmark component
    after hydration, unlike an inline style on the same span). */
-footer p[aria-hidden="true"] > span:nth-child(3),
-footer p[aria-hidden="true"] > span:nth-child(12),
-footer p[aria-hidden="true"] > span:nth-child(20),
-footer p[aria-hidden="true"] > span:nth-child(24){width:0.35em!important}
+footer p[aria-hidden="true"] > span:nth-child(9),
+footer p[aria-hidden="true"] > span:nth-child(17),
+footer p[aria-hidden="true"] > span:nth-child(21){width:0.35em!important}
 
 /* Navbar logo: back to its original 36x36 size (not the enlarged 48px
    tried earlier) and guaranteed 1:1 so it can never render elongated,
