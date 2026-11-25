@@ -293,3 +293,8 @@ html{scrollbar-width:thin;scrollbar-color:rgba(32,33,31,.35) transparent}
 @media (max-width:767px){
   header a[href="/"].font-display.text-lead{font-size:1.05rem;line-height:1.25;max-width:60%}
 }
+
+/* Footer wordmark: "MB Metallic Bellows Pvt Ltd" is much longer than the
+   original "MB Metallics" and overflowed off-screen at the original 37vw
+   per-character size. Shrink it so the whole name stays on one visible line. */
+footer p[aria-hidden="true"]{font-size:8.5vw!important}
