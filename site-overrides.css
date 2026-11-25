@@ -277,3 +277,13 @@ html.mbr-reveal-on [data-reveal].mbr-in{opacity:1;transform:none}
 main#main-content>section:last-of-type{padding-bottom:5rem}
 @media(min-width:810px){main#main-content>section:last-of-type{padding-bottom:7rem}}
 
+/* Thin, modern scrollbar instead of the browser's default wide one */
+html{scrollbar-width:thin;scrollbar-color:rgba(32,33,31,.35) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background-color:rgba(32,33,31,.35);border-radius:9999px;border:2px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background-color:rgba(32,33,31,.55)}
+.theme-dark{scrollbar-color:rgba(255,255,255,.3) transparent}
+.theme-dark::-webkit-scrollbar-thumb{background-color:rgba(255,255,255,.3)}
+.theme-dark::-webkit-scrollbar-thumb:hover{background-color:rgba(255,255,255,.5)}
+
