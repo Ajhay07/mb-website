@@ -309,3 +309,16 @@ footer p[aria-hidden="true"] > span:nth-child(24){width:0.35em!important}
 
 /* Navbar logo badge: enlarge from 36px to 48px for better visibility. */
 header a[href="/"] img{width:48px!important;height:48px!important;padding:0!important;object-fit:cover}
+
+/* "MB Metallic Bellows Private Limited" is long enough that, between the
+   tablet/laptop breakpoint (810px, where the 3-column header layout kicks
+   in) and large desktop, it was wrapping to 3 lines while fighting for
+   space with the nav - the whole header looked cramped and the
+   "Engineering & QHSE" nav item wrapped onto its own second line too.
+   Shrink the wordmark in that range and stop it wrapping further than two
+   lines; keep nav items on one line each regardless of width. */
+header nav[aria-label="Main"] a,
+.mbr-nav-dropdown-btn{white-space:nowrap}
+@media(min-width:810px) and (max-width:1279px){
+  header a[href="/"] span{font-size:.8rem;line-height:1.2;max-width:14ch}
+}
