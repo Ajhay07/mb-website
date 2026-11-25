@@ -32,8 +32,11 @@
       faq: [
         { q: "How much lateral movement can a universal joint take up?", a: "It depends on bore, convolution count and spool length, not a single fixed figure. Give us the required lateral offset alongside the line size and pressure, and we size the spool and convolution count to deliver it within EJMA's fatigue-life limits." },
         { q: "Can it also handle angular misalignment?", a: "Yes. The floating centre spool carries axial and angular movement while the two bellows take up the lateral offset, so a single universal joint can absorb all three movements at once, which is what tells most buyers it's the right joint before anything else does." },
-        { q: "Do I need tie rods on a universal joint?", a: "Tie rods aren't structural on a universal joint the way they are on an axial bellows, since the spool itself restrains angular movement, but we fit external movement limit rods on request where erection sequence or transport calls for it." }
-      ]
+        { q: "Do I need tie rods on a universal joint?", a: "Tie rods aren't structural on a universal joint the way they are on an axial bellows, since the spool itself restrains angular movement, but we fit external movement limit rods on request where erection sequence or transport calls for it." },
+        { q: "How long does a universal joint take to manufacture?", a: "Standard stainless units in common sizes typically ship in 3 to 5 weeks from a signed drawing; exotic alloys, large diameters or added test requirements extend that, so it's worth sharing your timeline when you send the enquiry rather than after the order is placed." }
+      ],
+      installation: "Universal joints need guides on the pipe either side to keep the assembly square and stop it taking up movement sideways instead of along its design axes. Anchors belong beyond the guides, not on the joint itself, and the run should be cold-sprung if the installed temperature sits far from the operating one, so the bellows isn't starting from one end of its travel on day one.",
+      commonIssues: "The failures we get asked to look at almost always trace back to a missing or undersized pipe guide, which lets the centre spool wander and loads the convolutions with movement they weren't sized for. Torsional loading from a run that was never properly supported is the other repeat offender: universal joints absorb lateral, axial and angular movement, not twist, and a bellows asked to do that job fails early."
     },
     "norrebro-library-annex": {
       design: "A hinged joint pins two plates either side of a single bellows, so the hinge, not the bellows, carries the pressure thrust and any side load from the duct. That leaves the bellows to do one thing: rotate, in the plane the hinge allows. On their own they only manage one movement, which is why you'll usually see two or three of them working together to close out an offset.",
@@ -54,8 +57,11 @@
       faq: [
         { q: "Why fit external hinges instead of just a heavier bellows?", a: "Past a certain diameter, the pressure thrust on an unrestrained bellows needs an anchor that's expensive or physically impossible to build. Hinge plates carry that thrust externally, through steel designed for the load, so the bellows itself only has to flex." },
         { q: "How many hinged joints does one offset need?", a: "One hinge gives rotation in a single plane. Most duct offsets need two, set at the ends of a short connecting pipe spool and oriented so their rotation planes combine to close out the required movement; some layouts need three." },
-        { q: "Can the hinge pins be inspected after the joint is installed?", a: "Yes. Hinge plates and pins are accessible from outside the duct, so routine inspection doesn't require cutting into the line or removing the bellows." }
-      ]
+        { q: "Can the hinge pins be inspected after the joint is installed?", a: "Yes. Hinge plates and pins are accessible from outside the duct, so routine inspection doesn't require cutting into the line or removing the bellows." },
+        { q: "Can hinged joints be supplied with insulation and cladding?", a: "Yes, we can fit insulation support rings and leave the hinge hardware accessible through the cladding, which matters more here than on most joint types since the hinges need periodic inspection over the line's life." }
+      ],
+      installation: "Hinge pins carry real load, so the steelwork they're bolted to has to be checked against the actual thrust calculation, not just specified to the pipe schedule. Two or three hinged joints working as a set need their rotation planes set out precisely at the design stage; get the orientation wrong on site and the joints fight each other instead of sharing the movement between them.",
+      commonIssues: "Most problems on hinged joints come from treating the hinge as an afterthought bracket rather than a load-bearing component: undersized plates, pins without enough bearing area, or a support structure sized for the duct's dead weight but never checked against pressure thrust. The bellows itself rarely fails first on a properly hinged joint; the hardware around it does."
     },
     "fjordhus": {
       design: "Two hinge pairs, set at right angles on a floating gimbal ring, give this joint rotation in any plane at once rather than just one, which is the whole reason to specify a gimbal over a pair of hinged joints. The ring carries the thrust; the bellows only flexes.",
@@ -76,8 +82,11 @@
       faq: [
         { q: "What's the real difference between a gimbal and a pair of hinged joints?", a: "Function-wise, very little, both give combined angular rotation across two planes. The gimbal does it in one assembly and one pipe spool shorter, which usually wins on cost and leak paths unless the layout already has the length to spare for two hinges." },
         { q: "Can the gimbal ring be oriented to favour one rotation plane?", a: "Yes. If the line's movement is mostly in one direction with only a little in the other, we can size the ring and trunnions asymmetrically rather than for equal rotation both ways." },
-        { q: "How is the trunnion load worked out?", a: "From the worst-case combination of pressure thrust and the angular movement in both planes together, not each plane checked separately, since a gimbal can be asked to rotate in both at once." }
-      ]
+        { q: "How is the trunnion load worked out?", a: "From the worst-case combination of pressure thrust and the angular movement in both planes together, not each plane checked separately, since a gimbal can be asked to rotate in both at once." },
+        { q: "Does a gimbal joint need clearance once it's lagged?", a: "Yes, and it's easy to miss. The ring has to keep its full rotation once insulation and cladding go on around it, so we mark the clear envelope it needs on the drawing before the joint ever gets to site." }
+      ],
+      installation: "Trunnion supports need to resist the full thrust in both rotation planes at once, the worst case a gimbal joint sees, rather than each plane checked against the thrust in isolation. We mark the neutral position on every gimbal before it ships, so the erection crew can confirm it's installed square before the line is charged.",
+      commonIssues: "The recurring issue is a support structure sized against a single-plane thrust figure borrowed from a hinged-joint calculation, which under-sizes it for a gimbal that can rotate, and generate thrust, in two planes simultaneously. The other is forgetting the ring needs clearance to rotate once insulation and cladding have gone on around it."
     },
     "hald-ege-school": {
       design: "Rectangular joints are built to the duct's own cross-section rather than forced into a round bellows, which is the only practical way to handle the large, low-pressure ducting that flue gas and air-handling work usually needs. Corner geometry and reinforcement are worked out case by case; a square corner behaves very differently from a radiused one under the same pressure.",
@@ -98,8 +107,11 @@
       faq: [
         { q: "What temperature can a rectangular joint handle?", a: "The bellows element itself is rated by material and ply count the same way a round one would be; the limit in practice is usually the liner, which is chosen against the actual gas analysis you give us rather than a generic rating." },
         { q: "Why do the corners need special attention?", a: "A flat panel under internal pressure wants to bow outward, and a corner is where two panels fight that tendency against each other. Left unreinforced, that's where a rectangular joint fails first, so corner geometry gets checked separately from the flat-face convolution design." },
-        { q: "Can you line a rectangular joint for abrasive flue gas dust?", a: "Yes. PTFE, fabric and metallic liner options are all available, selected against the dust loading and gas temperature you specify, to keep abrasive flow off the convolutions themselves." }
-      ]
+        { q: "Can you line a rectangular joint for abrasive flue gas dust?", a: "Yes. PTFE, fabric and metallic liner options are all available, selected against the dust loading and gas temperature you specify, to keep abrasive flow off the convolutions themselves." },
+        { q: "Can a rectangular joint be split for easier installation?", a: "Yes, large units can be supplied in sections for site assembly where access or crane capacity won't take it in one piece; the split location and field-weld procedure are agreed with you at the drawing stage, not improvised on site." }
+      ],
+      installation: "Duct flanges either side of a rectangular joint need to land square and parallel; a twisted connection loads the corners unevenly before the line has even started up. Where a liner is fitted, it goes in with enough slack to follow the joint's movement without tearing at the corners, the first place a tight liner lets go.",
+      commonIssues: "Corner failure is the signature problem on a badly specified rectangular joint, usually traced to a convolution design scaled up from a smaller unit without re-checking the corner geometry at the new size. The second recurring issue is liner wear from abrasive dust where the actual gas analysis was never given to us at the design stage, so the liner specified was for a cleaner stream than the one it ended up handling."
     },
     "saltvaerket-studios": {
       design: "Two bellows, not one: a flow bellows and a smaller balancing bellows, tied together through a central spool and a tie-rod frame. The balancing bellows takes the same pressure thrust in the opposite direction, so the two cancel out internally instead of loading whatever's bolted to either end. That's what lets you put a joint at a bend without anchoring the pump or turbine nozzle behind it.",
@@ -120,8 +132,11 @@
       faq: [
         { q: "What exactly does \"pressure-balanced\" mean here?", a: "The flow bellows and the smaller balancing bellows are connected so the same internal pressure pushes against each in opposite directions. The two thrusts cancel internally, leaving only a small residual load on the tie-rod frame instead of the full pressure thrust reaching whatever the joint is bolted to." },
         { q: "How is the balancing bellows sized?", a: "As a ratio of the flow bellows' effective area, calculated to EJMA's pressure-balanced procedure. Get the ratio right and the residual thrust on the anchors drops close to zero; get it wrong and the joint doesn't do the one job it exists for." },
-        { q: "Can this type be used anywhere other than a bend?", a: "Bends are the most common case because that's where thrust has nowhere to go without turning the pipe, but any location where the connected equipment's nozzle can't take ordinary bellows thrust is a candidate, turbine and compressor connections especially." }
-      ]
+        { q: "Can this type be used anywhere other than a bend?", a: "Bends are the most common case because that's where thrust has nowhere to go without turning the pipe, but any location where the connected equipment's nozzle can't take ordinary bellows thrust is a candidate, turbine and compressor connections especially." },
+        { q: "What happens if the operating pressure changes after the joint is ordered?", a: "Tell us before it's built, not after. The area ratio between the flow and balancing bellows is calculated for a specific pressure, and a joint balanced for one duty won't necessarily stay balanced at another, which defeats the reason for specifying it in the first place." }
+      ],
+      installation: "The tie-rod frame is set to its cold length before the line is welded in, not adjusted afterward, because that length is what fixes the balance between the flow and balancing bellows. Supports near the joint only need to carry the small residual thrust rather than the full line pressure, which is worth confirming with whoever is designing the pipe supports so they aren't over-built for a load the joint has already cancelled out.",
+      commonIssues: "Most issues trace back to the area ratio being recalculated for a changed operating pressure without re-sizing the balancing bellows to match, which quietly reintroduces the thrust the joint was specified to eliminate. Tie rods backed off or re-tensioned on site without reference to the design cold length cause the same problem from a different direction, so the frame is one part of this joint that's best left exactly as it arrives."
     },
     "lysning-chapel": {
       design: "Past about 1500 mm diameter, a bellows stops being something you form in one piece. It's built as ring sections, welded up in the shop or, beyond transport limits, on site. Getting the circumferential welds right is most of the job at this size: a few millimetres of mismatch between rings shows up as a stress riser once the line starts cycling.",
@@ -142,8 +157,11 @@
       faq: [
         { q: "How many plies does a large-bore bellows need?", a: "Ply count is set by the design pressure and the number of pressure and thermal cycles the line will see over its service life, worked out ring by ring rather than assumed from diameter alone." },
         { q: "How do you get a 9000 mm bellows to site?", a: "In sections. Rings are formed and welded up in the shop to the largest size a standard trailer can carry; where the complete bellows would exceed that, the remaining rings are welded on site under the same qualified procedure as the shop welds." },
-        { q: "What's a field joint and why does it get its own test?", a: "It's a weld made on site rather than in the controlled conditions of the shop floor. Because it's the one joint not made under shop conditions, it gets its own radiography before the line is commissioned, separate from the checks already done on every shop-welded ring." }
-      ]
+        { q: "What's a field joint and why does it get its own test?", a: "It's a weld made on site rather than in the controlled conditions of the shop floor. Because it's the one joint not made under shop conditions, it gets its own radiography before the line is commissioned, separate from the checks already done on every shop-welded ring." },
+        { q: "How is a bellows this size supported without restraining it?", a: "On saddles sized to carry its dead weight while leaving the movement path clear; a support that touches the convolutions or pins the bellows too close to its anchor defeats the purpose of fitting one at this diameter in the first place." }
+      ],
+      installation: "Ring sections shipped separately are match-marked before they leave the shop, so site welding follows the same sequence and orientation as the shop assembly; welding them up out of order is the fastest way to introduce ovality a bellows this size can't absorb. Support saddles carry the bellows' own weight without restraining the movement it's there to take up.",
+      commonIssues: "Ovality from incorrect handling or storage before installation is the most common site issue at this diameter; a bellows this size has very little stiffness of its own and takes the shape of whatever it's left resting on. The other recurring problem is a field joint welded without the same procedure qualification as the shop welds, which is exactly the joint most likely to be questioned later in the line's life."
     }
   };
 
@@ -226,6 +244,12 @@
       "</div>" +
       '<div class="mt-16 max-w-[62ch]"><h2 class="font-display text-h4">Choosing this joint</h2>' +
       '<p class="mt-5 text-graphite">' + esc(info.selection) + "</p></div>" +
+      '<div class="mt-16 grid gap-10 m:grid-cols-12">' +
+      '<div class="m:col-span-5"><h2 class="font-display text-h4">Installation notes</h2>' +
+      '<p class="mt-5 text-graphite">' + esc(info.installation) + "</p></div>" +
+      '<div class="m:col-span-6 m:col-start-7"><h2 class="font-display text-h4">What usually goes wrong</h2>' +
+      '<p class="mt-5 text-graphite">' + esc(info.commonIssues) + "</p></div>" +
+      "</div>" +
       '<div class="mt-16"><h2 class="font-display text-h4">Specification at a glance</h2>' +
       '<dl class="mbr-spec-table mt-6">' + specRows + "</dl></div>" +
       '<div class="mt-16"><h2 class="font-display text-h4">Questions we hear first</h2>' +
