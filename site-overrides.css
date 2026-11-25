@@ -298,3 +298,14 @@ html{scrollbar-width:thin;scrollbar-color:rgba(32,33,31,.35) transparent}
    original "MB Metallics" and overflowed off-screen at the original 37vw
    per-character size. Shrink it so the whole name stays on one visible line. */
 footer p[aria-hidden="true"]{font-size:8.5vw!important}
+
+/* Footer wordmark: give each word-separating space real width (structural
+   nth-child selector so it survives React re-rendering the wordmark component
+   after hydration, unlike an inline style on the same span). */
+footer p[aria-hidden="true"] > span:nth-child(3),
+footer p[aria-hidden="true"] > span:nth-child(12),
+footer p[aria-hidden="true"] > span:nth-child(20),
+footer p[aria-hidden="true"] > span:nth-child(24){width:0.35em!important}
+
+/* Navbar logo badge: enlarge from 36px to 48px for better visibility. */
+header a[href="/"] img{width:48px!important;height:48px!important}
