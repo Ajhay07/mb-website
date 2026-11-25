@@ -261,6 +261,87 @@
     return true;
   }
 
+  var PROFILE_BADGES = [
+    "ISO 9001:2015 Quality Management",
+    "ASME U-Stamped Shop",
+    "PED 2014/68/EU CE-Marked",
+    "IBR Boiler Regulatory Approved",
+    "EJMA 10th Edition"
+  ];
+
+  var COMPANY_PROFILE_HTML =
+    '<p class="text-small text-graphite">Company profile &amp; standards</p>' +
+    '<h2 class="mt-2 font-display text-h4">Engineered to international standards</h2>' +
+    '<p class="mt-4 text-graphite"><strong>MB Metallic Bellows Private Limited</strong> manufactures bellows, expansion joints, compensators, metal hoses, rubber bellows, non-metallic fabric bellows, dampers, strainers, couplings and sleeve couplings.</p>' +
+    '<p class="mt-3 text-graphite">Our facility sits in a strategically located industrial zone at Chennai, India, with close proximity to air, sea, rail and road services.</p>' +
+    '<div class="mbr-badge-row mt-6">' +
+    PROFILE_BADGES.map(function (b) { return '<span class="mbr-badge">' + esc(b) + "</span>"; }).join("") +
+    "</div>";
+
+  var COMPANY_PROFILE_DETAIL_HTML =
+    '<div class="mbr-profile-card"><h3 class="font-display text-lead">Complete range of manufacturing</h3>' +
+    '<p class="mt-2 text-small text-graphite">(1) <strong>Metallic expansion joints:</strong> circular and rectangular, universal, hinged, gimbal, pressure balanced, reinforced, and metal hoses for high-pressure applications.</p>' +
+    '<p class="mt-2 text-small text-graphite">(2) <strong>Stainless steel bellows:</strong> ranging from 20 mm to 9000 mm. We also manufacture instrument bellows, bellows assemblies, bellows-related ducts, couplings, gaskets and accessories.</p></div>' +
+    '<div class="mbr-profile-card mt-6"><h3 class="font-display text-lead">Custom engineering &amp; movement absorption</h3>' +
+    '<p class="mt-2 text-small text-graphite">These expansion joints absorb movement arising in multiple planes in pipelines, caused by variation in temperature and pressure, following standards laid down by the Expansion Joint Manufacturers Association, USA (EJMA).</p>' +
+    '<p class="mt-2 text-small text-graphite">For special applications, units are designed and manufactured to customer specifications based on nominal bore, design pressure, design temperature, flow media, flow velocity, and axial, lateral and angular deflection, supported by appropriate destructive and type testing.</p></div>';
+
+  function addCompanyProfile() {
+    if (!/^\/studio\/?$/.test(location.pathname)) return false;
+    if (document.getElementById("company-profile-section")) return true;
+    var anchor = document.querySelector('section[aria-labelledby="closing-title"]');
+    if (!anchor || !anchor.parentNode) return false;
+    var html =
+      '<section id="company-profile-section" class="mx-auto w-full max-w-[1600px] px-4 m:px-8 mt-20 m:mt-28 pt-16 border-t border-rule">' +
+      '<div class="grid gap-10 m:grid-cols-12">' +
+      '<div class="m:col-span-5">' + COMPANY_PROFILE_HTML + "</div>" +
+      '<div class="m:col-span-6 m:col-start-7">' + COMPANY_PROFILE_DETAIL_HTML + "</div>" +
+      "</div></section>";
+    var t = document.createElement("template");
+    t.innerHTML = html;
+    anchor.parentNode.insertBefore(t.content, anchor);
+    return true;
+  }
+
+  var QHSE_POLICIES = [
+    {
+      title: "Quality",
+      body: "Every order is designed, manufactured and tested against the standard it was quoted against, not a catalogue approximation of it. We'd rather hold a delivery date for a day than ship a unit that doesn't match its own drawing, and the paper trail, from material certificate to final hydrostatic test, is built to prove that at any point after handover."
+    },
+    {
+      title: "Safety",
+      body: "Forming, welding and pressure testing all carry real risk if they're treated casually, so equipment handling, PPE and test procedures are fixed, not left to individual judgement on the day. We review incidents and near-misses specifically to close the gap before it causes one, not after."
+    },
+    {
+      title: "Environment",
+      body: "Material is cut to the job, not to convenience, and offcuts, scrap metal and packaging are segregated and recovered rather than binned together. Where a process can run on less water or less power without compromising the test or the weld, that's the version we run."
+    }
+  ];
+
+  var MADE_WITH_CARE =
+    "None of this is abstract policy for us. It's the difference between a bellows that reaches its design cycle life and one that fails early, and between a shop floor that runs safely for thirty years and one that doesn't. We built the business on getting the first thing right, and the second and third are what let us keep doing it.";
+
+  function addCompanyQHSE() {
+    if (!/^\/studio\/?$/.test(location.pathname)) return false;
+    if (document.getElementById("company-qhse-section")) return true;
+    var anchor = document.querySelector('section[aria-labelledby="closing-title"]');
+    if (!anchor || !anchor.parentNode) return false;
+    var policies = QHSE_POLICIES.map(function (p) {
+      return '<div><h3 class="font-display text-lead">' + esc(p.title) + "</h3>" +
+        '<p class="mt-2 text-graphite">' + esc(p.body) + "</p></div>";
+    }).join("");
+    var html =
+      '<section id="company-qhse-section" class="mx-auto w-full max-w-[1600px] px-4 m:px-8 mt-20 m:mt-28">' +
+      '<h2 class="font-display text-h4">Quality, safety &amp; environment</h2>' +
+      '<div class="mt-8 grid gap-10 m:grid-cols-3">' + policies + "</div>" +
+      '<p class="mt-12 max-w-[62ch] text-graphite">' + esc(MADE_WITH_CARE) + "</p>" +
+      "</section>";
+    var t = document.createElement("template");
+    t.innerHTML = html;
+    anchor.parentNode.insertBefore(t.content, anchor);
+    return true;
+  }
+
   function addListingIntro() {
     if (!/^\/projects\/?$/.test(location.pathname)) return false;
     if (document.getElementById("product-listing-intro")) return true;
@@ -328,7 +409,7 @@
     addProductDetail();
     addListingIntro();
     shrinkGallery();
-    if (/^\/studio\/?$/.test(location.pathname)) { fixApprovalsTable(); addFabFloorNote(); }
+    if (/^\/studio\/?$/.test(location.pathname)) { fixApprovalsTable(); addFabFloorNote(); addCompanyProfile(); addCompanyQHSE(); }
   }
 
   function start() {

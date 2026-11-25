@@ -208,6 +208,11 @@ div[class*="l:grid-cols-4"][class*="gap-y-14"] a [class*="text-graphite"]{displa
 @media(min-width:810px){.mbr-faq{grid-template-columns:repeat(2,1fr);column-gap:2.5rem;row-gap:2.25rem}}
 .mbr-faq-item h3{font-size:1.05rem}
 
+/* Company profile & QHSE section on the About/Studio page (product-content.js) */
+.mbr-badge-row{display:flex;flex-wrap:wrap;gap:.5rem}
+.mbr-badge{display:inline-block;border:1px solid rgba(32,33,31,.16);border-radius:.375rem;padding:.3rem .6rem;font-size:.75rem;font-weight:600;color:#20211f;background:#f5f4f0}
+.mbr-profile-card{border:1px solid rgba(32,33,31,.16);border-radius:.75rem;padding:1.5rem;background:rgba(255,255,255,.6)}
+
 /* The product-page "Next project" scroll section is replaced by the richer
    content above (product-content.js); hide it rather than removing it from
    the DOM, so the React component behind it is left alone. */
