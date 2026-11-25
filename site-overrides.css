@@ -308,4 +308,4 @@ footer p[aria-hidden="true"] > span:nth-child(20),
 footer p[aria-hidden="true"] > span:nth-child(24){width:0.35em!important}
 
 /* Navbar logo badge: enlarge from 36px to 48px for better visibility. */
-header a[href="/"] img{width:48px!important;height:48px!important}
+header a[href="/"] img{width:48px!important;height:48px!important;padding:0!important;object-fit:cover}
