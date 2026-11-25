@@ -307,19 +307,23 @@ footer p[aria-hidden="true"] > span:nth-child(12),
 footer p[aria-hidden="true"] > span:nth-child(20),
 footer p[aria-hidden="true"] > span:nth-child(24){width:0.35em!important}
 
-/* Navbar logo badge: enlarge from 36px to 48px for better visibility. */
-header a[href="/"] img{width:48px!important;height:48px!important;padding:0!important;object-fit:cover}
-/* The logo artwork itself has a generous white margin around the "MB"
-   mark (it's a square badge design, not a tightly-cropped icon). At the
-   48px size that's barely noticeable, but on narrow phone screens the
-   badge is a larger fraction of the header and that same margin reads as
-   an odd white block, so shrink it there. (A separate rule constrains the
-   brand link itself to max-width:60% at this breakpoint for the wordmark
-   text; giving the image flex:none keeps it from being squeezed to 0 by
-   that constraint, which is what a zoom/overflow-crop approach tried here
-   earlier did - it collapsed the logo to nothing instead of cropping it.) */
-@media(max-width:639px){
-  header a[href="/"] img{width:30px!important;height:30px!important;flex:none}
+/* Navbar logo: back to its original 36x36 size (not the enlarged 48px
+   tried earlier) and guaranteed 1:1 so it can never render elongated,
+   regardless of what width the flex row ends up giving it elsewhere.
+   A small zoom trims the thin white edge around the badge without
+   cutting into the "MB" lettering or the corrugated-line border, which
+   is a deliberate part of the mark, not padding to remove outright.
+   clip-path crops to the element's own box after the zoom (transform
+   doesn't affect layout, so the flex row and the brand-link width
+   constraint below are unaffected by this). */
+header a[href="/"] img{
+  width:36px!important;height:36px!important;
+  aspect-ratio:1/1;
+  flex:none;
+  padding:0!important;
+  object-fit:cover;
+  transform:scale(1.12);
+  clip-path:inset(0);
 }
 
 /* "MB Metallic Bellows Private Limited" is long enough that, between the
