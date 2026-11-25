@@ -309,6 +309,18 @@ footer p[aria-hidden="true"] > span:nth-child(24){width:0.35em!important}
 
 /* Navbar logo badge: enlarge from 36px to 48px for better visibility. */
 header a[href="/"] img{width:48px!important;height:48px!important;padding:0!important;object-fit:cover}
+/* The logo artwork itself has a generous white margin around the "MB"
+   mark (it's a square badge design, not a tightly-cropped icon). At the
+   48px size that's barely noticeable, but on narrow phone screens the
+   badge is a larger fraction of the header and that same margin reads as
+   an odd white block, so shrink it there. (A separate rule constrains the
+   brand link itself to max-width:60% at this breakpoint for the wordmark
+   text; giving the image flex:none keeps it from being squeezed to 0 by
+   that constraint, which is what a zoom/overflow-crop approach tried here
+   earlier did - it collapsed the logo to nothing instead of cropping it.) */
+@media(max-width:639px){
+  header a[href="/"] img{width:30px!important;height:30px!important;flex:none}
+}
 
 /* "MB Metallic Bellows Private Limited" is long enough that, between the
    tablet/laptop breakpoint (810px, where the 3-column header layout kicks
