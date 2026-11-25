@@ -264,9 +264,8 @@ html.mbr-reveal-on [data-reveal].mbr-in{opacity:1;transform:none}
 .mbr-nav-dropdown-btn{display:inline-flex;align-items:center;gap:.4rem;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer}
 .mbr-nav-caret{width:.6rem;height:.6rem;flex:none;transition:transform .2s ease}
 .mbr-nav-open .mbr-nav-caret{transform:rotate(180deg)}
-.mbr-nav-panel{display:none;position:absolute;top:calc(100% + 14px);right:0;min-width:260px;background:#eceae4;color:#20211f;padding:.5rem 0;box-shadow:0 16px 40px rgba(0,0,0,.18)}
-.mbr-nav-open .mbr-nav-panel{display:block}
+.mbr-nav-panel{display:none;position:fixed;min-width:260px;max-width:min(320px,calc(100vw - 24px));background:#eceae4;color:#20211f;padding:.5rem 0;box-shadow:0 16px 40px rgba(0,0,0,.25);z-index:200;mix-blend-mode:normal;isolation:isolate}
+.mbr-nav-panel.mbr-nav-open{display:block}
 .mbr-nav-panel a{display:block;padding:.65rem 1.25rem;font-size:.9rem;color:#4a4b45;text-decoration:none;white-space:normal}
 .mbr-nav-panel a:hover{color:#20211f;background:#e2dfd6}
-@media(max-width:639px){.mbr-nav-panel{right:auto;left:0;min-width:220px}}
 

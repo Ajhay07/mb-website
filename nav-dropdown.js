@@ -24,6 +24,12 @@
     button.innerHTML = "Engineering &amp; QHSE" +
       '<svg class="mbr-nav-caret" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+    // The panel is appended to <body>, not inside <nav>/<header>, because the
+    // header has mix-blend-mode:exclusion - a descendant panel would be
+    // composited as part of that blend against whatever is behind the header
+    // (the hero image, carousel text, etc.), which is what made it look
+    // "stuck"/garbled. Fixed-position + a manual reposition keeps it visually
+    // anchored under the button regardless of where it lives in the DOM.
     var panel = document.createElement("div");
     panel.className = "mbr-nav-panel";
     ITEMS.forEach(function (item) {
@@ -32,13 +38,25 @@
       a.textContent = item.label;
       panel.appendChild(a);
     });
+    document.body.appendChild(panel);
 
+    function position() {
+      var r = button.getBoundingClientRect();
+      var panelWidth = panel.offsetWidth || 300;
+      var left = Math.min(r.right - panelWidth, window.innerWidth - panelWidth - 12);
+      left = Math.max(left, 12);
+      panel.style.top = r.bottom + 10 + "px";
+      panel.style.left = left + "px";
+    }
     function open() {
       wrap.classList.add("mbr-nav-open");
+      panel.classList.add("mbr-nav-open");
       button.setAttribute("aria-expanded", "true");
+      position();
     }
     function close() {
       wrap.classList.remove("mbr-nav-open");
+      panel.classList.remove("mbr-nav-open");
       button.setAttribute("aria-expanded", "false");
     }
     button.addEventListener("click", function (e) {
@@ -46,14 +64,19 @@
       if (wrap.classList.contains("mbr-nav-open")) close(); else open();
     });
     document.addEventListener("click", function (e) {
-      if (!wrap.contains(e.target)) close();
+      if (!wrap.contains(e.target) && !panel.contains(e.target)) close();
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") close();
     });
+    window.addEventListener("resize", function () {
+      if (wrap.classList.contains("mbr-nav-open")) position();
+    });
+    window.addEventListener("scroll", function () {
+      if (wrap.classList.contains("mbr-nav-open")) position();
+    }, { passive: true });
 
     wrap.appendChild(button);
-    wrap.appendChild(panel);
 
     // Insert before the last link (Contact) so order reads naturally.
     var links = nav.querySelectorAll("a");
