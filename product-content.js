@@ -284,7 +284,10 @@
     '<p class="mt-2 text-small text-graphite">(2) <strong>Stainless steel bellows:</strong> ranging from 20 mm to 9000 mm. We also manufacture instrument bellows, bellows assemblies, bellows-related ducts, couplings, gaskets and accessories.</p></div>' +
     '<div class="mbr-profile-card mt-6"><h3 class="font-display text-lead">Custom engineering &amp; movement absorption</h3>' +
     '<p class="mt-2 text-small text-graphite">These expansion joints absorb movement arising in multiple planes in pipelines, caused by variation in temperature and pressure, following standards laid down by the Expansion Joint Manufacturers Association, USA (EJMA).</p>' +
-    '<p class="mt-2 text-small text-graphite">For special applications, units are designed and manufactured to customer specifications based on nominal bore, design pressure, design temperature, flow media, flow velocity, and axial, lateral and angular deflection, supported by appropriate destructive and type testing.</p></div>';
+    '<p class="mt-2 text-small text-graphite">For special applications, units are designed and manufactured to customer specifications based on nominal bore, design pressure, design temperature, flow media, flow velocity, and axial, lateral and angular deflection, supported by appropriate destructive and type testing.</p></div>' +
+    '<div class="mbr-profile-card mt-6"><h3 class="font-display text-lead">Shop infrastructure</h3>' +
+    '<p class="mt-2 text-small text-graphite">The works occupies a 2-acre site at Oragadam, Chennai &mdash; 8,000 m&sup2; of ground area with 1,500 m&sup2; under roof for fabrication, served by 16-tonne and 10-tonne EOT cranes and a 200 kVA diesel generator for uninterrupted production.</p>' +
+    '<p class="mt-2 text-small text-graphite">We are an NSIC-registered manufacturing unit (Ref. NSIC(M)/GP/6210/2010/90) and have supplied over 2,000 expansion joints across nuclear, conventional power, refineries, minerals &amp; metals, infrastructure, fertilizers and defence in the last decade.</p></div>';
 
   function addCompanyProfile() {
     if (!/^\/studio\/?$/.test(location.pathname)) return false;
@@ -404,11 +407,43 @@
     return true;
   }
 
+  var EXTRA_CAPABILITIES = [
+    { label: "Dampers", href: "/projects/dampers", note: "Slide-gate and multi-blade dampers, 500–2500 mm" },
+    { label: "Strainers", href: "/projects/strainers", note: "Y-type and basket strainers, up to DN 350" },
+    { label: "Couplings & sleeve couplings", href: "/projects/couplings", note: "Rigid and sleeve couplings, up to 900 NB" }
+  ];
+  var CAP_ARROW =
+    '<span aria-hidden="true" class="relative size-4 shrink-0 translate-x-0 transition-transform duration-500 ease-[var(--ease-out)] group-hover:translate-x-1.5">' +
+    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" class="size-4"><path d="M2 8h12M9 3l5 5-5 5"></path></svg></span>';
+
+  function addAdditionalCapabilities() {
+    if (!/^\/projects\/?$/.test(location.pathname)) return false;
+    if (document.getElementById("additional-capabilities")) return true;
+    var grid = document.querySelector('div[class*="gap-y-14"]');
+    if (!grid || !grid.parentNode) return false;
+    var rows = EXTRA_CAPABILITIES.map(function (c) {
+      return '<a href="' + c.href + '" class="group flex items-center justify-between gap-6 border-b border-rule py-6 text-left">' +
+        '<span><span class="block font-display text-h4 transition-transform duration-500 ease-[var(--ease-out)] group-hover:translate-x-1.5">' + esc(c.label) + '</span>' +
+        '<span class="mt-1 block text-small text-graphite">' + esc(c.note) + '</span></span>' + CAP_ARROW + '</a>';
+    }).join("");
+    var sec = document.createElement("section");
+    sec.id = "additional-capabilities";
+    sec.setAttribute("aria-labelledby", "additional-capabilities-title");
+    sec.className = "mx-auto grid w-full max-w-[1600px] gap-10 px-4 pt-28 m:grid-cols-12 m:px-8 m:pt-40";
+    sec.innerHTML =
+      '<div class="m:col-span-4"><h2 id="additional-capabilities-title" class="font-display text-h3">Also from our Chennai works</h2>' +
+      '<p class="mt-4 max-w-[30ch] text-graphite">NSIC-registered manufacturing capability outside our core bellows range.</p></div>' +
+      '<div class="m:col-span-7 m:col-start-6"><div class="border-t border-rule">' + rows + '</div></div>';
+    grid.parentNode.insertBefore(sec, grid.nextSibling);
+    return true;
+  }
+
   function ensure() {
     addCardDescriptions();
     addProductDetail();
     addListingIntro();
     shrinkGallery();
+    addAdditionalCapabilities();
     if (/^\/studio\/?$/.test(location.pathname)) { fixApprovalsTable(); addFabFloorNote(); addCompanyProfile(); addCompanyQHSE(); }
   }
 
