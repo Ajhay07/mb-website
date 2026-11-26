@@ -11,20 +11,22 @@
   var BASE = "https://res.cloudinary.com/kbig7iit/image/upload/f_auto,q_auto:best,c_limit,w_1600/mb-website/";
   var WRAP_ID = "mbr-home-frame";
 
-  // 12 distinct real photos, one per slot (no repeats).
+  // 12 distinct real photos, one per slot (no repeats). A src starting with
+  // "/" is an absolute path (one of the client's own photos committed into
+  // the repo); anything else is relative to BASE (Cloudinary).
   var PHOTOS = [
-    { src: "hq/hq-bellows-forming", alt: "Bellows being roll-formed on precision tooling" },
-    { src: "hq/hq-dimensional-inspection", alt: "Dimensional inspection of a bellows convolution" },
+    { src: "/assets/real-photos/hq-finished-1.jpg", alt: "Finished bellows with tie-rod restraints on the shop floor" },
+    { src: "/assets/real-photos/hq-finished-2.jpg", alt: "Close-up of a bellows convolution with tie-rod restraints" },
     { src: "hq/hq-tig-welding", alt: "TIG welding a bellows flange" },
     { src: "hq/hq-pressure-testing", alt: "Hydrostatic pressure testing of an expansion joint" },
     { src: "hq/hq-pipe-installation", alt: "Expansion joint installed on process piping" },
-    { src: "hq/hq-finished-bellows", alt: "Finished metallic bellows units" },
-    { src: "hq/hq-product-range", alt: "Range of finished bellows and metal hose products" },
+    { src: "/assets/real-photos/hq-finished-3.jpg", alt: "Finished metallic bellows unit, close-up" },
+    { src: "/assets/real-photos/hinged-expansion-joint.jpg", alt: "Batch of finished hinged expansion joints" },
     { src: "hq/hq-steel-coils", alt: "Stainless steel coil stock" },
-    { src: "products/universal-expansion-joint", alt: "Universal expansion joint" },
-    { src: "products/hinged-expansion-joint", alt: "Hinged expansion joint" },
+    { src: "/assets/real-photos/universal-expansion-joint.jpg", alt: "Universal expansion joint" },
+    { src: "/assets/real-photos/hinged-expansion-joint.jpg", alt: "Hinged expansion joint" },
     { src: "products/gimbal-expansion-joint", alt: "Gimbal expansion joint" },
-    { src: "products/rectangular-expansion-joint", alt: "Rectangular expansion joint" }
+    { src: "/assets/real-photos/rectangular-expansion-joint.jpg", alt: "Rectangular expansion joint" }
   ];
 
   // Frame geometry: top row (4), bottom row (4), two down each side.
@@ -68,7 +70,7 @@
       img.loading = "eager";
       img.decoding = "async";
       img.alt = spec.alt;
-      img.src = BASE + spec.src;
+      img.src = spec.src.charAt(0) === "/" ? spec.src : BASE + spec.src;
       img.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block";
       tile.appendChild(img);
       wrap.appendChild(tile);
