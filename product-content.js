@@ -438,12 +438,45 @@
     return true;
   }
 
+  var INSTALL_PHOTOS = [
+    { id: "install-jk-tyre", client: "JK Tyre" },
+    { id: "install-bhel-hyd", client: "BHEL, Hyderabad" },
+    { id: "install-iocl-guwahati", client: "IOCL, Guwahati" },
+    { id: "install-mppgcl-satpura", client: "MPPGCL, Satpura TPS" },
+    { id: "install-asva", client: "ASVA" }
+  ];
+  var INSTALL_BASE = "https://res.cloudinary.com/kbig7iit/image/upload/f_auto,q_auto:best,c_limit,w_1600/mb-website/client-supplied/";
+
+  function addInstallations() {
+    if (!/^\/projects\/?$/.test(location.pathname)) return false;
+    if (document.getElementById("installations-section")) return true;
+    var cap = document.getElementById("additional-capabilities");
+    if (!cap || !cap.parentNode) return false;
+    var tiles = INSTALL_PHOTOS.map(function (p) {
+      return '<figure><div class="relative aspect-[4/3] bg-rule overflow-hidden">' +
+        '<img src="' + INSTALL_BASE + p.id + '" alt="Rectangular expansion joint installed at ' + esc(p.client) + '" loading="lazy" ' +
+        'style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"/></div>' +
+        '<figcaption class="mt-2 text-small text-graphite">' + esc(p.client) + '</figcaption></figure>';
+    }).join("");
+    var sec = document.createElement("section");
+    sec.id = "installations-section";
+    sec.setAttribute("aria-labelledby", "installations-title");
+    sec.className = "mx-auto w-full max-w-[1600px] px-4 pt-28 m:px-8 m:pt-40";
+    sec.innerHTML =
+      '<h2 id="installations-title" class="font-display text-h3">On site</h2>' +
+      '<p class="mt-4 max-w-[62ch] text-graphite">A sample of rectangular expansion joints from our own records, installed and running at customer sites across India.</p>' +
+      '<div class="mt-10 grid gap-6 grid-cols-2 m:grid-cols-5">' + tiles + '</div>';
+    cap.parentNode.insertBefore(sec, cap.nextSibling);
+    return true;
+  }
+
   function ensure() {
     addCardDescriptions();
     addProductDetail();
     addListingIntro();
     shrinkGallery();
     addAdditionalCapabilities();
+    addInstallations();
     if (/^\/studio\/?$/.test(location.pathname)) { fixApprovalsTable(); addFabFloorNote(); addCompanyProfile(); addCompanyQHSE(); }
   }
 

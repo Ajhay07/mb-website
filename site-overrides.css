@@ -337,3 +337,7 @@ header nav[aria-label="Main"] a,
 @media(min-width:810px) and (max-width:1279px){
   header a[href="/"] span{font-size:.8rem;line-height:1.2;max-width:14ch}
 }
+
+/* MB logo badge beside the client-ribbon heading */
+.mbr-head-row{display:flex;align-items:center;gap:.75rem}
+.mbr-head-logo{flex-shrink:0;border-radius:4px;background:#fff;object-fit:cover}
