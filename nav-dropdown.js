@@ -12,6 +12,18 @@
     { label: "Made with care", href: "/engineering/made-with-care" }
   ];
 
+  function buildClientsLink(nav) {
+    if (nav.querySelector(".mbr-nav-clients-link")) return;
+    var a = document.createElement("a");
+    a.href = "/clients";
+    a.className = "mbr-nav-clients-link underline-offset-[0.3em] hover:underline";
+    a.textContent = "Clients";
+    if (location.pathname.replace(/\/$/, "") === "/clients") a.setAttribute("aria-current", "page");
+    var links = nav.querySelectorAll("a");
+    var last = links[links.length - 1];
+    if (last) nav.insertBefore(a, last); else nav.appendChild(a);
+  }
+
   function build(nav) {
     if (nav.querySelector(".mbr-nav-dropdown")) return;
     var wrap = document.createElement("div");
@@ -86,6 +98,7 @@
 
   function ensure() {
     var navs = document.querySelectorAll('nav[aria-label="Main"]');
+    navs.forEach(buildClientsLink);
     navs.forEach(build);
   }
 
