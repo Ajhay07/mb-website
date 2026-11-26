@@ -210,6 +210,20 @@
     ["tests", "Testing"]
   ];
 
+  var EXTRA_GALLERY_BASE = "https://res.cloudinary.com/kbig7iit/image/upload/f_auto,q_auto:best,c_limit,w_1600/mb-website/client-supplied/";
+  var EXTRA_GALLERY = {
+    "kyst-house": [
+      { id: "hq-bellow-closeup-1", caption: "Bellows element, Chennai works" },
+      { id: "hq-single-bellow-painted", caption: "Finished unit, flange to flange" },
+      { id: "hq-finished-batch-painted", caption: "Finished units ready for dispatch" }
+    ],
+    "hald-ege-school": [
+      { id: "hq-rectangular-duct", caption: "Rectangular duct expansion joint" },
+      { id: "sawtooth-1", caption: "Saw-tooth fabric expansion joint" },
+      { id: "sawtooth-2", caption: "Saw-tooth fabric expansion joint, installed" }
+    ]
+  };
+
   function addProductDetail() {
     var m = location.pathname.match(/^\/projects\/([a-z0-9-]+)\/?$/);
     if (!m || !PRODUCT_INFO[m[1]]) return false;
@@ -217,6 +231,16 @@
     var anchor = document.querySelector('section[aria-labelledby="next-title"]');
     if (!anchor || !anchor.parentNode) return false;
     var info = PRODUCT_INFO[m[1]];
+    var extraPhotos = EXTRA_GALLERY[m[1]] || [];
+    var extraGalleryHtml = !extraPhotos.length ? "" :
+      '<div class="mt-16"><h2 class="font-display text-h4">From our works</h2>' +
+      '<div class="mt-6 grid gap-6 m:grid-cols-3">' +
+      extraPhotos.map(function (p) {
+        return '<figure><div class="relative aspect-[4/3] bg-rule overflow-hidden">' +
+          '<img src="' + EXTRA_GALLERY_BASE + p.id + '" alt="' + esc(p.caption) + '" loading="lazy" ' +
+          'style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"/></div>' +
+          '<figcaption class="mt-2 text-small text-graphite">' + esc(p.caption) + "</figcaption></figure>";
+      }).join("") + "</div></div>";
     var apps = info.applications.map(function (a) { return "<li>" + esc(a) + "</li>"; }).join("");
     var specRows = SPEC_LABELS.map(function (pair) {
       return '<div class="mbr-spec-row"><dt>' + esc(pair[1]) + "</dt><dd>" + esc(info.specs[pair[0]]) + "</dd></div>";
@@ -254,6 +278,7 @@
       '<dl class="mbr-spec-table mt-6">' + specRows + "</dl></div>" +
       '<div class="mt-16"><h2 class="font-display text-h4">Questions we hear first</h2>' +
       '<div class="mbr-faq mt-6">' + faqItems + "</div></div>" +
+      extraGalleryHtml +
       "</section>";
     var t = document.createElement("template");
     t.innerHTML = html;
@@ -274,6 +299,7 @@
     '<h2 class="mt-2 font-display text-h4">Engineered to international standards</h2>' +
     '<p class="mt-4 text-graphite"><strong>MB Metallic Bellows Private Limited</strong> manufactures bellows, expansion joints, compensators, metal hoses, rubber bellows, non-metallic fabric bellows, dampers, strainers, couplings and sleeve couplings.</p>' +
     '<p class="mt-3 text-graphite">Our facility sits in a strategically located industrial zone at Chennai, India, with close proximity to air, sea, rail and road services.</p>' +
+    '<p class="mt-3 text-graphite">With over 25 years of experience in design, fabrication and testing, and an established supply chain, we can despatch expansion joints within 48 hours of order placement to both domestic and overseas customers.</p>' +
     '<div class="mbr-badge-row mt-6">' +
     PROFILE_BADGES.map(function (b) { return '<span class="mbr-badge">' + esc(b) + "</span>"; }).join("") +
     "</div>";
@@ -281,7 +307,9 @@
   var COMPANY_PROFILE_DETAIL_HTML =
     '<div class="mbr-profile-card"><h3 class="font-display text-lead">Complete range of manufacturing</h3>' +
     '<p class="mt-2 text-small text-graphite">(1) <strong>Metallic expansion joints:</strong> circular and rectangular, universal, hinged, gimbal, pressure balanced, reinforced, and metal hoses for high-pressure applications.</p>' +
-    '<p class="mt-2 text-small text-graphite">(2) <strong>Stainless steel bellows:</strong> ranging from 20 mm to 9000 mm. We also manufacture instrument bellows, bellows assemblies, bellows-related ducts, couplings, gaskets and accessories.</p></div>' +
+    '<p class="mt-2 text-small text-graphite">(2) <strong>Stainless steel bellows:</strong> ranging from 20 mm to 9000 mm. We also manufacture instrument bellows, bellows assemblies, bellows-related ducts, couplings, gaskets and accessories.</p>' +
+    '<div class="mt-4 relative aspect-[16/9] bg-rule overflow-hidden"><img src="https://res.cloudinary.com/kbig7iit/image/upload/f_auto,q_auto:best,c_limit,w_1600/mb-website/client-supplied/hq-hose-coil" alt="Coiled stainless steel metal hose" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"/></div>' +
+    '<p class="mt-2 text-small text-graphite">Stainless steel metal hose, one of our standard product lines alongside bellows and expansion joints.</p></div>' +
     '<div class="mbr-profile-card mt-6"><h3 class="font-display text-lead">Custom engineering &amp; movement absorption</h3>' +
     '<p class="mt-2 text-small text-graphite">These expansion joints absorb movement arising in multiple planes in pipelines, caused by variation in temperature and pressure, following standards laid down by the Expansion Joint Manufacturers Association, USA (EJMA).</p>' +
     '<p class="mt-2 text-small text-graphite">For special applications, units are designed and manufactured to customer specifications based on nominal bore, design pressure, design temperature, flow media, flow velocity, and axial, lateral and angular deflection, supported by appropriate destructive and type testing.</p></div>' +
